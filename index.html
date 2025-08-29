@@ -67,7 +67,7 @@
             align-items: center;
             justify-content: center;
             gap: 0.5rem;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1-px rgba(0, 0, 0, 0.06);
             transition-property: background-color;
             transition-duration: 300ms;
         }
@@ -111,8 +111,11 @@
 
     <!-- Sección Principal (Hero) -->
     <main>
-        <section class="bg-primary text-white py-24 text-center">
-            <div class="container mx-auto px-6">
+        <!-- Sección con imagen de fondo -->
+        <section class="relative bg-cover bg-center py-32 text-center text-white" style="background-image: url('https://placehold.co/1920x1080?text=Viajes+Servituris');">
+            <!-- Capa semitransparente para mejor legibilidad del texto -->
+            <div class="absolute inset-0 bg-primary opacity-70"></div>
+            <div class="container mx-auto px-6 relative z-10">
                 <h1 class="font-handlee text-4xl sm:text-5xl md:text-6xl font-bold leading-tight mb-4">
                     Tu Aventura Comienza Aquí
                 </h1>
@@ -148,7 +151,7 @@
                     </div>
                     <div class="w-full md:w-1/2">
                         <!-- Imagen de la sección "Nosotros" -->
-                        <img src="https://placehold.co/600x400/0446cb/ffffff?text=Viajes Servituris" alt="Imagen de nuestro equipo" class="rounded-lg shadow-lg">
+                        <img src="https://placehold.co/600x400/0446cb/ffffff?text=NOSOTROS" alt="Imagen de nuestro equipo" class="rounded-lg shadow-lg">
                     </div>
                 </div>
             </div>
@@ -213,63 +216,202 @@
         const destinations = [
             {
                 id: '1',
-                title: 'Aventura y Naturaleza',
-                text: 'Explora la selva, escala montañas o haz senderismo en los parques naturales más impresionantes.',
-                imageUrl: 'https://placehold.co/600x400/fe0000/ffffff?text=Aventura',
-                cities: [
-                    { name: 'San Gil', description: 'Capital turística de Santander, ideal para deportes extremos.', imageUrl: 'https://placehold.co/600x400/fe0000/ffffff?text=San+Gil' },
-                    { name: 'Nuquí', description: 'Avistamiento de ballenas y playas vírgenes en el Pacífico colombiano.', imageUrl: 'https://placehold.co/600x400/0446cb/ffffff?text=Nuqui' }
+                title: 'Traslados',
+                text: 'Disfruta de traslados cómodos y seguros entre el aeropuerto y tu hotel, con servicio puntual y confiable.',
+                imageUrl: 'https://placehold.co/600x400/0446cb/ffffff?text=TRASLADOS',
+                tours: [
+                    { name: 'Tarifas por trayecto', details: [
+                        '1 a 4 personas: $120.000',
+                        '1 a 7 personas: $210.000',
+                        '1 a 10 personas: $265.000',
+                        '1 a 15 personas: $335.000',
+                        '1 a 19 personas: $410.000',
+                        '1 a 25 personas: $485.000'
+                    ], price: '', imageUrl: 'https://placehold.co/600x400/0446cb/ffffff?text=Tarifas+Trayecto' },
                 ]
             },
             {
                 id: '2',
-                title: 'Historia y Cultura',
-                text: 'Sumérgete en el pasado visitando ciudades antiguas, museos y sitios arqueológicos.',
-                imageUrl: 'https://placehold.co/600x400/0446cb/ffffff?text=Historia',
-                cities: [
-                    { name: 'Cartagena', description: 'Ciudad amurallada con una rica historia y arquitectura colonial.', imageUrl: 'https://placehold.co/600x400/0446cb/ffffff?text=Cartagena' },
-                    { name: 'Villa de Leyva', description: 'Pueblo colonial con la plaza más grande de Colombia.', imageUrl: 'https://placehold.co/600x400/fe0000/ffffff?text=Villa+de+Leyva' }
+                title: 'Tours',
+                text: 'Antioquia es color, montaña y tradición. Vive Medellín y sus alrededores a tu ritmo con experiencias únicas que combinan cultura, historia y naturaleza.',
+                imageUrl: 'https://placehold.co/600x400/0446cb/ffffff?text=TOURS',
+                tours: [
+                    {
+                        name: 'Tour Guatapé',
+                        description: '',
+                        includes: [
+                            'Transporte ida y regreso.', 'Desayuno y almuerzo.', 'Alto del Chocho.', 'Piedra del Peñol (no incluye ascenso).', 'Visita Réplica del Peñol.', 'Tour de los zócalos.', 'Tour en barco.', 'Guía turístico.', 'Asistencia médica.'
+                        ],
+                        price: '$109.000',
+                        imageUrl: 'https://placehold.co/600x400/0446cb/ffffff?text=Tour+Guatape'
+                    },
+                    {
+                        name: 'Hacienda Nápoles Safari',
+                        description: 'Experiencia con el Pasaporte SAFARI que incluye: Parque Jurásico, santuarios de fauna (Avestruces, suricatos, cebras, león, tigre, hipopótamos), Mariposario, sendero amazónico, Museo Africano, Museo Memorial, mundo de las aves y Kamaria. Además de las Zonas acuáticas Octopus, Cataratas Victoria, Cobras, Río salvaje.',
+                        includes: [
+                            'Transporte ida y regreso', 'Desayuno en carretera', 'Guía acompañante', 'Tarjeta de asistencia médica'
+                        ],
+                        price: '$269.000',
+                        imageUrl: 'https://placehold.co/600x400/0446cb/ffffff?text=Hacienda+Napoles'
+                    },
+                    {
+                        name: 'City Tour y Comuna 13',
+                        description: '',
+                        includes: [
+                            'Transporte ida y regreso.', 'Almuerzo.', 'Parque Pies Descalzos.', 'Parques del Río', 'Pueblito Paisa.', 'Plaza Botero.', 'Metro y metro cable.', 'Graffiti tour comuna 13.', 'Escaleras Eléctricas.', 'Show de baile.', 'Guía turístico.', 'Asistencia médica.'
+                        ],
+                        price: '$99.000',
+                        imageUrl: 'https://placehold.co/600x400/0446cb/ffffff?text=City+Tour'
+                    },
+                    {
+                        name: 'Vuelta Oriente',
+                        description: 'Recorrido panorámico por paisajes naturales de clima frío.',
+                        includes: [
+                            'Transporte ida y regreso.', 'Almuerzo.', 'Visita al Retiro.', 'Visita a la Ceja.', 'Visita a San Antonio de Pereira.', 'Visita a la casa de los postres.', 'Visita al Carmen de Viboral.', 'Visita a las tiendas de loza.', 'Visita al salto del Tequendamita.', 'Guía turístico.', 'Asistencia médica.'
+                        ],
+                        price: '$129.000',
+                        imageUrl: 'https://placehold.co/600x400/0446cb/ffffff?text=Vuelta+Oriente'
+                    },
+                    {
+                        name: 'Tour del Café',
+                        description: 'Conoce el proceso del café desde la siembra hasta la taza',
+                        includes: [
+                            'Transporte ida y regreso', 'Bebida refrescante de mucílago de café', 'Refrigerio (plátano calado con miel y quesito)', 'Degustación de cafés especiales de la finca', 'Almuerzo tipo fiambre', 'Souvenir compuesto por un paquete de café variedad honey de 80g y panela típica colombiana', 'Guía acompañante', 'Tarjeta de asistencia médica'
+                        ],
+                        price: '$189.000',
+                        imageUrl: 'https://placehold.co/600x400/0446cb/ffffff?text=Tour+Cafe'
+                    },
+                    {
+                        name: 'Tour Jardín',
+                        description: '',
+                        includes: [
+                            'Transporte ida y regreso.', 'Desayuno y almuerzo tipo menú.', 'Visita municipio de Jardín.', 'Visita la cafetería Macanas.', 'Visita a truchera y caminata opcional a la cascada del Amor y charco Corazón.', 'Visita a la casa de los dulces.', 'Guía turístico.', 'Asistencia médica.'
+                        ],
+                        price: '$119.000',
+                        imageUrl: 'https://placehold.co/600x400/0446cb/ffffff?text=Tour+Jardin'
+                    }
                 ]
             },
             {
                 id: '3',
-                title: 'Sol y Playa',
-                text: 'Disfruta del paraíso tropical con playas de arena blanca, aguas cristalinas y un sol radiante.',
-                imageUrl: 'https://placehold.co/600x400/ffffff/fe0000?text=Playa',
-                cities: [
-                    { name: 'Santa Marta', description: 'La perla del Caribe con playas paradisíacas y el Parque Tayrona.', imageUrl: 'https://placehold.co/600x400/ffffff/fe0000?text=Santa+Marta' },
-                    { name: 'San Andrés', description: 'Mar de los siete colores, ideal para bucear y relajarse.', imageUrl: 'https://placehold.co/600x400/0446cb/ffffff?text=San+Andres' },
-                    { name: 'Taganga', description: 'Pueblo pesquero bohemio con excelentes playas.', imageUrl: 'https://placehold.co/600x400/fe0000/ffffff?text=Taganga' }
+                title: 'Destinos Playas',
+                text: 'Vive el encanto de las costas colombianas: arrecifes de colores, playas infinitas y atardeceres que guardarán para siempre un lugar en tu memoria.',
+                imageUrl: 'https://placehold.co/600x400/0446cb/ffffff?text=DESTINOS+PLAYAS',
+                tours: [
+                    {
+                        name: 'San Andrés',
+                        description: 'Tour vuelta a la Isla, Tour Acuario, Hannes Cay, Tour Bahía con ingreso a los manglares, Avistamiento de Manta Rayas y Estrellas de Mar sin contacto físico.',
+                        includes: [
+                            'Traslado Medellín Aeropuerto Medellín.', 'Traslado aeropuerto Hotel', 'Tiquetes aéreos por Jetsmart.', 'Equipaje mochila o morral personal.', 'Alojamiento 3 noches en hotel elegido.', 'Alimentación plan full (no incluye snacks)', 'Bar abierto según hotel y plan elegido y en los horarios establecidos por el hotel', 'Seguro hotelero', 'Coordinador en la isla.'
+                        ],
+                        price: '',
+                        imageUrl: 'https://placehold.co/600x400/0446cb/ffffff?text=San+Andres'
+                    },
+                    {
+                        name: 'Santa Marta',
+                        description: 'Tour Playa Blanca excursión en lancha, Integración en chiva rumbera, Recorrido por la ciudad con guía acompañante en el destino, Excursión a río y mar Buritaca',
+                        includes: [
+                            'Traslados Medellín aeropuerto Medellín', 'Tiquetes ida y regreso Jetsmart', 'Equipaje personal morral', 'Traslado aeropuerto hotel aeropuerto', 'Alojamiento 3 o 4 noches en hotel y el plan elegido', 'Alimentación: desayunos y cenas por noche de alojamiento', 'Guía acompañante en el destino', 'Asistencia médica'
+                        ],
+                        price: '',
+                        imageUrl: 'https://placehold.co/600x400/0446cb/ffffff?text=Santa+Marta'
+                    },
+                    {
+                        name: 'Cartagena',
+                        description: 'Tour Playa Blanca Barú con transporte terrestre y almuerzo, Recorrido en chiva rumbera 1 hora',
+                        includes: [
+                            'Traslados Medellín aeropuerto Medellín', 'Tiquetes ida y regreso Jetsmart', 'Equipaje personal morral', 'Traslado aeropuerto hotel aeropuerto', 'Alojamiento 3 noches en hotel elegido', 'Alimentación: desayunos y cenas por noche de alojamiento', 'Guía acompañante en el destino', 'Asistencia médica'
+                        ],
+                        price: '',
+                        imageUrl: 'https://placehold.co/600x400/0446cb/ffffff?text=Cartagena'
+                    },
+                    {
+                        name: 'Coveñas',
+                        description: 'Tour a la Caimanera (canoa opcional se paga en el lugar), Visita a Tolú de compras, Fiesta de integración.',
+                        includes: [
+                            'Transporte ida y regreso en buses de turismo', 'Alojamiento 2 o 3 noches en hotel con piscina frente al mar', 'Alimentación: desayuno, almuerzo y cena por noche de alojamiento', 'Asistencia médica', 'Guía acompañante'
+                        ],
+                        price: '',
+                        imageUrl: 'https://placehold.co/600x400/0446cb/ffffff?text=Covenas'
+                    }
                 ]
             },
             {
                 id: '4',
-                title: 'Compras y Lujo',
-                text: 'Descubre las boutiques más exclusivas y los centros comerciales más grandes del mundo.',
-                imageUrl: 'https://placehold.co/600x400/fe0000/ffffff?text=Compras',
-                cities: [
-                    { name: 'Bogotá', description: 'Capital de la moda y el lujo, con centros comerciales de alto nivel.', imageUrl: 'https://placehold.co/600x400/fe0000/ffffff?text=Bogota' },
-                    { name: 'Medellín', description: 'Innovación y diseño, ideal para compras y moda de vanguardia.', imageUrl: 'https://placehold.co/600x400/0446cb/ffffff?text=Medellin' }
+                title: 'Excursiones',
+                text: 'Atrévete a descubrir Colombia con viajes que te conectan con su gente, su tierra y sus tradiciones.',
+                imageUrl: 'https://placehold.co/600x400/0446cb/ffffff?text=EXCURSIONES',
+                tours: [
+                    {
+                        name: 'Eje Cafetero',
+                        description: '',
+                        includes: [
+                            'Transporte ida y regreso en buses de turismo.', 'Alimentación 3 desayunos 3 cenas', 'Alojamiento 3 noches en finca hotel con piscina', 'Ingreso al Parque del Café con pasaporte múltiple.', 'Ingreso a Panaca con pasaporte Terra', 'Visita al valle del Cocora.', 'Paseo en Jeep Willys', 'Visita al mirador Encanto y Finlandia.', 'Ingreso a termales del Santa Rosa de Cabal.', 'Tour de compras en el parque de Quimbaya.', 'Guía acompañante', 'Tarjeta de asistencia médica'
+                        ],
+                        price: '$698.000',
+                        imageUrl: 'https://placehold.co/600x400/0446cb/ffffff?text=Eje+Cafetero'
+                    },
+                    {
+                        name: 'Sur de Colombia',
+                        description: '',
+                        includes: [
+                            'Transporte en vehículo de servicios especiales', 'Alojamiento 5 noches 6 días (1 noche en Popayán, 2 noches en Tulcán, 1 noche en Pasto, 1 noche en Cali)', 'Recorrido en Chiva Rumbera por la sucursal del cielo.', 'Alimentación 5 desayunos y 5 cenas', 'Guía profesional durante todo el recorrido', 'Tarjeta de asistencia médica'
+                        ],
+                        price: '$1.158.000',
+                        imageUrl: 'https://placehold.co/600x400/0446cb/ffffff?text=Sur+Colombia'
+                    },
+                    {
+                        name: 'Desierto de la Tatacoa',
+                        description: 'Visita a Desierto Rojo (Cuzco), Visita Desierto Gris (Los Hoyos y el Valle de los fantasmas), Charla Astronómica, Visita a termales de Riviera (incluye ingreso y traslado), Visita Mano del gigante.',
+                        includes: [
+                            'Transporte en vehículos de servicios especiales según número de pasajeros.', 'Alojamiento. 2 noches en Hotel ubicado en Villa Vieja.', 'Alimentación Desayuno, Almuerzo y cena por noche de alojamiento.', 'Guía acompañante desde Medellín y Guía local en el destino.', 'Tarjeta de asistencia médica.'
+                        ],
+                        price: '$718.000',
+                        imageUrl: 'https://placehold.co/600x400/0446cb/ffffff?text=Desierto+Tatacoa'
+                    }
                 ]
             },
             {
                 id: '5',
-                title: 'Gastronomía',
-                text: 'Embárcate en un viaje culinario y deleita tu paladar con los sabores del mundo.',
-                imageUrl: 'https://placehold.co/600x400/0446cb/ffffff?text=Gastronomia',
-                cities: [
-                    { name: 'Cali', description: 'Hogar de la salsa y una vibrante escena culinaria.', imageUrl: 'https://placehold.co/600x400/0446cb/ffffff?text=Cali' },
-                    { name: 'Popayán', description: 'Conocida como la "Ciudad Blanca" por su arquitectura colonial.', imageUrl: 'https://placehold.co/600x400/fe0000/ffffff?text=Popayan' }
+                title: 'Tour de Compras',
+                text: 'Conoce las mejores marcas, tendencias y productos locales en un tour de compras hecho a tu medida.',
+                imageUrl: 'https://placehold.co/600x400/0446cb/ffffff?text=TOUR+COMPRAS',
+                tours: [
+                    {
+                        name: 'Tour de Compras Medellín',
+                        description: '',
+                        includes: [
+                            'Transporte ida y regreso', 'Visita tienda de Cueros Vélez (marroquinería paisa)', 'Visita tienda Leonisa (moda intima y deportiva)', 'Visita tiendas artesanales Parque Bolívar', 'Visita los Outlets de industriales Av. Guayabal', 'Visita a la tienda Parchitas', 'Asistencia medica', 'Guía acompañante', 'Salidas Diarias - Mínimo 2 personas'
+                        ],
+                        price: '$120.000',
+                        imageUrl: 'https://placehold.co/600x400/0446cb/ffffff?text=Compras+Medellin'
+                    }
                 ]
             },
             {
                 id: '6',
-                title: 'Relax y Bienestar',
-                text: 'Relájate en spas de lujo y retiros de bienestar en destinos paradisíacos.',
-                imageUrl: 'https://placehold.co/600x400/ffffff/fe0000?text=Relax',
-                cities: [
-                    { name: 'Eje Cafetero', description: 'Relájate en fincas cafeteras con aguas termales y vistas impresionantes.', imageUrl: 'https://placehold.co/600x400/ffffff/fe0000?text=Eje+Cafetero' },
-                    { name: 'Termales de Santa Rosa', description: 'Aguas termales naturales en un entorno de montaña.', imageUrl: 'https://placehold.co/600x400/0446cb/ffffff?text=Santa+Rosa' }
+                title: 'Parapentes y Miradores',
+                text: 'Entre montañas y cielos abiertos, descubre la magia de ver el mundo desde lo más alto.',
+                imageUrl: 'https://placehold.co/600x400/0446cb/ffffff?text=PARAPENTE',
+                tours: [
+                    {
+                        name: 'Vuelo en Parapente',
+                        description: '',
+                        includes: [
+                            'Transporte ida y regreso', 'Vuelo en parapente por 15 minutos aproximadamente', 'Instructor profesional', 'Seguros', 'Hidratación', 'Fotos y videos', 'Inducción de vuelo'
+                        ],
+                        price: '$320.000',
+                        imageUrl: 'https://placehold.co/600x400/0446cb/ffffff?text=Vuelo+Parapente'
+                    },
+                    {
+                        name: 'Miradores Medellín',
+                        description: '',
+                        includes: [
+                            'Transporte ida y regreso', 'Visita al Mirador la Octava Maravilla', 'Visita al Mirador el Cielo', 'Visita al Mirador la Palma en San Félix o Mirador de las palmas', 'Cortesía un agua, una gaseosa o una cerveza', 'Asistencia médica', 'Guía acompañante', 'Salidas Diarias - Mínimo 2 personas'
+                        ],
+                        price: '$190.000',
+                        imageUrl: 'https://placehold.co/600x400/0446cb/ffffff?text=Miradores+Medellin'
+                    }
                 ]
             },
         ];
@@ -280,17 +422,14 @@
         const renderCategories = () => {
             let htmlContent = `
                 <h2 class="text-4xl font-bold text-center text-primary mb-12">
-                    Nuestros Destinos
+                    Nuestros Servicios
                 </h2>
-                <p class="text-lg text-center text-gray-600 mb-12">
-                    Te invitamos a explorar las experiencias que más te gustan.
-                </p>
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
             `;
             destinations.forEach(destination => {
                 htmlContent += `
-                    <div onclick="renderCities('${destination.id}')" class="bg-white rounded-lg shadow-lg overflow-hidden transform hover:scale-105 transition duration-300 cursor-pointer">
-                        <img src="${destination.imageUrl}" alt="Imagen de destino de ${destination.title}" class="w-full h-48 object-cover">
+                    <div onclick="renderTours('${destination.id}')" class="bg-white rounded-lg shadow-lg overflow-hidden transform hover:scale-105 transition duration-300 cursor-pointer">
+                        <img src="${destination.imageUrl}" alt="Imagen de ${destination.title}" class="w-full h-48 object-cover">
                         <div class="p-6">
                             <h3 class="text-xl font-bold text-primary mb-2">${destination.title}</h3>
                             <p class="text-gray-600">${destination.text}</p>
@@ -302,15 +441,15 @@
             destinationsContainer.innerHTML = htmlContent;
         };
 
-        // Función para renderizar la vista de ciudades de una categoría
-        window.renderCities = (categoryId) => {
+        // Función para renderizar la vista de tours de una categoría
+        window.renderTours = (categoryId) => {
             const category = destinations.find(d => d.id === categoryId);
             if (!category) return;
 
             let htmlContent = `
                 <div class="flex flex-col items-center">
                     <button onclick="renderCategories()" class="btn-primary mb-8 self-start">
-                        ← Volver a Categorías
+                        ← Volver a Servicios
                     </button>
                     <h2 class="text-4xl font-bold text-center text-primary mb-12">
                         ${category.title}
@@ -320,21 +459,37 @@
                     </p>
                     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
             `;
-            category.cities.forEach(city => {
-                const whatsappMessage = encodeURIComponent(`Hola, me gustaría cotizar un tour para "${city.name}" en la categoría de ${category.title}.`);
+            category.tours.forEach(tour => {
+                const whatsappMessage = encodeURIComponent(`Hola, quisiera cotizar el tour "${tour.name}"`);
                 htmlContent += `
                     <div class="bg-white rounded-lg shadow-lg overflow-hidden transform hover:scale-105 transition duration-300">
-                        <img src="${city.imageUrl}" alt="Imagen de ${city.name}" class="w-full h-48 object-cover">
-                        <div class="p-6">
-                            <h3 class="text-xl font-bold text-primary mb-2">${city.name}</h3>
-                            <p class="text-gray-600 mb-4">${city.description}</p>
-                            <!-- Botón de WhatsApp para cada ciudad -->
-                            <a href="https://wa.me/573000000000?text=${whatsappMessage}" class="btn-whatsapp">
-                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M12.04 2.87c-5.06 0-9.17 4.12-9.17 9.17 0 1.54.4 3.03 1.14 4.38L2.09 21.91l5.4-1.42c1.29.75 2.76 1.15 4.31 1.15 5.06 0 9.17-4.12 9.17-9.17s-4.12-9.17-9.17-9.17zm.05 16.63c-1.4 0-2.8-.38-4.01-1.1L5.9 18.2l-1.95.51.52-1.99a7.35 7.35 0 0 1-1.12-3.96c0-4.03 3.3-7.33 7.33-7.33s7.33 3.3 7.33 7.33c0 4.04-3.3 7.34-7.33 7.34zm4.51-5.74c-.25-.12-.42-.2-.59-.28-.15-.07-.35-.12-.55-.13-.2-.02-.45-.02-.63.02-.19.04-.44.17-.67.4-.23.23-.52.55-.65.71-.14.16-.29.17-.55.12-.26-.06-1.1-.41-2.1-.96-.78-.42-1.28-.95-1.49-1.32-.21-.37-.22-.35-.4-.73-.18-.38-.02-.7-.01-.73.01-.03.21-.29.35-.45.14-.16.19-.28.28-.47.09-.18.05-.34-.02-.48-.07-.15-.63-1.52-.78-1.85-.15-.32-.29-.27-.47-.27-.18 0-.39-.02-.6-.02-.21 0-.55.08-.82.35-.27.27-1.03 1.01-1.03 2.46 0 1.45 1.05 2.85 1.2 3.02.16.16 2.07 3.2 5.06 4.37 3 1.18 3.73 1.05 4.38 1.05.65 0 1.25-.09 1.55-.16.3-.07.89-.37 1.02-.74.13-.37.13-.69.09-.77-.04-.08-.16-.13-.34-.22z"/>
-                                </svg>
-                                Cotizar por WhatsApp
-                            </a>
+                        <img src="${tour.imageUrl}" alt="Imagen de ${tour.name}" class="w-full h-48 object-cover">
+                        <div class="p-6 flex flex-col justify-between">
+                            <div>
+                                <h3 class="text-xl font-bold text-primary mb-2">${tour.name}</h3>
+                                ${tour.description ? `<p class="text-gray-600 mb-4">${tour.description}</p>` : ''}
+                                ${tour.includes && tour.includes.length > 0 ? `
+                                    <h4 class="text-md font-bold text-primary mb-2">Incluye:</h4>
+                                    <ul class="text-gray-600 list-disc list-inside mb-4">
+                                        ${tour.includes.map(item => `<li>${item}</li>`).join('')}
+                                    </ul>
+                                ` : ''}
+                                ${tour.details && tour.details.length > 0 ? `
+                                    <h4 class="text-md font-bold text-primary mb-2">Tarifas:</h4>
+                                    <ul class="text-gray-600 list-disc list-inside mb-4">
+                                        ${tour.details.map(item => `<li>${item}</li>`).join('')}
+                                    </ul>
+                                ` : ''}
+                            </div>
+                            <div class="mt-4">
+                                ${tour.price ? `<p class="text-2xl font-bold text-secondary text-center mb-4">Precio por persona: ${tour.price}</p>` : ''}
+                                <a href="https://wa.me/573000000000?text=${whatsappMessage}" class="btn-whatsapp w-full">
+                                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M12.04 2.87c-5.06 0-9.17 4.12-9.17 9.17 0 1.54.4 3.03 1.14 4.38L2.09 21.91l5.4-1.42c1.29.75 2.76 1.15 4.31 1.15 5.06 0 9.17-4.12 9.17-9.17s-4.12-9.17-9.17-9.17zm.05 16.63c-1.4 0-2.8-.38-4.01-1.1L5.9 18.2l-1.95.51.52-1.99a7.35 7.35 0 0 1-1.12-3.96c0-4.03 3.3-7.33 7.33-7.33s7.33 3.3 7.33 7.33c0 4.04-3.3 7.34-7.33 7.34zm4.51-5.74c-.25-.12-.42-.2-.59-.28-.15-.07-.35-.12-.55-.13-.2-.02-.45-.02-.63.02-.19.04-.44.17-.67.4-.23.23-.52.55-.65.71-.14.16-.29.17-.55.12-.26-.06-1.1-.41-2.1-.96-.78-.42-1.28-.95-1.49-1.32-.21-.37-.22-.35-.4-.73-.18-.38-.02-.7-.01-.73.01-.03.21-.29.35-.45.14-.16.19-.28.28-.47.09-.18.05-.34-.02-.48-.07-.15-.63-1.52-.78-1.85-.15-.32-.29-.27-.47-.27-.18 0-.39-.02-.6-.02-.21 0-.55.08-.82.35-.27.27-1.03 1.01-1.03 2.46 0 1.45 1.05 2.85 1.2 3.02.16.16 2.07 3.2 5.06 4.37 3 1.18 3.73 1.05 4.38 1.05.65 0 1.25-.09 1.55-.16.3-.07.89-.37 1.02-.74.13-.37.13-.69.09-.77-.04-.08-.16-.13-.34-.22z"/>
+                                    </svg>
+                                    Cotizar
+                                </a>
+                            </div>
                         </div>
                     </div>
                 `;
@@ -357,6 +512,8 @@
 </body>
 
 </html>
+
+
 
 
 
