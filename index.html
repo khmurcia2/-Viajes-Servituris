@@ -83,8 +83,8 @@
     <header class="bg-white shadow-md sticky top-0 z-50">
         <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
             <!-- Logo de la empresa -->
-            <a href="#" class="text-3xl font-bold font-handlee text-primary">
-                Viajes Servituris
+            <a href="#">
+                <img src="https://app.marketingnetworkc.com/logo.jpg" alt="Logo de Viajes Servituris" class="h-12 w-auto">
             </a>
             <!-- Menú de navegación principal -->
             <ul class="hidden md:flex space-x-8">
@@ -111,11 +111,17 @@
 
     <!-- Sección Principal (Hero) -->
     <main>
-        <!-- Sección con imagen de fondo -->
-        <section class="relative bg-cover bg-center py-32 text-center text-white" style="background-image: url('https://placehold.co/1920x1080?text=Viajes+Servituris');">
+        <!-- Sección con carrusel de imágenes -->
+        <section class="relative py-32 text-center text-white overflow-hidden">
+            <!-- Contenedor de las imágenes del carrusel -->
+            <div class="absolute inset-0 z-0">
+                <img id="carousel-img-1" src="https://app.marketingnetworkc.com/1.jpg" alt="Imagen de fondo de playa 1" class="absolute inset-0 w-full h-full object-cover opacity-100 transition-opacity duration-1000">
+                <img id="carousel-img-2" src="https://app.marketingnetworkc.com/2.jpg" alt="Imagen de fondo de playa 2" class="absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-1000">
+                <img id="carousel-img-3" src="https://app.marketingnetworkc.com/3.jpg" alt="Imagen de fondo de playa 3" class="absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-1000">
+            </div>
             <!-- Capa semitransparente para mejor legibilidad del texto -->
-            <div class="absolute inset-0 bg-primary opacity-70"></div>
-            <div class="container mx-auto px-6 relative z-10">
+            <div class="absolute inset-0 bg-primary opacity-70 z-10"></div>
+            <div class="container mx-auto px-6 relative z-20">
                 <h1 class="font-handlee text-4xl sm:text-5xl md:text-6xl font-bold leading-tight mb-4">
                     Tu Aventura Comienza Aquí
                 </h1>
@@ -142,10 +148,10 @@
                 <div class="flex flex-col md:flex-row items-center justify-center space-y-8 md:space-y-0 md:space-x-12">
                     <div class="w-full md:w-1/2 text-gray-700">
                         <p class="mb-4">
-                            En Viajes Servituris, creemos que cada viaje es una oportunidad para crear recuerdos inolvidables. Desde 1995, nos hemos dedicado a ofrecer experiencias de alta calidad que se adaptan a tus gustos, ya sea que busques la historia, la aventura o un tranquilo día de sol.
+                            En ServiTuris, creemos que cada viaje es una oportunidad para vivir algo único. Nacimos con la misión de ofrecer experiencias inolvidables, combinando asesoría personalizada, destinos increíbles y un servicio hecho a tu medida en el que puedes confiar.
                         </p>
                         <p class="mb-4">
-                            Nuestra misión es hacer de tus sueños de viaje una realidad, con un servicio personalizado y un equipo de expertos que te guiarán en cada paso del camino.
+                            Con pasión por los viajes te acompañamos en cada paso para que tu única preocupación sea disfrutar, hoy seguimos ampliando horizontes explorando nuevas rutas y conectando con aliados estratégicos siempre con el mismo propósito.
                         </p>
                         <a href="#contact" class="text-secondary hover:underline font-bold">¡Contáctanos y empieza a planear tu próximo viaje!</a>
                     </div>
@@ -508,10 +514,38 @@
         menuBtn.addEventListener('click', () => {
             mobileMenu.classList.toggle('hidden');
         });
+
+        // Carrusel de imágenes
+        const carouselImages = [
+            document.getElementById('carousel-img-1'),
+            document.getElementById('carousel-img-2'),
+            document.getElementById('carousel-img-3')
+        ];
+        let currentIndex = 0;
+
+        function startCarousel() {
+            setInterval(() => {
+                // Oculta la imagen actual
+                carouselImages[currentIndex].classList.remove('opacity-100');
+                carouselImages[currentIndex].classList.add('opacity-0');
+                
+                // Mueve al siguiente índice
+                currentIndex = (currentIndex + 1) % carouselImages.length;
+
+                // Muestra la siguiente imagen
+                carouselImages[currentIndex].classList.remove('opacity-0');
+                carouselImages[currentIndex].classList.add('opacity-100');
+            }, 5000); // Cambia la imagen cada 5 segundos
+        }
+
+        // Inicia el carrusel al cargar la página
+        window.onload = startCarousel;
     </script>
 </body>
 
 </html>
+
+
 
 
 
