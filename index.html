@@ -3,21 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Migración ITIN a SSN | Inviertentinow</title>
+    <title>Migración ITIN a SSN | Invierte N Ti Now</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
         /* =========================================
-           COLORES DE TU MARCA (Cámbialos aquí si es necesario)
+           COLORES DE LA MARCA
            ========================================= */
         :root {
-            --primary-color: #1a202c; /* Color principal oscuro (Ej. para títulos) */
-            --secondary-color: #2d3748; /* Color secundario */
-            --accent-color: #d4af37; /* Dorado elegante para botones y acentos */
+            --primary-color: #1a202c; 
+            --secondary-color: #2d3748; 
+            --accent-color: #d4af37; 
             --text-color: #4a5568;
             --bg-light: #f7fafc;
             
-            /* Degradado oficial de Instagram */
+            /* Colores de Redes Sociales */
             --ig-gradient: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+            --wa-color: #25D366; /* Verde oficial de WhatsApp */
         }
 
         * {
@@ -31,6 +32,7 @@
             color: var(--text-color);
             line-height: 1.6;
             background-color: var(--bg-light);
+            padding-top: 80px; /* Espacio para la barra de navegación fija */
         }
 
         h1, h2, h3 {
@@ -42,6 +44,31 @@
             max-width: 1200px;
             margin: 0 auto;
             padding: 40px 20px;
+        }
+
+        /* BARRA DE NAVEGACIÓN Y LOGO */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: #ffffff;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 15px 20px;
+            z-index: 1000;
+        }
+
+        .navbar img {
+            max-height: 50px;
+            width: auto;
+            transition: transform 0.3s ease;
+        }
+
+        .navbar img:hover {
+            transform: scale(1.05);
         }
 
         /* Botón Principal */
@@ -88,10 +115,32 @@
             box-shadow: 0 6px 20px rgba(220, 39, 67, 0.6);
         }
 
+        /* Botón de WhatsApp */
+        .btn-wa {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background-color: var(--wa-color);
+            color: #fff;
+            padding: 15px 30px;
+            text-decoration: none;
+            font-weight: 600;
+            border-radius: 5px;
+            transition: transform 0.2s ease, box-shadow 0.3s ease;
+            text-transform: uppercase;
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
+            gap: 10px;
+        }
+
+        .btn-wa:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.6);
+        }
+
         /* Hero Section */
         .hero {
             position: relative;
-            height: 100vh;
+            min-height: calc(100vh - 80px);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -101,6 +150,7 @@
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
+            padding: 40px 20px;
         }
 
         .hero-overlay {
@@ -109,7 +159,6 @@
             left: 0;
             width: 100%;
             height: 100%;
-            /* Degradado oscuro para resaltar texto */
             background: linear-gradient(135deg, rgba(26, 32, 44, 0.9) 0%, rgba(45, 55, 72, 0.7) 100%);
             z-index: 1;
         }
@@ -117,7 +166,6 @@
         .hero-content {
             z-index: 2;
             max-width: 900px;
-            padding: 20px;
             animation: fadeIn 1.5s ease-out;
         }
 
@@ -139,7 +187,7 @@
 
         .hero-buttons {
             display: flex;
-            gap: 20px;
+            gap: 15px;
             justify-content: center;
             flex-wrap: wrap;
         }
@@ -193,6 +241,8 @@
             box-shadow: 0 5px 15px rgba(0,0,0,0.05);
             border-top: 4px solid var(--accent-color);
             transition: box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
         }
 
         .card:hover {
@@ -202,6 +252,7 @@
         .card ul {
             list-style-position: inside;
             margin-top: 15px;
+            flex-grow: 1;
         }
 
         .card ul li {
@@ -226,7 +277,7 @@
             content: '';
             position: absolute;
             top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(26, 32, 44, 0.85); /* Tono oscuro para que coincida con primary */
+            background: rgba(26, 32, 44, 0.85); 
         }
 
         .pricing .container {
@@ -283,7 +334,22 @@
             color: white;
             text-align: center;
             padding: 50px 20px;
-            font-size: 0.9rem;
+            font-size: 0.95rem;
+        }
+
+        /* Contenedor blanco para el logo del footer */
+        .footer-logo-box {
+            background-color: #ffffff;
+            display: inline-block;
+            padding: 15px 30px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .footer-logo-box img {
+            max-height: 60px;
+            display: block;
         }
 
         footer p {
@@ -293,9 +359,32 @@
             color: #e2e8f0;
         }
 
+        .footer-contact-info {
+            background: rgba(255,255,255,0.05);
+            max-width: 500px;
+            margin: 30px auto;
+            padding: 20px;
+            border-radius: 10px;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .footer-contact-info a {
+            color: var(--accent-color);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-contact-info a:hover {
+            color: #fff;
+        }
+
         .footer-social {
             margin-top: 30px;
             margin-bottom: 20px;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
         }
 
         @media (max-width: 768px) {
@@ -303,10 +392,20 @@
             .section-split { flex-direction: column !important; }
             .hero { background-attachment: scroll; } 
             .hero-buttons { flex-direction: column; }
+            .pricing-box { padding: 30px 20px; }
+            body { padding-top: 70px; }
+            .navbar img { max-height: 40px; }
         }
     </style>
 </head>
 <body>
+
+    <!-- BARRA DE NAVEGACIÓN SUPERIOR CON EL LOGO -->
+    <nav class="navbar">
+        <a href="#">
+            <img src="https://khmurcia2.github.io/migracion/INVIERTE%20N%20TI%20NOW%20-%20LOGO%20FINAL%20NUEVA%20VERSION%20-AZUL.png" alt="Logo Invierte N Ti Now">
+        </a>
+    </nav>
 
     <!-- SECCIÓN 1: Hero con Foto Llamativa y Botones -->
     <header class="hero">
@@ -316,7 +415,14 @@
             <p>Bienvenid@[cite: 1]. Si utilizó un ITIN para obtener crédito y ahora cuenta con un Seguro Social (SSN), es vital realizar la migración correcta para asegurar su historial financiero[cite: 1].</p>
             
             <div class="hero-buttons">
-                <a href="#proceso" class="btn">Comenzar mi Migración Hoy</a>
+                <a href="#proceso" class="btn">Ver el Proceso</a>
+                
+                <!-- Botón de WhatsApp -->
+                <a href="https://wa.me/16783564855?text=Hola,%20me%20interesa%20iniciar%20el%20Programa%20de%20Migración%20de%20ITIN%20a%20SSN" target="_blank" class="btn-wa">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
+                    Escríbeme al WhatsApp
+                </a>
+
                 <!-- Botón de Instagram -->
                 <a href="https://www.instagram.com/inviertentinow_eydie/" target="_blank" class="btn-ig">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
@@ -342,6 +448,10 @@
                     <li>Creación de nueva cuenta con SSN para sincronizar historiales[cite: 1].</li>
                     <li>Recomendamos el plan de 3 meses para monitoreo activo de cambios[cite: 1].</li>
                 </ul>
+                <!-- Botón con el enlace proporcionado por el cliente -->
+                <div style="margin-top: 20px; text-align: center;">
+                    <a href="https://app.myfreescorenow.com/enroll/B01B7384" target="_blank" class="btn" style="padding: 10px 20px; font-size: 0.9rem; width: 100%;">Registrarme y Obtener Reporte</a>
+                </div>
             </div>
             
             <div class="card">
@@ -421,8 +531,12 @@
                     <li>Estrategias para mejorar el puntaje, si aplica[cite: 1]</li>
                     <li>Acompañamiento y asesoría durante 3 meses[cite: 1]</li>
                 </ul>
-                <br>
-                <a href="#" class="btn">Solicitar Servicio Ahora</a>
+                <br><br>
+                <!-- Botón de WhatsApp en la tabla de precios -->
+                <a href="https://wa.me/16783564855?text=Hola,%20me%20interesa%20iniciar%20el%20Programa%20de%20Migración%20de%20ITIN%20a%20SSN" target="_blank" class="btn-wa">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
+                    Solicitar Servicio Ahora
+                </a>
             </div>
         </div>
     </section>
@@ -430,18 +544,39 @@
     <!-- FOOTER -->
     <footer>
         <div class="container">
+            
+            <!-- LOGO EN EL FOOTER (CON FONDO BLANCO PARA QUE RESALTE) -->
+            <div class="footer-logo-box">
+                <img src="https://khmurcia2.github.io/migracion/INVIERTE%20N%20TI%20NOW%20-%20LOGO%20FINAL%20NUEVA%20VERSION%20-AZUL.png" alt="Logo Invierte N Ti Now">
+            </div>
+
             <p><strong>Importante:</strong> La migración del historial de crédito depende de que cada acreedor y buró de crédito actualice correctamente la información[cite: 1]. Mi trabajo consiste en gestionar el proceso, dar seguimiento y utilizar los procedimientos legales correspondientes[cite: 1].</p>
             <p>Yo lo acompañaré durante todo el proceso para que la transición se realice de la mejor manera posible[cite: 1].</p>
             
+            <!-- CAJA DE CONTACTO CON NUEVOS DATOS -->
+            <div class="footer-contact-info">
+                <h3 style="color: #fff; margin-bottom: 15px; font-size: 1.2rem;">Contacto</h3>
+                <p style="margin-bottom: 5px;"><strong>Invierte N Ti Now</strong></p>
+                <p style="margin-bottom: 5px;"><a href="mailto:admin@inviertentinow.com">admin@inviertentinow.com</a></p>
+                <p style="margin-bottom: 0;"><a href="https://www.inviertentinow.com/finanzas" target="_blank">www.inviertentinow.com/finanzas</a></p>
+            </div>
+
             <div class="footer-social">
-                <a href="https://www.instagram.com/inviertentinow_eydie/" target="_blank" class="btn-ig">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                <!-- Botón WhatsApp -->
+                <a href="https://wa.me/16783564855" target="_blank" class="btn-wa" style="padding: 10px 20px; font-size: 0.9rem;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
+                    678-356-4855
+                </a>
+
+                <!-- Botón Instagram -->
+                <a href="https://www.instagram.com/inviertentinow_eydie/" target="_blank" class="btn-ig" style="padding: 10px 20px; font-size: 0.9rem;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
                     @inviertentinow_eydie
                 </a>
             </div>
 
             <br>
-            <p>&copy; 2026 Programa de Migración ITIN a SSN. Todos los derechos reservados.</p>
+            <p>&copy; 2026 Programa de Migración ITIN a SSN | Invierte N Ti Now. Todos los derechos reservados.</p>
         </div>
     </footer>
 
