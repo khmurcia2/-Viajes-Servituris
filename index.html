@@ -3,16 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Migración ITIN a SSN</title>
+    <title>Migración ITIN a SSN | Inviertentinow</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
-        /* Estilos Globales */
+        /* =========================================
+           COLORES DE TU MARCA (Cámbialos aquí si es necesario)
+           ========================================= */
         :root {
-            --primary-color: #0b2545;
-            --secondary-color: #13315c;
-            --accent-color: #d4af37;
-            --text-color: #333333;
-            --bg-light: #f4f7f6;
+            --primary-color: #1a202c; /* Color principal oscuro (Ej. para títulos) */
+            --secondary-color: #2d3748; /* Color secundario */
+            --accent-color: #d4af37; /* Dorado elegante para botones y acentos */
+            --text-color: #4a5568;
+            --bg-light: #f7fafc;
+            
+            /* Degradado oficial de Instagram */
+            --ig-gradient: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
         }
 
         * {
@@ -39,8 +44,11 @@
             padding: 40px 20px;
         }
 
+        /* Botón Principal */
         .btn {
-            display: inline-block;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
             background-color: var(--accent-color);
             color: #fff;
             padding: 15px 30px;
@@ -50,6 +58,7 @@
             transition: background 0.3s ease, transform 0.2s ease;
             text-transform: uppercase;
             box-shadow: 0 4px 15px rgba(212, 175, 55, 0.4);
+            gap: 10px;
         }
 
         .btn:hover {
@@ -57,7 +66,29 @@
             transform: translateY(-2px);
         }
 
-        /* Hero Section (FOTO DE PORTADA LLAMATIVA) */
+        /* Botón de Instagram */
+        .btn-ig {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--ig-gradient);
+            color: #fff;
+            padding: 15px 30px;
+            text-decoration: none;
+            font-weight: 600;
+            border-radius: 5px;
+            transition: transform 0.2s ease, box-shadow 0.3s ease;
+            text-transform: uppercase;
+            box-shadow: 0 4px 15px rgba(220, 39, 67, 0.4);
+            gap: 10px;
+        }
+
+        .btn-ig:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(220, 39, 67, 0.6);
+        }
+
+        /* Hero Section */
         .hero {
             position: relative;
             height: 100vh;
@@ -66,11 +97,10 @@
             justify-content: center;
             text-align: center;
             color: white;
-            /* Imagen de portada HD con efecto Parallax */
             background-image: url('https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1920&q=100');
             background-size: cover;
             background-position: center;
-            background-attachment: fixed; /* Esto crea el efecto llamativo al hacer scroll */
+            background-attachment: fixed;
         }
 
         .hero-overlay {
@@ -79,8 +109,8 @@
             left: 0;
             width: 100%;
             height: 100%;
-            /* Degradado elegante para resaltar el texto */
-            background: linear-gradient(135deg, rgba(11, 37, 69, 0.9) 0%, rgba(19, 49, 92, 0.6) 100%);
+            /* Degradado oscuro para resaltar texto */
+            background: linear-gradient(135deg, rgba(26, 32, 44, 0.9) 0%, rgba(45, 55, 72, 0.7) 100%);
             z-index: 1;
         }
 
@@ -100,10 +130,18 @@
         }
 
         .hero p {
+            color: #e2e8f0;
             font-size: 1.3rem;
             margin-bottom: 35px;
             font-weight: 300;
             text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
         }
 
         @keyframes fadeIn {
@@ -124,12 +162,7 @@
             flex-direction: row-reverse;
         }
 
-        .text-content {
-            flex: 1;
-            min-width: 300px;
-        }
-
-        .image-content {
+        .text-content, .image-content {
             flex: 1;
             min-width: 300px;
         }
@@ -193,7 +226,7 @@
             content: '';
             position: absolute;
             top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(11, 37, 69, 0.85);
+            background: rgba(26, 32, 44, 0.85); /* Tono oscuro para que coincida con primary */
         }
 
         .pricing .container {
@@ -249,7 +282,7 @@
             background-color: var(--secondary-color);
             color: white;
             text-align: center;
-            padding: 40px 20px;
+            padding: 50px 20px;
             font-size: 0.9rem;
         }
 
@@ -257,24 +290,39 @@
             max-width: 800px;
             margin: 0 auto 15px;
             opacity: 0.8;
+            color: #e2e8f0;
+        }
+
+        .footer-social {
+            margin-top: 30px;
+            margin-bottom: 20px;
         }
 
         @media (max-width: 768px) {
             .hero h1 { font-size: 2.2rem; }
             .section-split { flex-direction: column !important; }
-            .hero { background-attachment: scroll; } /* Mejor rendimiento en móviles */
+            .hero { background-attachment: scroll; } 
+            .hero-buttons { flex-direction: column; }
         }
     </style>
 </head>
 <body>
 
-    <!-- SECCIÓN 1: Hero con Foto Llamativa -->
+    <!-- SECCIÓN 1: Hero con Foto Llamativa y Botones -->
     <header class="hero">
         <div class="hero-overlay"></div>
         <div class="hero-content">
             <h1>Programa de Migración de Historial de Crédito ITIN a SSN</h1>
             <p>Bienvenid@[cite: 1]. Si utilizó un ITIN para obtener crédito y ahora cuenta con un Seguro Social (SSN), es vital realizar la migración correcta para asegurar su historial financiero[cite: 1].</p>
-            <a href="#proceso" class="btn">Comenzar mi Migración Hoy</a>
+            
+            <div class="hero-buttons">
+                <a href="#proceso" class="btn">Comenzar mi Migración Hoy</a>
+                <!-- Botón de Instagram -->
+                <a href="https://www.instagram.com/inviertentinow_eydie/" target="_blank" class="btn-ig">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                    Sígueme en Instagram
+                </a>
+            </div>
         </div>
     </header>
 
@@ -350,7 +398,7 @@
             <p style="max-width: 800px; margin: 0 auto 20px;">La migración del historial de crédito de ITIN a SSN es un proceso que normalmente toma entre <strong>30 y 90 días (3 meses)</strong>[cite: 1], aunque desde el primer mes se podrían ver resultados[cite: 1].</p>
             
             <div style="background-color: var(--bg-light); border-left: 5px solid var(--accent-color); padding: 20px; max-width: 800px; margin: 0 auto; text-align: left;">
-                <strong>¡Aviso Importante!</strong><br>
+                <strong style="color: var(--primary-color);">¡Aviso Importante!</strong><br>
                 Este proceso no garantiza un aumento específico en el Credit Score[cite: 1], pero sí ayuda a que su historial de crédito quede correctamente asociado a su SSN y se refleje de forma adecuada[cite: 1]. Si durante el proceso identificamos oportunidades para fortalecer su puntaje, también le recomendaremos estrategias personalizadas[cite: 1].
             </div>
         </div>
@@ -384,6 +432,14 @@
         <div class="container">
             <p><strong>Importante:</strong> La migración del historial de crédito depende de que cada acreedor y buró de crédito actualice correctamente la información[cite: 1]. Mi trabajo consiste en gestionar el proceso, dar seguimiento y utilizar los procedimientos legales correspondientes[cite: 1].</p>
             <p>Yo lo acompañaré durante todo el proceso para que la transición se realice de la mejor manera posible[cite: 1].</p>
+            
+            <div class="footer-social">
+                <a href="https://www.instagram.com/inviertentinow_eydie/" target="_blank" class="btn-ig">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                    @inviertentinow_eydie
+                </a>
+            </div>
+
             <br>
             <p>&copy; 2026 Programa de Migración ITIN a SSN. Todos los derechos reservados.</p>
         </div>
@@ -391,7 +447,5 @@
 
 </body>
 </html>
-
-
 
 
