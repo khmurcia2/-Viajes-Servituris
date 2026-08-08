@@ -47,15 +47,17 @@
             text-decoration: none;
             font-weight: 600;
             border-radius: 5px;
-            transition: background 0.3s ease;
+            transition: background 0.3s ease, transform 0.2s ease;
             text-transform: uppercase;
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.4);
         }
 
         .btn:hover {
             background-color: #b5952f;
+            transform: translateY(-2px);
         }
 
-        /* Hero Section (Video Background) */
+        /* Hero Section (FOTO DE PORTADA LLAMATIVA) */
         .hero {
             position: relative;
             height: 100vh;
@@ -64,19 +66,11 @@
             justify-content: center;
             text-align: center;
             color: white;
-            overflow: hidden;
-        }
-
-        .hero video {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            min-width: 100%;
-            min-height: 100%;
-            width: auto;
-            height: auto;
-            transform: translateX(-50%) translateY(-50%);
-            z-index: -2;
+            /* Imagen de portada HD con efecto Parallax */
+            background-image: url('https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1920&q=100');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed; /* Esto crea el efecto llamativo al hacer scroll */
         }
 
         .hero-overlay {
@@ -85,25 +79,36 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(11, 37, 69, 0.7);
-            z-index: -1;
+            /* Degradado elegante para resaltar el texto */
+            background: linear-gradient(135deg, rgba(11, 37, 69, 0.9) 0%, rgba(19, 49, 92, 0.6) 100%);
+            z-index: 1;
         }
 
         .hero-content {
-            z-index: 1;
-            max-width: 800px;
+            z-index: 2;
+            max-width: 900px;
             padding: 20px;
+            animation: fadeIn 1.5s ease-out;
         }
 
         .hero h1 {
             color: white;
-            font-size: 3rem;
+            font-size: 3.5rem;
             text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            margin-bottom: 25px;
+            letter-spacing: -1px;
         }
 
         .hero p {
-            font-size: 1.2rem;
-            margin-bottom: 30px;
+            font-size: 1.3rem;
+            margin-bottom: 35px;
+            font-weight: 300;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         /* Secciones con Imagen e Información */
@@ -132,7 +137,12 @@
         .image-content img {
             width: 100%;
             border-radius: 10px;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            transition: transform 0.3s ease;
+        }
+
+        .image-content img:hover {
+            transform: scale(1.02);
         }
 
         /* Tarjetas de Proceso */
@@ -149,6 +159,11 @@
             border-radius: 10px;
             box-shadow: 0 5px 15px rgba(0,0,0,0.05);
             border-top: 4px solid var(--accent-color);
+            transition: box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
         }
 
         .card ul {
@@ -166,7 +181,24 @@
             background-color: var(--primary-color);
             color: white;
             text-align: center;
-            padding: 60px 20px;
+            padding: 80px 20px;
+            background-image: url('https://images.unsplash.com/photo-1579532537598-459ecdaf39cc?auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            position: relative;
+        }
+
+        .pricing::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(11, 37, 69, 0.85);
+        }
+
+        .pricing .container {
+            position: relative;
+            z-index: 2;
         }
 
         .pricing h2, .pricing h3 {
@@ -177,13 +209,14 @@
             background: rgba(255, 255, 255, 0.1);
             max-width: 600px;
             margin: 30px auto 0;
-            padding: 40px;
-            border-radius: 10px;
+            padding: 50px 40px;
+            border-radius: 15px;
             border: 1px solid rgba(255,255,255,0.2);
+            backdrop-filter: blur(10px);
         }
 
         .price {
-            font-size: 3rem;
+            font-size: 3.5rem;
             color: var(--accent-color);
             font-weight: bold;
             margin: 20px 0;
@@ -200,6 +233,7 @@
             margin-bottom: 15px;
             padding-left: 25px;
             position: relative;
+            font-size: 1.05rem;
         }
 
         .pricing ul li::before {
@@ -226,23 +260,20 @@
         }
 
         @media (max-width: 768px) {
-            .hero h1 { font-size: 2rem; }
+            .hero h1 { font-size: 2.2rem; }
             .section-split { flex-direction: column !important; }
+            .hero { background-attachment: scroll; } /* Mejor rendimiento en móviles */
         }
     </style>
 </head>
 <body>
 
-    <!-- SECCIÓN 1: Hero con Video de Fondo -->
+    <!-- SECCIÓN 1: Hero con Foto Llamativa -->
     <header class="hero">
         <div class="hero-overlay"></div>
-        <!-- Video HD de Pexels (Stock) -->
-        <video autoplay loop muted playsinline>
-            <source src="https://cdn.pixabay.com/video/2021/08/21/85802-591942082_large.mp4" type="video/mp4">
-        </video>
         <div class="hero-content">
             <h1>Programa de Migración de Historial de Crédito ITIN a SSN</h1>
-            <p>Bienvenid@. Si utilizó un ITIN para obtener crédito y ahora cuenta con un Seguro Social (SSN), es vital realizar la migración correcta para asegurar su historial financiero.</p>
+            <p>Bienvenid@[cite: 1]. Si utilizó un ITIN para obtener crédito y ahora cuenta con un Seguro Social (SSN), es vital realizar la migración correcta para asegurar su historial financiero[cite: 1].</p>
             <a href="#proceso" class="btn">Comenzar mi Migración Hoy</a>
         </div>
     </header>
@@ -250,28 +281,28 @@
     <div class="container" id="proceso">
         <div style="text-align: center; margin-bottom: 40px;">
             <h2>El Proceso en 4 Pasos</h2>
-            <p>A continuación los procesos que involucran este ajuste estratégico.</p>
+            <p>A continuación los procesos que involucran este ajuste[cite: 1].</p>
         </div>
 
         <!-- PASO 1 Y 2 -->
         <div class="cards-grid">
             <div class="card">
                 <h3>PASO #1. Obtener el reporte</h3>
-                <p>Revisaremos todo el historial de crédito asociado a su ITIN.</p>
+                <p>Revisaremos todo el historial de crédito asociado a su ITIN[cite: 1].</p>
                 <ul>
-                    <li>Registro inicial con su número de ITIN ($24.97, membresía cancelada al mes).</li>
-                    <li>Creación de nueva cuenta con SSN para sincronizar historiales.</li>
-                    <li>Recomendamos el plan de 3 meses para monitoreo activo de cambios.</li>
+                    <li>Registro inicial con su número de ITIN[cite: 1] ($24.97, membresía cancelada al mes)[cite: 1].</li>
+                    <li>Creación de nueva cuenta con SSN para sincronizar historiales[cite: 1].</li>
+                    <li>Recomendamos el plan de 3 meses para monitoreo activo de cambios[cite: 1].</li>
                 </ul>
             </div>
             
             <div class="card">
                 <h3>PASO #2. Acceso al reporte</h3>
-                <p>Una vez registrado, necesitaremos acceso para el análisis.</p>
+                <p>Una vez registrado, necesitaremos acceso para el análisis[cite: 1].</p>
                 <ul>
-                    <li>Usuario (su email) y contraseña nueva de la app.</li>
-                    <li>Identificación oficial vigente (ID).</li>
-                    <li>Esto permitirá validar su información y hacer el análisis completo.</li>
+                    <li>Usuario (su email) y contraseña nueva de la app[cite: 1].</li>
+                    <li>Identificación oficial vigente (ID)[cite: 1].</li>
+                    <li>Esto permitirá validar su información y hacer el análisis completo[cite: 1].</li>
                 </ul>
             </div>
         </div>
@@ -282,33 +313,31 @@
         <div class="section-split">
             <div class="text-content">
                 <h2>PASO #3. Análisis y Estrategia</h2>
-                <p>Después de revisar su reporte, realizaré un análisis detallado para asegurar el éxito del traslado de sus datos.</p>
+                <p>Después de revisar su reporte, realizaré un análisis detallado[cite: 1].</p>
                 <ul style="margin-top: 15px; margin-left: 20px;">
-                    <li>Identificación de cuentas transferibles a su Seguro Social.</li>
-                    <li>Estrategia personalizada para cada acreedor.</li>
-                    <li>Preparación y envío de cartas a acreedores y burós.</li>
-                    <li>Instrucciones, guiones y acompañamiento paso a paso.</li>
+                    <li>Identificación de cuentas transferibles a su Seguro Social[cite: 1].</li>
+                    <li>Estrategia personalizada para cada acreedor[cite: 1].</li>
+                    <li>Preparación y envío de cartas a acreedores y burós[cite: 1].</li>
+                    <li>Instrucciones, guiones y acompañamiento paso a paso[cite: 1].</li>
                 </ul>
             </div>
             <div class="image-content">
-                <!-- Imagen HD de Unsplash (Stock) -->
                 <img src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&w=800&q=80" alt="Análisis Financiero">
             </div>
         </div>
 
         <div class="section-split">
             <div class="image-content">
-                 <!-- Imagen HD de Unsplash (Stock) -->
                 <img src="https://images.unsplash.com/photo-1618044733300-9472054094ee?auto=format&fit=crop&w=800&q=80" alt="Documentación">
             </div>
             <div class="text-content">
                 <h2>PASO #4. Documentación Requerida</h2>
-                <p>Los burós y acreedores necesitan validar sus datos en el sistema. Necesitaremos foto copia de:</p>
+                <p>Para iniciar el proceso necesitaremos[cite: 1]:</p>
                 <ul style="margin-top: 15px; margin-left: 20px;">
-                    <li>Identificación (ID) oficial vigente.</li>
-                    <li>Carta o tarjeta de ITIN.</li>
-                    <li>Tarjeta de Seguro Social (SSN).</li>
-                    <li>Dos comprobantes recientes de domicilio (Utility Bill, agua, luz, etc.) a su nombre.</li>
+                    <li>Identificación (ID) oficial vigente[cite: 1].</li>
+                    <li>Carta o tarjeta de ITIN[cite: 1].</li>
+                    <li>Tarjeta de Seguro Social (SSN)[cite: 1].</li>
+                    <li>Dos comprobantes recientes de domicilio (Utility Bill, agua, luz, etc.) a su nombre[cite: 1].</li>
                 </ul>
             </div>
         </div>
@@ -318,11 +347,11 @@
     <div style="background-color: #fff; padding: 60px 20px;">
         <div class="container" style="text-align: center;">
             <h2>Tiempo del Proceso y Resultados</h2>
-            <p style="max-width: 800px; margin: 0 auto 20px;">La migración normalmente toma entre <strong>30 y 90 días (3 meses)</strong>, aunque desde el primer mes se pueden ver resultados según los burós.</p>
+            <p style="max-width: 800px; margin: 0 auto 20px;">La migración del historial de crédito de ITIN a SSN es un proceso que normalmente toma entre <strong>30 y 90 días (3 meses)</strong>[cite: 1], aunque desde el primer mes se podrían ver resultados[cite: 1].</p>
             
             <div style="background-color: var(--bg-light); border-left: 5px solid var(--accent-color); padding: 20px; max-width: 800px; margin: 0 auto; text-align: left;">
                 <strong>¡Aviso Importante!</strong><br>
-                Este proceso no garantiza un aumento específico en el Credit Score, pero asegura que su historial no se pierda y quede asociado a su SSN. Si hay oportunidades de mejora, le recomendaremos estrategias personalizadas.
+                Este proceso no garantiza un aumento específico en el Credit Score[cite: 1], pero sí ayuda a que su historial de crédito quede correctamente asociado a su SSN y se refleje de forma adecuada[cite: 1]. Si durante el proceso identificamos oportunidades para fortalecer su puntaje, también le recomendaremos estrategias personalizadas[cite: 1].
             </div>
         </div>
     </div>
@@ -331,18 +360,18 @@
     <section class="pricing">
         <div class="container">
             <h2>Inversión del Servicio</h2>
-            <p>Proteja su historial financiero y evite perder oportunidades.</p>
+            <p>Este proceso le permitirá proteger y trasladar correctamente su historial de crédito[cite: 1].</p>
             
             <div class="pricing-box">
                 <h3>Costo del Programa</h3>
-                <div class="price">$600 <span style="font-size: 1rem; color: #fff;">(pago único)</span></div>
+                <div class="price">$600 <span style="font-size: 1rem; color: #fff;">(pago único)</span>[cite: 1]</div>
                 <ul>
-                    <li>Análisis completo del historial de crédito</li>
-                    <li>Estrategia personalizada de migración</li>
-                    <li>Preparación y envío de cartas</li>
-                    <li>Seguimiento exhaustivo del proceso</li>
-                    <li>Estrategias para mejorar el puntaje (si aplica)</li>
-                    <li>Acompañamiento y asesoría por 3 meses</li>
+                    <li>Análisis completo del historial de crédito[cite: 1]</li>
+                    <li>Estrategia personalizada de migración[cite: 1]</li>
+                    <li>Preparación y envío de cartas a acreedores y burós[cite: 1]</li>
+                    <li>Seguimiento del proceso[cite: 1]</li>
+                    <li>Estrategias para mejorar el puntaje, si aplica[cite: 1]</li>
+                    <li>Acompañamiento y asesoría durante 3 meses[cite: 1]</li>
                 </ul>
                 <br>
                 <a href="#" class="btn">Solicitar Servicio Ahora</a>
@@ -353,8 +382,8 @@
     <!-- FOOTER -->
     <footer>
         <div class="container">
-            <p><strong>Importante:</strong> La migración del historial depende de que cada acreedor y buró actualice correctamente la información. Mi trabajo consiste en gestionar, dar seguimiento y utilizar procedimientos legales para maximizar sus posibilidades de éxito.</p>
-            <p>Yo lo acompañaré durante todo el proceso para que la transición se realice de la mejor manera posible.</p>
+            <p><strong>Importante:</strong> La migración del historial de crédito depende de que cada acreedor y buró de crédito actualice correctamente la información[cite: 1]. Mi trabajo consiste en gestionar el proceso, dar seguimiento y utilizar los procedimientos legales correspondientes[cite: 1].</p>
+            <p>Yo lo acompañaré durante todo el proceso para que la transición se realice de la mejor manera posible[cite: 1].</p>
             <br>
             <p>&copy; 2026 Programa de Migración ITIN a SSN. Todos los derechos reservados.</p>
         </div>
