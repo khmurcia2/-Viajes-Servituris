@@ -18,7 +18,7 @@
             
             --ig-gradient: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
             --wa-color: #25D366; 
-            --pdf-color: #e74c3c; /* Rojo para el botón PDF */
+            --pdf-color: #e74c3c; 
         }
 
         * {
@@ -46,7 +46,7 @@
             padding: 40px 20px;
         }
 
-        /* BARRA DE NAVEGACIÓN Y LOGO AZUL (Fondo Blanco) */
+        /* BARRA DE NAVEGACIÓN Y LOGO AZUL */
         .navbar {
             position: fixed;
             top: 0;
@@ -210,7 +210,7 @@
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 30px;
-            margin-top: 40px;
+            margin-bottom: 60px;
         }
 
         .card {
@@ -316,7 +316,6 @@
             font-size: 0.95rem;
         }
 
-        /* LOGO BLANCO EN EL FOOTER */
         .footer-logo-box {
             display: inline-block;
             margin-bottom: 25px;
@@ -362,7 +361,7 @@
         }
 
         /* =========================================
-           CONFIGURACIÓN PARA EXPORTAR A PDF (PRINT)
+           CONFIGURACIÓN PARA EXPORTAR A PDF (Flujo Continuo)
            ========================================= */
         @media print {
             * {
@@ -375,34 +374,28 @@
                 background-color: #fff; 
             }
             
+            /* Ocultar elementos que no sirven en el PDF impreso (Botones y menú) */
             .navbar, .btn, .btn-pdf, .btn-ig, .btn-wa { 
                 display: none !important; 
             }
 
+            /* Evitar que las cajas o imágenes se corten a la mitad entre páginas */
+            .card, .section-split, .pricing-box, .footer-contact-info {
+                page-break-inside: avoid; 
+            }
+
             .hero {
-                height: 100vh;
-                page-break-after: always;
-            }
-
-            .slide-page {
-                page-break-before: always;
-                padding-top: 20px;
-            }
-
-            .pricing {
-                page-break-before: always;
-            }
-
-            footer {
-                page-break-before: always;
+                min-height: auto;
+                padding: 40px 20px;
             }
         }
 
         @media (max-width: 768px) {
             .hero h1 { font-size: 2.2rem; }
             .section-split { flex-direction: column !important; }
-            .hero { background-attachment: scroll; } 
-            .hero-buttons { flex-direction: column; }
+            .hero { background-attachment: scroll; min-height: auto; padding: 100px 20px 40px; } 
+            .hero-buttons { flex-direction: column; width: 100%; }
+            .hero-buttons button, .hero-buttons a { width: 100%; text-align: center; }
             .pricing-box { padding: 30px 20px; }
             body { padding-top: 70px; }
             .navbar img { max-height: 40px; }
@@ -411,14 +404,14 @@
 </head>
 <body>
 
-    <!-- BARRA DE NAVEGACIÓN SUPERIOR CON LOGO AZUL -->
+    <!-- BARRA DE NAVEGACIÓN -->
     <nav class="navbar">
         <a href="#">
             <img src="https://khmurcia2.github.io/migracion/INVIERTE%20N%20TI%20NOW%20-%20LOGO%20FINAL%20NUEVA%20VERSION%20-AZUL.png" alt="Logo Invierte N Ti Now">
         </a>
     </nav>
 
-    <!-- SECCIÓN 1: Hero con Foto Llamativa y Botones -->
+    <!-- HERO Y BOTONES -->
     <header class="hero">
         <div class="hero-overlay"></div>
         <div class="hero-content">
@@ -426,7 +419,7 @@
             <p>Bienvenid@. Si utilizó un ITIN para obtener crédito y ahora cuenta con un Seguro Social (SSN), es vital realizar la migración correcta para asegurar su historial financiero.</p>
             
             <div class="hero-buttons">
-                <!-- NUEVO BOTÓN: GENERAR PDF -->
+                <!-- Botón Generar PDF Continuo -->
                 <button onclick="window.print()" class="btn-pdf">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
                     Descargar Presentación PDF
@@ -440,13 +433,14 @@
         </div>
     </header>
 
-    <div class="container slide-page" id="proceso">
-        <div style="text-align: center; margin-bottom: 40px;">
+    <!-- PROCESO CONTINUO -->
+    <div class="container" id="proceso">
+        <div style="text-align: center; margin-bottom: 50px;">
             <h2>El Proceso en 4 Pasos</h2>
             <p>A continuación los procesos que involucran este ajuste.</p>
         </div>
 
-        <!-- PASO 1 Y 2 -->
+        <!-- PASOS 1 Y 2 (Lado a lado en PC, uno abajo de otro en Móvil/PDF) -->
         <div class="cards-grid">
             <div class="card">
                 <h3>PASO #1. Obtener el reporte</h3>
@@ -472,10 +466,8 @@
             </div>
         </div>
 
-        <br><br><br>
-
-        <!-- PASO 3 Y 4 CON IMÁGENES -->
-        <div class="section-split slide-page">
+        <!-- PASO 3 -->
+        <div class="section-split">
             <div class="text-content">
                 <h2>PASO #3. Análisis y Estrategia</h2>
                 <p>Después de revisar su reporte, realizaré un análisis detallado.</p>
@@ -491,6 +483,7 @@
             </div>
         </div>
 
+        <!-- PASO 4 -->
         <div class="section-split">
             <div class="image-content">
                 <img src="https://images.unsplash.com/photo-1618044733300-9472054094ee?auto=format&fit=crop&w=800&q=80" alt="Documentación">
@@ -509,7 +502,7 @@
     </div>
 
     <!-- TIEMPOS Y EXPECTATIVAS -->
-    <div style="background-color: #fff; padding: 60px 20px;" class="slide-page">
+    <div style="background-color: #fff; padding: 60px 20px;">
         <div class="container" style="text-align: center;">
             <h2>Tiempo del Proceso y Resultados</h2>
             <p style="max-width: 800px; margin: 0 auto 20px;">La migración del historial de crédito de ITIN a SSN es un proceso que normalmente toma entre <strong>30 y 90 días (3 meses)</strong>, aunque desde el primer mes se podrían ver resultados.</p>
@@ -551,7 +544,6 @@
     <footer>
         <div class="container">
             
-            <!-- LOGO BLANCO EN EL FOOTER (Fondo oscuro) -->
             <div class="footer-logo-box">
                 <img src="https://khmurcia2.github.io/migracion/INVIERTE%20N%20TI%20NOW%20-%20LOGO%20FINAL%20NUEVA%20VERSION%20BLANCO%20COLOR.png" alt="Logo Invierte N Ti Now">
             </div>
