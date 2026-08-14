@@ -89,7 +89,7 @@
         }
         .btn:hover { transform: translateY(-3px); }
         .btn-pdf { background: #e74c3c; }
-        .btn-wa { background: #25D366; color: #000 !important; } /* Texto negro para contraste en WA */
+        .btn-wa { background: #25D366; color: #000 !important; }
 
         /* ================= TARJETAS DE PASOS ================= */
         .card {
@@ -103,7 +103,7 @@
         }
         .card-img {
             width: 100%;
-            height: 120px;
+            height: 110px;
             object-fit: cover;
             border-radius: 8px;
             margin-bottom: 15px;
@@ -153,15 +153,10 @@
             .dashboard { padding: 20px; }
             header { flex-direction: column; gap: 15px; text-align: center; }
             .contact-info { flex-direction: column; gap: 10px; }
-            
-            main { grid-template-columns: 1fr; /* Cambia a una sola columna en móviles */ }
-            
-            .col-1 h1 { text-align: center; }
-            .col-1 p { text-align: center; }
+            main { grid-template-columns: 1fr; }
+            .col-1 h1, .col-1 p { text-align: center; }
             .btn-group { margin-bottom: 20px; }
-
-            .card-img { height: 160px; /* Imágenes un poco más altas en móvil */ }
-            
+            .card-img { height: 160px; }
             footer { flex-direction: column; text-align: center; gap: 10px; }
         }
 
@@ -218,7 +213,7 @@
             <div style="display: flex; flex-direction: column; gap: 20px;">
                 <!-- Paso 1 -->
                 <div class="card">
-                    <img src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&w=600&q=80" class="card-img" alt="Reporte">
+                    <img src="https://images.pexels.com/photos/7175567/pexels-photo-7175567.jpeg?auto=compress&cs=tinysrgb&w=600" class="card-img" alt="Reporte Financiero">
                     <h2>Paso 1. Obtener Reporte</h2>
                     <p>Revisaremos el historial asociado a su ITIN.</p>
                     <ul>
@@ -231,7 +226,7 @@
 
                 <!-- Paso 3 -->
                 <div class="card" style="height: 100%;">
-                    <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=600&q=80" class="card-img" alt="Estrategia">
+                    <img src="https://images.pexels.com/photos/590016/pexels-photo-590016.jpeg?auto=compress&cs=tinysrgb&w=600" class="card-img" alt="Estrategia">
                     <h2>Paso 3. Estrategia y Análisis</h2>
                     <ul>
                         <li>Identificar cuentas reportadas bajo ITIN.</li>
@@ -245,9 +240,9 @@
             <!-- COLUMNA 3: Paso 2, Paso 4 y la Inversión Pequeña -->
             <div style="display: flex; flex-direction: column; gap: 20px;">
                 
-                <!-- Paso 2 con IMAGEN CORREGIDA -->
+                <!-- Paso 2 con IMAGEN GARANTIZADA -->
                 <div class="card">
-                    <img src="https://images.unsplash.com/photo-1614064641913-6b71a2161bfc?auto=format&fit=crop&w=600&q=80" class="card-img" alt="Seguridad">
+                    <img src="https://images.pexels.com/photos/60504/security-protection-anti-virus-software-60504.jpeg?auto=compress&cs=tinysrgb&w=600" class="card-img" alt="Seguridad y Candado">
                     <h2>Paso 2. Acceso al Reporte</h2>
                     <p>Necesitaremos acceso para validar su información.</p>
                     <ul>
@@ -257,8 +252,9 @@
                     </ul>
                 </div>
 
-                <!-- Paso 4 -->
+                <!-- Paso 4 con IMAGEN AÑADIDA -->
                 <div class="card">
+                    <img src="https://images.pexels.com/photos/4427430/pexels-photo-4427430.jpeg?auto=compress&cs=tinysrgb&w=600" class="card-img" alt="Documentación">
                     <h2>Paso 4. Documentación</h2>
                     <ul>
                         <li>Foto copia de una identificación (ID) vigente.</li>
