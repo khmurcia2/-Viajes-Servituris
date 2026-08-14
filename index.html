@@ -13,113 +13,92 @@
 
         body {
             background-color: var(--dark);
-            background-image: radial-gradient(circle at top right, #1a2a4a, transparent), 
-                              radial-gradient(circle at bottom left, #2a1f10, transparent);
+            background-image: radial-gradient(circle at top right, #1a2a4a, transparent);
             color: #fff;
             margin: 0;
             padding: 20px;
             font-family: 'Montserrat', sans-serif;
-            min-height: 100vh;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
-        .grid-layout {
+        .dashboard {
             display: grid;
-            grid-template-columns: 1fr 1fr 1fr;
-            grid-template-rows: auto 1fr auto;
-            gap: 20px;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
             max-width: 1400px;
-            margin: 0 auto;
+            width: 100%;
         }
 
-        /* Cabecera */
-        header { grid-column: 1 / 4; display: flex; justify-content: space-between; align-items: center; padding-bottom: 10px; border-bottom: 1px solid rgba(255,255,255,0.1); }
-        .logo { height: 60px; }
+        /* Cabecera que ocupa todo el ancho */
+        header { grid-column: 1 / 5; display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px; }
+        .logo { height: 50px; }
 
-        /* Tarjetas de pasos con imágenes llamativas */
+        /* Tarjetas de Pasos */
         .card { 
             background: rgba(255,255,255,0.05); 
             border: 1px solid rgba(255,255,255,0.1); 
-            border-radius: 20px; 
-            padding: 25px; 
-            transition: 0.4s;
-            display: flex; flex-direction: column;
+            border-radius: 15px; 
+            padding: 20px;
         }
-        .card:hover { transform: translateY(-5px); background: rgba(255,255,255,0.08); }
-        .card img { width: 100%; height: 160px; object-fit: contain; margin-bottom: 15px; border-radius: 10px; }
-        .card h2 { color: var(--accent); font-size: 1.4rem; margin-bottom: 10px; }
-        .card p { font-size: 0.9rem; margin-bottom: 10px; opacity: 0.8; }
-        .card ul { font-size: 0.85rem; padding-left: 20px; opacity: 0.9; }
+        .card img { width: 100%; height: 120px; object-fit: cover; border-radius: 8px; margin-bottom: 15px; }
+        .card h2 { color: var(--accent); font-size: 1.1rem; margin-bottom: 10px; }
+        .card ul { font-size: 0.8rem; padding-left: 15px; opacity: 0.9; }
 
-        /* Sección Inversión (Llamativa) */
+        /* Tarjeta de Inversión (Pequeña y al final) */
         .pricing-card { 
-            grid-column: 1 / 2;
-            background: linear-gradient(135deg, #1e1e1e, #0a0f1e);
-            border: 2px solid var(--accent);
+            grid-column: 4 / 5;
+            background: rgba(212, 175, 55, 0.1);
+            border: 1px solid var(--accent);
             text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
         }
-        .price-tag { font-size: 3rem; font-weight: 800; color: var(--accent); margin: 10px 0; }
+        .price-tag { font-size: 2rem; font-weight: 800; color: var(--accent); margin: 5px 0; }
 
         /* Botones */
-        .btn { padding: 15px; text-align: center; text-decoration: none; border-radius: 10px; font-weight: 800; text-transform: uppercase; margin-top: 10px; display: block; }
+        .btn { padding: 10px; text-align: center; text-decoration: none; border-radius: 8px; font-weight: 700; font-size: 0.8rem; text-transform: uppercase; margin-top: 10px; display: block; }
         .btn-pdf { background: #e74c3c; color: white; }
         .btn-wa { background: #25D366; color: white; }
     </style>
 </head>
 <body>
 
-<div class="grid-layout">
+<div class="dashboard">
     <header>
         <img src="https://khmurcia2.github.io/migracion/INVIERTE%20N%20TI%20NOW%20-%20LOGO%20FINAL%20NUEVA%20VERSION%20BLANCO%20COLOR.png" class="logo">
-        <div>📞 678-356-4855 | 📷 @inviertentinow_eydie</div>
+        <div style="font-size: 0.8rem;">📞 678-356-4855 | 📷 @inviertentinow_eydie</div>
     </header>
 
-    <!-- Columna 1: Presentación e Inversión -->
-    <div class="card pricing-card">
-        <h1>Programa de Migración ITIN a SSN</h1>
-        <p>Asegure su historial financiero hoy mismo.</p>
-        <div class="price-tag">$600</div>
-        <p>(Pago único)</p>
-        <ul style="text-align: left;">
-            <li>Análisis completo del historial.</li>
-            <li>Estrategia personalizada y envío de cartas.</li>
-            <li>Gestión y procedimientos legales.</li>
-            <li>Asesoría y acompañamiento por 3 meses.</li>
-        </ul>
-        <div style="margin-top: auto;">
-            <button onclick="window.print()" class="btn btn-pdf">Descargar Presentación PDF</button>
-            <a href="https://wa.me/16783564855" class="btn btn-wa">Iniciar Proceso (WhatsApp)</a>
-        </div>
-    </div>
-
-    <!-- Pasos 1 y 2 -->
+    <!-- Paso 1 -->
     <div class="card">
-        <img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&w=500&q=80" alt="Paso 1">
+        <img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&w=500&q=80">
         <h2>Paso 1. Obtener Reporte</h2>
-        <p>Revisaremos el historial asociado a su ITIN.</p>
         <ul>
-            <li>Registro inicial con ITIN.</li>
+            <li>Registro inicial con ITIN ($24.97).</li>
             <li>Creación de nueva cuenta con SSN.</li>
-            <li>Monitoreo de cambios por 3 meses.</li>
+            <li>Plan de 3 meses para monitoreo.</li>
         </ul>
-        <a href="https://app.myfreescorenow.com/enroll/B01B7384" style="color:var(--accent); margin-top:10px; font-weight:bold;">Registrarme aquí</a>
     </div>
 
+    <!-- Paso 2 -->
     <div class="card">
-        <img src="https://images.unsplash.com/photo-1586281380349-632531db7ed4?auto=format&fit=crop&w=500&q=80" alt="Paso 2">
+        <img src="https://images.unsplash.com/photo-1586281380349-632531db7ed4?auto=format&fit=crop&w=500&q=80">
         <h2>Paso 2. Acceso al Reporte</h2>
-        <p>Validación de su información personal.</p>
         <ul>
             <li>Envío de usuario y contraseña de la app.</li>
-            <li>Identificación oficial vigente.</li>
+            <li>Identificación oficial vigente (ID).</li>
             <li>Validación completa ante burós.</li>
         </ul>
     </div>
 
-    <!-- Pasos 3 y 4 -->
+    <!-- Paso 3 -->
     <div class="card">
-        <img src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&w=500&q=80" alt="Paso 3">
+        <img src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&w=500&q=80">
         <h2>Paso 3. Estrategia</h2>
-        <p>Análisis detallado de viabilidad.</p>
         <ul>
             <li>Identificación de cuentas.</li>
             <li>Preparación de cartas legales.</li>
@@ -127,20 +106,26 @@
         </ul>
     </div>
 
-    <div class="card">
-        <img src="https://images.unsplash.com/photo-1618044733300-9472054094ee?auto=format&fit=crop&w=500&q=80" alt="Paso 4">
-        <h2>Paso 4. Documentación</h2>
-        <p>Validación necesaria ante el sistema.</p>
-        <ul>
-            <li>Copia de ID vigente.</li>
-            <li>Copia ITIN y SSN.</li>
-            <li>2 comprobantes de domicilio.</li>
-        </ul>
+    <!-- Paso 4 e Inversión (columna final) -->
+    <div style="display: flex; flex-direction: column; gap: 15px;">
+        <div class="card" style="flex-grow: 1;">
+            <h2>Paso 4. Documentación</h2>
+            <ul style="font-size: 0.75rem;">
+                <li>Copia de ID vigente.</li>
+                <li>Copia ITIN y SSN.</li>
+                <li>2 comprobantes de domicilio.</li>
+            </ul>
+        </div>
+        
+        <!-- INVERSIÓN PEQUEÑA AL FINAL -->
+        <div class="card pricing-card">
+            <h2 style="font-size: 0.9rem;">Inversión</h2>
+            <div class="price-tag">$600</div>
+            <p style="font-size: 0.7rem;">(Pago único - 3 meses)</p>
+            <button onclick="window.print()" class="btn btn-pdf">PDF</button>
+            <a href="https://wa.me/16783564855" class="btn btn-wa">WhatsApp</a>
+        </div>
     </div>
-
-    <footer style="grid-column: 1 / 4; text-align: center; font-size: 0.8rem; opacity: 0.6;">
-        <p>Tiempos: 30 a 90 días. | Aviso: El proceso no garantiza un aumento de Credit Score, pero asegura la correcta asociación de su historial a su nuevo SSN.</p>
-    </footer>
 </div>
 
 </body>
