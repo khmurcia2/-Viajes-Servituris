@@ -7,16 +7,16 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         /* =========================================
-           VARIABLES DE COLOR EXACTAS AL REFERENTE
+           VARIABLES PREMIUM FINTECH
            ========================================= */
         :root {
-            --bg-main: #0B1221;     
-            --bg-card: #131E3A;     
-            --yellow: #F5B82A;      
-            --text-white: #FFFFFF;
-            --text-gray: #A0ABC0;
-            --btn-red: #F04B4B;
-            --btn-green: #10C16A;
+            --bg-main: #060913;     /* Azul/Negro muy profundo */
+            --bg-card: #0F172A;     /* Azul corporativo interior */
+            --yellow: #D4AF37;      /* Dorado Premium (más serio que el amarillo) */
+            --text-white: #F8FAFC;
+            --text-gray: #94A3B8;
+            --btn-red: #E11D48;
+            --btn-green: #059669;
         }
 
         * {
@@ -27,8 +27,7 @@
         }
 
         /* =========================================
-           ENTORNO DE DIAPOSITIVA (16:9)
-           Bloquea el scroll y mantiene la forma perfecta
+           ENTORNO DE DIAPOSITIVA (16:9 EXACTO)
            ========================================= */
         body {
             background-color: #000;
@@ -40,18 +39,19 @@
             overflow: hidden; 
         }
 
-        .slide {
+        .slide-container {
             aspect-ratio: 16 / 9;
             width: 100vw;
-            max-width: 177.77vh; /* Mantiene proporción 16:9 */
+            max-width: calc(100vh * (16 / 9));
             max-height: 100vh;
-            background-color: var(--bg-main);
+            background: radial-gradient(circle at 50% 0%, #111827 0%, var(--bg-main) 100%);
             position: relative;
-            padding: 2.5vh 3.5vh;
+            padding: 2.5% 3.5%;
             display: flex;
             flex-direction: column;
             color: var(--text-white);
-            box-shadow: 0 0 5vh rgba(0,0,0,0.8);
+            box-shadow: 0 0 5vh rgba(0,0,0,0.9);
+            container-type: inline-size;
         }
 
         /* ================= CABECERA ================= */
@@ -60,28 +60,28 @@
             justify-content: space-between;
             align-items: center;
             height: 8%;
-            border-bottom: 0.2vh solid rgba(255,255,255,0.08);
-            margin-bottom: 2vh;
-            padding-bottom: 1vh;
+            border-bottom: 0.1cqw solid rgba(255,255,255,0.05);
+            margin-bottom: 2.5%;
+            padding-bottom: 1%;
         }
 
-        .logo { height: 100%; }
+        .logo { height: 100%; filter: drop-shadow(0 0.2cqw 0.4cqw rgba(0,0,0,0.5)); }
 
         .contact-info {
             display: flex;
-            gap: 2.5vh;
-            font-size: 1.6vh;
+            gap: 2cqw;
+            font-size: 1.05cqw;
             font-weight: 500;
         }
-        .contact-info div { display: flex; align-items: center; gap: 0.8vh; }
-        .contact-info svg { stroke: var(--yellow); width: 2vh; height: 2vh; }
+        .contact-info div { display: flex; align-items: center; gap: 0.5cqw; }
+        .contact-info svg { stroke: var(--yellow); width: 1.4cqw; height: 1.4cqw; }
 
         /* ================= CUERPO PRINCIPAL ================= */
         main {
             display: flex;
-            justify-content: space-between;
+            gap: 3%;
             flex-grow: 1;
-            height: 82%;
+            height: 80%;
         }
 
         /* ----- COLUMNA IZQUIERDA (32%) ----- */
@@ -90,44 +90,45 @@
             display: flex;
             flex-direction: column;
             justify-content: center;
-            padding-right: 2vh;
+            padding-right: 1.5cqw;
         }
 
         .left-col h1 { 
-            font-size: 4.2vh; 
+            font-size: 2.7cqw; 
             color: var(--yellow); 
-            line-height: 1.1; 
+            line-height: 1.15; 
             font-weight: 800; 
-            margin-bottom: 2vh; 
+            margin-bottom: 1.5cqw; 
+            text-shadow: 0 0.5cqw 1cqw rgba(0,0,0,0.5);
         }
         .left-col > p { 
-            font-size: 1.6vh; 
+            font-size: 1.05cqw; 
             color: var(--text-gray); 
-            line-height: 1.5; 
-            margin-bottom: 4vh; 
+            line-height: 1.6; 
+            margin-bottom: 2cqw; 
         }
 
         /* Botones de Acción Rojos y Verdes */
         .btn {
-            display: flex; justify-content: center; align-items: center; gap: 1vh;
-            padding: 2vh 0; border-radius: 0.8vh; font-size: 1.6vh; font-weight: 700;
+            display: flex; justify-content: center; align-items: center; gap: 0.8cqw;
+            padding: 1.1cqw 0; border-radius: 0.5cqw; font-size: 1cqw; font-weight: 700;
             color: #fff; text-decoration: none; text-transform: uppercase;
-            border: none; cursor: pointer; margin-bottom: 1.5vh;
-            box-shadow: 0 0.5vh 1.5vh rgba(0,0,0,0.3);
+            border: 0.1cqw solid rgba(255,255,255,0.1); cursor: pointer; margin-bottom: 1cqw;
+            box-shadow: 0 0.5cqw 1cqw rgba(0,0,0,0.4);
             transition: 0.2s;
         }
         .btn:last-child { margin-bottom: 0; }
-        .btn:hover { filter: brightness(1.1); transform: translateY(-2px); }
-        .btn svg { width: 2vh; height: 2vh; }
-        .btn-red { background-color: var(--btn-red); }
-        .btn-green { background-color: var(--btn-green); }
+        .btn:hover { filter: brightness(1.15); transform: translateY(-0.2cqw); }
+        .btn svg { width: 1.3cqw; height: 1.3cqw; }
+        .btn-red { background: linear-gradient(135deg, var(--btn-red), #9F1239); }
+        .btn-green { background: linear-gradient(135deg, var(--btn-green), #047857); }
 
         /* ----- COLUMNA DERECHA (65%) ----- */
         .right-col {
             width: 65%;
             display: flex;
             flex-direction: column;
-            gap: 2vh;
+            gap: 1.5cqw;
             height: 100%;
         }
 
@@ -136,117 +137,133 @@
             display: grid;
             grid-template-columns: 1fr 1fr;
             grid-template-rows: 1fr 1fr;
-            gap: 2vh;
+            gap: 1.5cqw;
             flex-grow: 1;
         }
 
         .step-card {
             background-color: var(--bg-card);
-            border: 0.2vh solid rgba(245, 184, 42, 0.2); 
-            border-top: 0.4vh solid var(--yellow); 
-            border-radius: 1vh;
-            padding: 2vh;
+            border: 0.1cqw solid rgba(255, 255, 255, 0.05); 
+            border-top: 0.25cqw solid var(--yellow); 
+            border-radius: 0.8cqw;
+            padding: 1.5cqw;
             display: flex;
             flex-direction: column;
             position: relative;
-            box-shadow: 0 0.5vh 1.5vh rgba(0,0,0,0.3);
+            box-shadow: 0 0.8cqw 2cqw rgba(0,0,0,0.4);
         }
 
-        .step-card h3 { font-size: 1.8vh; color: var(--yellow); margin-bottom: 0.5vh; font-weight: 700; }
-        .step-card p { font-size: 1.3vh; color: var(--text-white); margin-bottom: 1vh; }
-        .step-card ul { font-size: 1.2vh; padding-left: 2vh; line-height: 1.4; color: var(--text-white); }
-        .step-card li { margin-bottom: 0.5vh; }
+        .step-card h3 { font-size: 1.25cqw; color: var(--yellow); margin-bottom: 0.4cqw; font-weight: 700; }
+        .step-card p { font-size: 0.85cqw; color: var(--text-gray); margin-bottom: 0.8cqw; }
+        .step-card ul { font-size: 0.85cqw; padding-left: 1.2cqw; line-height: 1.5; color: var(--text-white); }
+        .step-card li { margin-bottom: 0.3cqw; }
 
-        /* ----- INVERSIÓN (Horizontal al final de la columna derecha) ----- */
+        /* ----- INVERSIÓN (Horizontal al final) ----- */
         .inv-horizontal {
-            background: linear-gradient(90deg, rgba(245, 184, 42, 0.1), var(--bg-card));
-            border: 0.2vh solid var(--yellow);
-            border-radius: 1vh;
-            padding: 1.5vh 2.5vh;
+            background: linear-gradient(90deg, rgba(212, 175, 55, 0.1), var(--bg-card));
+            border: 0.15cqw solid var(--yellow);
+            border-radius: 0.8cqw;
+            padding: 1cqw 2cqw;
             display: flex;
             align-items: center;
             justify-content: space-between;
-            height: 18%; /* Fija un tamaño relativo */
-            box-shadow: 0 1vh 2vh rgba(0,0,0,0.4);
+            height: 18%; 
+            box-shadow: 0 1cqw 2cqw rgba(0,0,0,0.5);
         }
         
         .inv-price-col {
-            border-right: 0.2vh solid rgba(255,255,255,0.1);
-            padding-right: 2.5vh;
+            border-right: 0.1cqw solid rgba(255,255,255,0.1);
+            padding-right: 2cqw;
             text-align: center;
             min-width: 25%;
         }
-        .inv-price-col h4 { font-size: 1.2vh; color: var(--text-white); text-transform: uppercase; letter-spacing: 1px; }
-        .inv-price-col .price { font-size: 4vh; color: var(--yellow); font-weight: 800; line-height: 1.2; }
-        .inv-price-col p { font-size: 1vh; color: var(--text-gray); }
+        .inv-price-col h4 { font-size: 0.85cqw; color: var(--text-white); text-transform: uppercase; letter-spacing: 0.1cqw; }
+        .inv-price-col .price { font-size: 3cqw; color: var(--yellow); font-weight: 800; line-height: 1.1; margin: 0.2cqw 0; text-shadow: 0 0.2cqw 0.5cqw rgba(0,0,0,0.5); }
+        .inv-price-col p { font-size: 0.75cqw; color: var(--text-gray); }
 
         .inv-list-col {
             display: flex;
             align-items: center;
-            gap: 2vh;
+            gap: 1.5cqw;
             flex-grow: 1;
-            padding-left: 2vh;
+            padding-left: 1.5cqw;
         }
         .inv-list-col ul {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 1vh 2vh;
+            gap: 0.8cqw 1.5cqw;
             list-style: none;
-            font-size: 1.25vh;
+            font-size: 0.85cqw;
             color: var(--text-white);
             width: 100%;
         }
-        .inv-list-col li { position: relative; padding-left: 1.8vh; }
-        .inv-list-col li::before { content: '✓'; position: absolute; left: 0; color: var(--btn-green); font-weight: bold; }
+        .inv-list-col li { position: relative; padding-left: 1.2cqw; }
+        .inv-list-col li::before { content: '✓'; position: absolute; left: 0; color: var(--btn-green); font-weight: 800; }
 
-        /* ================= COMPOSICIONES 3D (Estilo Referente) ================= */
+        /* ================= COMPOSICIONES 3D (FINTECH PREMIUM) ================= */
+        
+        /* Animación de flotación suave */
+        @keyframes float {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-0.8cqw); }
+            100% { transform: translateY(0); }
+        }
+
         .scene {
             position: absolute;
-            bottom: 1.5vh;
-            right: 1.5vh;
-            width: 12vh;
-            height: 12vh;
+            bottom: 1cqw;
+            right: 1cqw;
+            width: 9cqw;
+            height: 9cqw;
             display: flex;
             justify-content: center;
             align-items: center;
         }
-        .scene img { position: absolute; filter: drop-shadow(0 0.5vh 1vh rgba(0,0,0,0.6)); }
         
-        /* Imágenes específicas para cada paso */
-        .img-back { width: 100%; z-index: 1; }
-        .img-front-left { width: 60%; bottom: -1vh; left: -2vh; z-index: 2; }
-        .img-front-right { width: 65%; bottom: -1vh; right: -1vh; z-index: 3; }
-        .img-center { width: 55%; z-index: 2; margin-top: 2vh; }
+        /* El filtro satura menos el color y da más contraste para un look metálico/serio */
+        .scene img { 
+            position: absolute; 
+            filter: drop-shadow(0 0.8cqw 1cqw rgba(0,0,0,0.8)) saturate(0.8) contrast(1.15); 
+        }
+        
+        .img-back { width: 100%; z-index: 1; animation: float 6s ease-in-out infinite; }
+        .img-front-left { width: 60%; bottom: -0.5cqw; left: -1.5cqw; z-index: 2; animation: float 5s ease-in-out infinite 1s; }
+        .img-front-right { width: 65%; bottom: -0.5cqw; right: -0.5cqw; z-index: 3; animation: float 7s ease-in-out infinite 2s; }
+        .img-center { width: 65%; z-index: 2; margin-top: 1cqw; animation: float 6s ease-in-out infinite; }
 
-        /* Etiquetas ITIN / SSN (Como en tu referente) */
+        /* Etiquetas ITIN / SSN */
         .badge {
             position: absolute;
-            padding: 0.5vh 1vh;
-            border-radius: 0.5vh;
+            padding: 0.3cqw 0.6cqw;
+            border-radius: 0.3cqw;
             font-weight: 800;
-            font-size: 1.2vh;
+            font-size: 0.8cqw;
             color: #fff;
-            box-shadow: 0 0.5vh 1vh rgba(0,0,0,0.5);
+            box-shadow: 0 0.5cqw 1cqw rgba(0,0,0,0.6);
             z-index: 4;
+            border: 0.1cqw solid rgba(255,255,255,0.2);
         }
-        .badge-itin { background: #3b82f6; bottom: 2vh; left: -2vh; transform: rotate(-10deg); }
-        .badge-ssn { background: #22c55e; bottom: 5vh; right: -1vh; transform: rotate(10deg); }
+        .badge-itin { background: linear-gradient(135deg, #2563EB, #1D4ED8); bottom: 1.5cqw; left: -1.5cqw; transform: rotate(-8deg); }
+        .badge-ssn { background: linear-gradient(135deg, #059669, #047857); bottom: 3.5cqw; right: -0.5cqw; transform: rotate(8deg); }
 
         .btn-link {
             background-color: var(--yellow);
             color: #000;
-            font-size: 1.2vh;
+            font-size: 0.8cqw;
             font-weight: 800;
             text-align: center;
             text-decoration: none;
-            padding: 1vh 0;
-            border-radius: 0.5vh;
-            width: 15vh;
+            padding: 0.6cqw 0;
+            border-radius: 0.4cqw;
+            width: 10cqw;
             position: absolute;
-            bottom: 2vh;
-            left: 2vh;
+            bottom: 1.5cqw;
+            left: 1.5cqw;
             text-transform: uppercase;
+            box-shadow: 0 0.4cqw 0.8cqw rgba(0,0,0,0.4);
+            transition: 0.2s;
         }
+        .btn-link:hover { filter: brightness(1.1); }
 
         /* ================= PIE DE PÁGINA ================= */
         footer {
@@ -255,27 +272,28 @@
             align-items: center;
             height: 5%;
             margin-top: auto;
-            font-size: 1.2vh;
+            font-size: 0.8cqw;
             color: var(--text-gray);
-            border-top: 0.15vh solid rgba(255,255,255,0.05);
-            padding-top: 1vh;
+            border-top: 0.1cqw solid rgba(255,255,255,0.05);
+            padding-top: 1cqw;
         }
-        footer div { display: flex; align-items: center; gap: 1vh; width: 48%; }
-        footer svg { stroke: var(--yellow); width: 2vh; height: 2vh; flex-shrink: 0; }
+        footer div { display: flex; align-items: center; gap: 0.6cqw; width: 48%; line-height: 1.4; }
+        footer svg { stroke: var(--yellow); width: 1.2cqw; height: 1.2cqw; flex-shrink: 0; }
         footer strong { color: var(--yellow); }
 
         /* ================= EXPORTACIÓN A PDF ================= */
         @media print {
             @page { size: landscape; margin: 0; }
             body { background: var(--bg-main) !important; -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
-            .slide { max-width: none; max-height: none; width: 100vw; height: 100vh; padding: 2.5vh 3.5vh; box-shadow: none; }
+            .slide-container { max-width: none; max-height: none; width: 100vw; height: 100vh; padding: 2.5cqw 3.5cqw; box-shadow: none; }
             .btn { display: none !important; }
+            .scene img { animation: none !important; } /* Desactiva animación al imprimir */
         }
     </style>
 </head>
 <body>
 
-    <div class="slide">
+    <div class="slide-container">
         
         <!-- CABECERA -->
         <header>
@@ -323,10 +341,10 @@
                             <li>Registro con ITIN ($24.97).</li>
                             <li>Creación de cuenta con SSN.</li>
                         </ul>
+                        <!-- Imagen: Monitor + Gráfico -->
                         <div class="scene">
-                            <img src="https://img.icons8.com/3d-fluency/250/laptop.png" class="img-back" alt="Laptop">
-                            <img src="https://img.icons8.com/3d-fluency/250/pie-chart.png" class="img-front-left" alt="Gráfico">
-                            <img src="https://img.icons8.com/3d-fluency/250/bank-cards.png" class="img-front-right" alt="Tarjetas">
+                            <img src="https://img.icons8.com/3d-fluency/250/imac.png" class="img-back" alt="Monitor">
+                            <img src="https://img.icons8.com/3d-fluency/250/combo-chart.png" class="img-front-right" alt="Gráfico">
                         </div>
                         <a href="https://app.myfreescorenow.com/enroll/B01B7384" target="_blank" class="btn-link">Link de Registro</a>
                     </div>
@@ -339,9 +357,10 @@
                             <li>Usuario (email) y contraseña.</li>
                             <li>Identificación oficial (ID).</li>
                         </ul>
+                        <!-- Imagen: Escudo de Seguridad + Llave -->
                         <div class="scene">
-                            <img src="https://img.icons8.com/3d-fluency/250/laptop.png" class="img-back" alt="Laptop">
-                            <img src="https://img.icons8.com/3d-fluency/250/lock.png" class="img-center" alt="Candado">
+                            <img src="https://img.icons8.com/3d-fluency/250/shield.png" class="img-back" alt="Escudo">
+                            <img src="https://img.icons8.com/3d-fluency/250/password.png" class="img-front-left" alt="Contraseña">
                         </div>
                     </div>
 
@@ -353,9 +372,10 @@
                             <li>Identificar cuentas.</li>
                             <li>Preparación de cartas.</li>
                         </ul>
+                        <!-- Imagen: Diana (Target) + Ficha de ajedrez (Estrategia) -->
                         <div class="scene">
-                            <img src="https://img.icons8.com/3d-fluency/250/document.png" class="img-back" alt="Documento">
-                            <img src="https://img.icons8.com/3d-fluency/250/search.png" class="img-front-right" alt="Lupa">
+                            <img src="https://img.icons8.com/3d-fluency/250/bullseye.png" class="img-back" alt="Objetivo">
+                            <img src="https://img.icons8.com/3d-fluency/250/chess-knight.png" class="img-front-right" alt="Estrategia">
                             <div class="badge badge-itin">ITIN</div>
                             <div class="badge badge-ssn">SSN</div>
                         </div>
@@ -369,9 +389,10 @@
                             <li>Copia de ID, ITIN y SSN.</li>
                             <li>2 comprobantes de domicilio.</li>
                         </ul>
+                        <!-- Imagen: Carpeta Abierta + Contrato -->
                         <div class="scene">
-                            <img src="https://img.icons8.com/3d-fluency/250/folder-invoices.png" class="img-back" alt="Carpeta">
-                            <img src="https://img.icons8.com/3d-fluency/250/name-tag.png" class="img-front-left" alt="ID">
+                            <img src="https://img.icons8.com/3d-fluency/250/opened-folder.png" class="img-back" alt="Carpeta">
+                            <img src="https://img.icons8.com/3d-fluency/250/contract.png" class="img-front-left" alt="Contrato">
                         </div>
                     </div>
                 </div>
@@ -384,9 +405,10 @@
                         <p>(Pago único)</p>
                     </div>
                     <div class="inv-list-col">
-                        <div class="scene" style="position: relative; width: 8vh; height: 8vh; bottom: 0; right: 0;">
-                            <img src="https://img.icons8.com/3d-fluency/250/clipboard.png" class="img-back" alt="Portapapeles">
-                            <img src="https://img.icons8.com/3d-fluency/250/ok.png" class="img-front-right" alt="Check">
+                        <!-- Imagen: Caja Fuerte/Protección -->
+                        <div class="scene" style="position: relative; width: 6cqw; height: 6cqw; bottom: 0; right: 0;">
+                            <img src="https://img.icons8.com/3d-fluency/250/safe.png" class="img-back" alt="Caja Fuerte">
+                            <img src="https://img.icons8.com/3d-fluency/250/ok.png" class="img-front-right" alt="Aprobado">
                         </div>
                         <ul>
                             <li>Análisis completo del historial.</li>
