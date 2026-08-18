@@ -7,18 +7,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         /* =========================================
-           VARIABLES Y RESET (Colores exactos)
+           RESET Y VARIABLES PREMIUM
            ========================================= */
-        :root {
-            --yellow: #fabb18; 
-            --bg-main: #0a1128; 
-            --bg-card: #121c3b; 
-            --text-white: #ffffff;
-            --text-gray: #d1d5db;
-            --btn-red: #f05252;
-            --btn-green: #10b981;
-        }
-
         * {
             margin: 0;
             padding: 0;
@@ -26,6 +16,21 @@
             font-family: 'Montserrat', sans-serif;
         }
 
+        :root {
+            --gold: #fabb18;
+            --gold-glow: rgba(250, 187, 24, 0.15);
+            --bg-dark: #050b14;
+            --card-bg: #0d1527;
+            --text-white: #ffffff;
+            --text-gray: #94a3b8;
+            --btn-red: #ef4444;
+            --btn-green: #10b981;
+            --border-color: rgba(255, 255, 255, 0.08);
+        }
+
+        /* =========================================
+           ENTORNO: CINE / PANTALLA NEGRA
+           ========================================= */
         body {
             background-color: #000;
             width: 100vw;
@@ -33,23 +38,26 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            overflow: hidden; 
+            overflow: hidden; /* Cero scroll permitido */
         }
 
         /* =========================================
-           CONTENEDOR PRINCIPAL (Proporción 16:9)
+           DIAPOSITIVA MAGICA (16:9 PERFECTO)
+           Usamos 'cqw' para que escale como un SVG
            ========================================= */
-        .board {
-            background-color: var(--bg-main);
+        .slide {
+            container-type: inline-size;
             aspect-ratio: 16 / 9;
             width: 100vw;
-            max-width: calc(100vh * 16 / 9);
+            max-width: calc(100vh * (16 / 9));
             max-height: 100vh;
-            padding: 2.5% 3%;
+            background: linear-gradient(135deg, #050b14 0%, #0a1128 100%);
+            position: relative;
+            padding: 2.5cqw 3cqw;
             display: flex;
             flex-direction: column;
+            box-shadow: 0 0 50px rgba(0,0,0,0.9);
             color: var(--text-white);
-            position: relative;
         }
 
         /* ================= CABECERA ================= */
@@ -57,172 +65,170 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            height: 8%;
-            border-bottom: 1px solid rgba(255,255,255,0.1);
-            margin-bottom: 2%;
+            height: 5cqw;
+            border-bottom: 0.1cqw solid var(--border-color);
+            margin-bottom: 1.5cqw;
+            padding-bottom: 1cqw;
         }
 
         .logo { height: 100%; }
 
         .contact-info {
             display: flex;
-            gap: 20px;
-            font-size: 1.5vh;
+            gap: 1.5cqw;
+            font-size: 0.9cqw;
             font-weight: 600;
         }
-        .contact-info div { display: flex; align-items: center; gap: 8px; }
-        .contact-info svg { stroke: var(--yellow); width: 2vh; height: 2vh; }
+        .contact-info div { display: flex; align-items: center; gap: 0.5cqw; }
+        .contact-info svg { stroke: var(--gold); width: 1.2cqw; height: 1.2cqw; }
 
-        /* ================= CUERPO PRINCIPAL (2 Columnas) ================= */
+        /* ================= CUERPO PRINCIPAL ================= */
         main {
             display: grid;
-            grid-template-columns: 30% 67%; 
+            grid-template-columns: 30% 67%; /* 30% Izq, 67% Der */
             gap: 3%;
             flex-grow: 1;
-            height: 80%;
+            min-height: 0;
         }
 
-        /* ----- COLUMNA IZQUIERDA (Texto y Botones) ----- */
+        /* ----- COLUMNA IZQUIERDA ----- */
         .left-col {
             display: flex;
             flex-direction: column;
-            justify-content: center; 
-            gap: 3%;
+            justify-content: center;
+            gap: 2cqw;
+            padding-right: 1cqw;
         }
 
         .left-col h1 { 
-            font-size: 3.8vh; 
-            color: var(--yellow); 
+            font-size: 2.6cqw; 
+            color: var(--gold); 
             line-height: 1.1; 
             font-weight: 800; 
-            margin-bottom: 2%;
+            text-shadow: 0 0.5cqw 1cqw rgba(0,0,0,0.5);
         }
         .left-col > p { 
-            font-size: 1.5vh; 
+            font-size: 0.95cqw; 
             color: var(--text-gray); 
             line-height: 1.6; 
-            margin-bottom: 10%;
         }
 
-        /* Botones Acción */
         .btn-group {
             display: flex;
             flex-direction: column;
-            gap: 15px;
+            gap: 1cqw;
+            margin-top: 1cqw;
         }
+
         .btn {
             display: flex;
             justify-content: center;
             align-items: center;
-            gap: 10px;
-            padding: 4% 0;
-            border-radius: 8px;
-            font-size: 1.5vh;
+            gap: 0.5cqw;
+            padding: 1.2cqw 0;
+            border-radius: 0.5cqw;
+            font-size: 0.9cqw;
             font-weight: 700;
             color: #fff;
             text-decoration: none;
-            border: none;
-            cursor: pointer;
-            width: 100%;
             text-transform: uppercase;
+            box-shadow: 0 0.4cqw 1cqw rgba(0,0,0,0.3);
+            transition: 0.2s;
+            border: 0.1cqw solid transparent;
         }
-        .btn svg { width: 2.2vh; height: 2.2vh; }
-        .btn-red { background-color: var(--btn-red); }
-        .btn-green { background-color: var(--btn-green); }
+        .btn:hover { transform: translateY(-0.2cqw); filter: brightness(1.1); }
+        .btn svg { width: 1.4cqw; height: 1.4cqw; }
+        
+        .btn-red { background: linear-gradient(135deg, #ef4444, #dc2626); border-color: #f87171; }
+        .btn-green { background: linear-gradient(135deg, #10b981, #059669); border-color: #34d399; }
 
-        /* ----- COLUMNA DERECHA (GRID DE 4 PASOS + INVERSIÓN) ----- */
+        /* ----- COLUMNA DERECHA (GRID 4 PASOS + INVERSION) ----- */
         .right-col {
             display: grid;
             grid-template-columns: 1fr 1fr;
             grid-template-rows: 1fr 1fr auto; 
-            gap: 2%;
+            gap: 1.2cqw;
         }
 
         .step-card {
-            background-color: var(--bg-card);
-            border: 1.5px solid var(--yellow);
-            border-radius: 12px;
-            padding: 3% 4%;
+            background-color: var(--card-bg);
+            border: 0.1cqw solid var(--border-color);
+            border-top: 0.1cqw solid rgba(255,255,255,0.15);
+            border-radius: 0.8cqw;
+            padding: 1.2cqw 1.5cqw;
             display: flex;
             flex-direction: column;
+            box-shadow: 0 0.5cqw 1.5cqw rgba(0,0,0,0.3);
             position: relative;
         }
-        .step-card h3 { font-size: 1.8vh; color: var(--yellow); margin-bottom: 1vh; font-weight: 700; }
-        .step-card p { font-size: 1.25vh; color: var(--text-gray); margin-bottom: 1vh; }
-        .step-card ul { font-size: 1.25vh; padding-left: 20px; line-height: 1.4; color: var(--text-white); flex-grow: 1; }
-        .step-card li { margin-bottom: 4px; }
+        .step-card h3 { font-size: 1.1cqw; color: var(--gold); margin-bottom: 0.4cqw; font-weight: 700; }
+        .step-card p { font-size: 0.75cqw; color: var(--text-gray); margin-bottom: 0.8cqw; }
+        .step-card ul { font-size: 0.8cqw; padding-left: 1.2cqw; line-height: 1.4; color: var(--text-white); flex-grow: 1; }
+        .step-card li { margin-bottom: 0.3cqw; }
 
-        /* Imágenes 3D Profesionales */
-        .img-container {
-            display: flex;
-            justify-content: center;
-            align-items: flex-end;
-            height: 40%;
-            margin-top: 5px;
+        /* Contenedor de la imagen de cada paso */
+        .img-box {
+            height: 6.5cqw; /* Altura fija relativa para que no descuadre */
+            margin-top: 0.5cqw;
+            border-radius: 0.5cqw;
+            overflow: hidden;
+            border: 0.1cqw solid rgba(255,255,255,0.05);
         }
-        .img-container img {
-            max-width: 100%;
-            max-height: 100%;
+        .img-box img {
+            width: 100%;
+            height: 100%;
             object-fit: cover;
-            border-radius: 8px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.5);
-            border: 1px solid rgba(255,255,255,0.05);
+            filter: brightness(0.85) contrast(1.1);
         }
 
         .btn-link {
-            background-color: var(--yellow);
+            background-color: var(--gold);
             color: #000;
-            font-size: 1.2vh;
-            font-weight: 700;
+            font-size: 0.75cqw;
+            font-weight: 800;
             text-align: center;
             text-decoration: none;
-            padding: 2.5% 0;
-            border-radius: 5px;
-            margin-top: auto;
-            width: 100%;
+            padding: 0.6cqw 0;
+            border-radius: 0.4cqw;
+            margin-top: 0.8cqw;
+            display: block;
+            text-transform: uppercase;
         }
 
-        /* ===== CUADRO DE INVERSIÓN (Horizontal al final) ===== */
-        .inversion-box {
+        /* ===== INVERSIÓN (Horizontal y elegante al final) ===== */
+        .inv-box {
             grid-column: 1 / 3; 
-            background-color: var(--bg-card);
-            border: 2px solid var(--yellow);
-            border-radius: 12px;
-            padding: 2% 4%;
+            background: linear-gradient(90deg, var(--gold-glow) 0%, var(--card-bg) 50%);
+            border: 0.1cqw solid var(--gold);
+            border-radius: 0.8cqw;
+            padding: 1cqw 2cqw;
             display: flex;
-            flex-direction: row;
             align-items: center;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-            gap: 3%;
+            gap: 2cqw;
+            box-shadow: 0 0.5cqw 2cqw rgba(0,0,0,0.4);
         }
-        
-        .inv-price-section {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            border-right: 1px solid rgba(255,255,255,0.2);
-            padding-right: 3%;
-            white-space: nowrap;
+
+        .inv-price {
+            text-align: center;
+            border-right: 0.1cqw solid rgba(255,255,255,0.1);
+            padding-right: 2cqw;
+            min-width: 25%;
         }
-        .inversion-box h4 { font-size: 1.2vh; text-transform: uppercase; letter-spacing: 1px; color: var(--text-white); margin-bottom: 2px; }
-        .inversion-box .price { font-size: 4vh; color: var(--yellow); font-weight: 800; line-height: 1; margin-bottom: 2px; }
-        .inversion-box .pago-unico { font-size: 1.1vh; color: var(--text-gray); }
-        
-        .inv-content {
+        .inv-price h4 { font-size: 0.85cqw; text-transform: uppercase; letter-spacing: 0.1cqw; color: var(--text-white); }
+        .inv-price .price { font-size: 2.8cqw; color: var(--gold); font-weight: 800; line-height: 1.1; margin: 0.2cqw 0; }
+        .inv-price .tag { font-size: 0.7cqw; color: var(--text-gray); }
+
+        .inv-list {
+            display: grid;
+            grid-template-columns: 1fr 1fr; /* Lista a dos columnas */
+            gap: 0.5cqw 1cqw;
+            font-size: 0.8cqw;
+            list-style: none;
             width: 100%;
         }
-        .inv-content ul { 
-            font-size: 1.25vh; 
-            line-height: 1.4; 
-            list-style: none; 
-            display: grid;
-            grid-template-columns: 1fr 1fr; 
-            gap: 6px 15px;
-        }
-        .inv-content li { position: relative; padding-left: 15px; }
-        .inv-content li::before {
-            content: '✓'; position: absolute; left: 0; color: var(--btn-green); font-weight: bold;
+        .inv-list li { position: relative; padding-left: 1.2cqw; color: var(--text-white); }
+        .inv-list li::before {
+            content: '✓'; position: absolute; left: 0; color: var(--btn-green); font-weight: 800; font-size: 0.9cqw;
         }
 
         /* ================= PIE DE PÁGINA ================= */
@@ -230,28 +236,29 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            height: 5%;
-            margin-top: 1.5%;
-            font-size: 1.1vh;
+            height: 3cqw;
+            margin-top: 1cqw;
+            font-size: 0.75cqw;
             color: var(--text-gray);
-            border-top: 1px solid rgba(255,255,255,0.1);
-            padding-top: 1%;
+            border-top: 0.1cqw solid rgba(255,255,255,0.05);
+            padding-top: 1cqw;
         }
-        footer div { display: flex; align-items: center; gap: 8px; width: 48%; }
-        footer svg { stroke: var(--yellow); width: 2.2vh; height: 2.2vh; flex-shrink: 0; }
-        footer strong { color: var(--yellow); }
+        footer div { display: flex; align-items: center; gap: 0.5cqw; }
+        footer svg { stroke: var(--gold); width: 1.2cqw; height: 1.2cqw; }
+        footer strong { color: var(--gold); }
 
+        /* ================= PDF EXPORT ================= */
         @media print {
             @page { size: landscape; margin: 0; }
-            body { background: var(--bg-main) !important; -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
-            .board { max-width: none; max-height: none; width: 100vw; height: 100vh; }
-            .btn-red, .btn-green { display: none !important; }
+            body { background: #050b14 !important; -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+            .slide { max-width: none; max-height: none; width: 100vw; height: 100vh; box-shadow: none; border-radius: 0; }
+            .btn { display: none !important; }
         }
     </style>
 </head>
 <body>
 
-    <div class="board">
+    <div class="slide">
         
         <header>
             <img src="https://khmurcia2.github.io/migracion/INVIERTE%20N%20TI%20NOW%20-%20LOGO%20FINAL%20NUEVA%20VERSION%20BLANCO%20COLOR.png" alt="Logo Invierte N Ti Now" class="logo">
@@ -294,10 +301,10 @@
                     <p>Revisaremos todo el historial de crédito.</p>
                     <ul>
                         <li>Registro con ITIN ($24.97).</li>
-                        <li>Creación de nueva cuenta con SSN.</li>
+                        <li>Creación de nueva cuenta (SSN).</li>
                     </ul>
-                    <div class="img-container">
-                        <img src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&w=400&q=80" alt="Reporte">
+                    <div class="img-box">
+                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=500&q=80" alt="Gráficos Financieros">
                     </div>
                     <a href="https://app.myfreescorenow.com/enroll/B01B7384" target="_blank" class="btn-link">Link de Registro</a>
                 </div>
@@ -309,8 +316,8 @@
                         <li>Usuario (email) y contraseña.</li>
                         <li>Identificación oficial (ID).</li>
                     </ul>
-                    <div class="img-container">
-                        <img src="https://images.unsplash.com/photo-1614064641913-6b71a2161bfc?auto=format&fit=crop&w=400&q=80" alt="Seguridad">
+                    <div class="img-box">
+                        <img src="https://images.unsplash.com/photo-1563013544-824ae1b704d3?auto=format&fit=crop&w=500&q=80" alt="Seguridad y Protección">
                     </div>
                 </div>
 
@@ -318,11 +325,11 @@
                     <h3>Paso 3. Estrategia</h3>
                     <p>Análisis detallado de viabilidad.</p>
                     <ul>
-                        <li>Identificar cuentas transferibles.</li>
-                        <li>Preparación de cartas a burós.</li>
+                        <li>Identificar cuentas.</li>
+                        <li>Preparación de cartas.</li>
                     </ul>
-                    <div class="img-container">
-                        <img src="https://images.unsplash.com/photo-1633158829585-23ba8f7c8caf?auto=format&fit=crop&w=400&q=80" alt="Estrategia">
+                    <div class="img-box">
+                        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=500&q=80" alt="Estrategia y Planificación">
                     </div>
                 </div>
 
@@ -330,28 +337,26 @@
                     <h3>Paso 4. Documentación</h3>
                     <p>Los burós necesitan validar sus datos.</p>
                     <ul>
-                        <li>Copia de Identificación (ID).</li>
-                        <li>Copia ITIN y SSN.</li>
+                        <li>Copia de ID, ITIN y SSN.</li>
+                        <li>2 comprobantes de domicilio.</li>
                     </ul>
-                    <div class="img-container">
-                        <img src="https://images.unsplash.com/photo-1620714223084-8fcacc6dfd8d?auto=format&fit=crop&w=400&q=80" alt="Documentos">
+                    <div class="img-box">
+                        <img src="https://images.unsplash.com/photo-1568225441490-6725dd5db694?auto=format&fit=crop&w=500&q=80" alt="Documentos">
                     </div>
                 </div>
 
-                <div class="inversion-box">
-                    <div class="inv-price-section">
+                <div class="inv-box">
+                    <div class="inv-price">
                         <h4>Inversión del Servicio</h4>
                         <div class="price">$600</div>
-                        <div class="pago-unico">(Pago único)</div>
+                        <div class="tag">(Pago único)</div>
                     </div>
-                    <div class="inv-content">
-                        <ul>
-                            <li>Análisis completo del historial.</li>
-                            <li>Estrategia personalizada y envío de cartas.</li>
-                            <li>Gestión y procedimientos legales.</li>
-                            <li>Asesoría y acompañamiento por 3 meses.</li>
-                        </ul>
-                    </div>
+                    <ul class="inv-list">
+                        <li>Análisis completo del historial.</li>
+                        <li>Estrategia personalizada y cartas.</li>
+                        <li>Gestión y procedimientos legales.</li>
+                        <li>Asesoría y seguimiento (3 meses).</li>
+                    </ul>
                 </div>
 
             </div>
@@ -360,11 +365,11 @@
         <footer>
             <div>
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
-                <span><strong>Tiempos:</strong> Normalmente toma entre 30 y 90 días. Desde el primer mes se pueden ver resultados según el acreedor.</span>
+                <span><strong>Tiempos:</strong> Toma entre 30 y 90 días. Desde el primer mes se pueden ver resultados según el acreedor.</span>
             </div>
             <div>
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
-                <span><strong>Aviso:</strong> El proceso asegura que su historial se refleje bajo su SSN, pero no garantiza un aumento de Credit Score.</span>
+                <span><strong>Aviso:</strong> El proceso asegura que su historial se refleje bajo su SSN, pero no garantiza un aumento de Score.</span>
             </div>
         </footer>
 
