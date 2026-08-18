@@ -7,12 +7,12 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         /* =========================================
-           VARIABLES Y RESET (Colores exactos a tu imagen)
+           VARIABLES Y RESET (Colores exactos)
            ========================================= */
         :root {
-            --yellow: #fabb18; /* Amarillo oro de la imagen */
-            --bg-main: #0a1128; /* Azul oscuro profundo del fondo */
-            --bg-card: #121c3b; /* Azul interior de las tarjetas */
+            --yellow: #fabb18; 
+            --bg-main: #0a1128; 
+            --bg-card: #121c3b; 
             --text-white: #ffffff;
             --text-gray: #d1d5db;
             --btn-red: #f05252;
@@ -33,7 +33,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            overflow: hidden; /* Sin scroll, es una diapositiva perfecta */
+            overflow: hidden; 
         }
 
         /* =========================================
@@ -76,7 +76,7 @@
         /* ================= CUERPO PRINCIPAL (2 Columnas) ================= */
         main {
             display: grid;
-            grid-template-columns: 30% 67%; /* Izquierda 30%, Derecha 67% */
+            grid-template-columns: 30% 67%; 
             gap: 3%;
             flex-grow: 1;
             height: 80%;
@@ -86,7 +86,7 @@
         .left-col {
             display: flex;
             flex-direction: column;
-            justify-content: center; /* Centrado vertical */
+            justify-content: center; 
             gap: 3%;
         }
 
@@ -134,7 +134,7 @@
         .right-col {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            grid-template-rows: 1fr 1fr auto; /* Dos filas para pasos, 1 auto para la inversión */
+            grid-template-rows: 1fr 1fr auto; 
             gap: 2%;
         }
 
@@ -152,6 +152,7 @@
         .step-card ul { font-size: 1.25vh; padding-left: 20px; line-height: 1.4; color: var(--text-white); flex-grow: 1; }
         .step-card li { margin-bottom: 4px; }
 
+        /* Imágenes 3D Profesionales */
         .img-container {
             display: flex;
             justify-content: center;
@@ -162,7 +163,10 @@
         .img-container img {
             max-width: 100%;
             max-height: 100%;
-            object-fit: contain;
+            object-fit: cover;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+            border: 1px solid rgba(255,255,255,0.05);
         }
 
         .btn-link {
@@ -180,7 +184,7 @@
 
         /* ===== CUADRO DE INVERSIÓN (Horizontal al final) ===== */
         .inversion-box {
-            grid-column: 1 / 3; /* Ocupa las dos columnas */
+            grid-column: 1 / 3; 
             background-color: var(--bg-card);
             border: 2px solid var(--yellow);
             border-radius: 12px;
@@ -213,7 +217,7 @@
             line-height: 1.4; 
             list-style: none; 
             display: grid;
-            grid-template-columns: 1fr 1fr; /* Dos columnas para los beneficios */
+            grid-template-columns: 1fr 1fr; 
             gap: 6px 15px;
         }
         .inv-content li { position: relative; padding-left: 15px; }
@@ -237,7 +241,6 @@
         footer svg { stroke: var(--yellow); width: 2.2vh; height: 2.2vh; flex-shrink: 0; }
         footer strong { color: var(--yellow); }
 
-        /* Impresión (Exportar a PDF perfecto) */
         @media print {
             @page { size: landscape; margin: 0; }
             body { background: var(--bg-main) !important; -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
@@ -290,11 +293,12 @@
                     <h3>Paso 1. Obtener Reporte</h3>
                     <p>Revisaremos todo el historial de crédito.</p>
                     <ul>
-                        <li>Registro con ITIN ($24.97, membresía 1 mes).</li>
+                        <li>Registro con ITIN ($24.97).</li>
                         <li>Creación de nueva cuenta con SSN.</li>
-                        <li>Se recomienda plan de 3 meses.</li>
                     </ul>
-                    <div class="img-container" style="display: none;"></div>
+                    <div class="img-container">
+                        <img src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&w=400&q=80" alt="Reporte">
+                    </div>
                     <a href="https://app.myfreescorenow.com/enroll/B01B7384" target="_blank" class="btn-link">Link de Registro</a>
                 </div>
 
@@ -302,12 +306,11 @@
                     <h3>Paso 2. Acceso al Reporte</h3>
                     <p>Necesitaremos acceso para el análisis.</p>
                     <ul>
-                        <li>Usuario (email) y contraseña de la app.</li>
-                        <li>Identificación oficial vigente (ID).</li>
-                        <li>Validación de datos personales.</li>
+                        <li>Usuario (email) y contraseña.</li>
+                        <li>Identificación oficial (ID).</li>
                     </ul>
                     <div class="img-container">
-                        <img src="https://images.pexels.com/photos/60504/security-protection-anti-virus-software-60504.jpeg?auto=compress&cs=tinysrgb&w=300" alt="Seguridad" style="border-radius: 8px;">
+                        <img src="https://images.unsplash.com/photo-1614064641913-6b71a2161bfc?auto=format&fit=crop&w=400&q=80" alt="Seguridad">
                     </div>
                 </div>
 
@@ -317,10 +320,9 @@
                     <ul>
                         <li>Identificar cuentas transferibles.</li>
                         <li>Preparación de cartas a burós.</li>
-                        <li>Instrucciones y guiones listos.</li>
                     </ul>
                     <div class="img-container">
-                        <img src="https://images.pexels.com/photos/590016/pexels-photo-590016.jpeg?auto=compress&cs=tinysrgb&w=300" alt="Estrategia" style="border-radius: 8px;">
+                        <img src="https://images.unsplash.com/photo-1633158829585-23ba8f7c8caf?auto=format&fit=crop&w=400&q=80" alt="Estrategia">
                     </div>
                 </div>
 
@@ -329,11 +331,10 @@
                     <p>Los burós necesitan validar sus datos.</p>
                     <ul>
                         <li>Copia de Identificación (ID).</li>
-                        <li>Copia de Tarjeta ITIN y Tarjeta SSN.</li>
-                        <li>2 comprobantes de domicilio recientes.</li>
+                        <li>Copia ITIN y SSN.</li>
                     </ul>
                     <div class="img-container">
-                        <img src="https://images.pexels.com/photos/4427430/pexels-photo-4427430.jpeg?auto=compress&cs=tinysrgb&w=300" alt="Documentos" style="border-radius: 8px;">
+                        <img src="https://images.unsplash.com/photo-1620714223084-8fcacc6dfd8d?auto=format&fit=crop&w=400&q=80" alt="Documentos">
                     </div>
                 </div>
 
