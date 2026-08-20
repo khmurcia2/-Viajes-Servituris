@@ -3,21 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Migración ITIN a SSN | Invierte N Ti Now</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <title>Programa de Migración ITIN a SSN | Invierte N Ti Now</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800&display=swap" rel="stylesheet">
     <style>
         /* =========================================
-           VARIABLES DE COLOR EXACTAS AL REFERENTE
+           VARIABLES DE DISEÑO PREMIUM
            ========================================= */
         :root {
-            --bg-dark: #0a0f1c;     /* Azul/Negro de las tarjetas y barras */
-            --yellow: #f5b905;      /* Amarillo oro */
-            --text-white: #ffffff;
-            --text-gray: #94a3b8;
-            --text-black: #111827;
-            --btn-green: #059669;   /* Verde WhatsApp */
-            --btn-red: #be123c;     /* Rojo PDF */
-            --check-green: #22c55e;
+            --bg-body: #050811;
+            --bg-card: #0F172A;
+            --bg-accent: #1E293B;
+            --yellow: #F5B82A;
+            --yellow-dim: rgba(245, 184, 42, 0.1);
+            --text-white: #F8FAFC;
+            --text-gray: #94A3B8;
+            --btn-green: #10B981;
+            --btn-red: #EF4444;
+            --border-line: rgba(255, 255, 255, 0.08);
         }
 
         * {
@@ -27,275 +29,200 @@
             font-family: 'Montserrat', sans-serif;
         }
 
-        /* =========================================
-           BLOQUEO DE SCROLL Y AJUSTE PERFECTO
-           ========================================= */
         body {
-            background-color: #f3f4f6; /* Fondo gris muy claro para destacar el documento */
-            width: 100vw;
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden; /* CERO SCROLL */
+            background-color: var(--bg-body);
+            color: var(--text-white);
+            line-height: 1.6;
+            padding: 40px 20px;
         }
 
-        .document-container {
-            width: 100vw;
-            max-width: 150vh; /* Controla el ancho máximo para mantener proporción */
-            height: 100vh;
-            background-color: #ffffff;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            padding: 2vh 3vh;
-            box-shadow: 0 0 3vh rgba(0,0,0,0.2);
-        }
-
-        /* ================= CABECERA (HEADER BAR) ================= */
-        header {
-            background-color: var(--bg-dark);
-            height: 7vh;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0 2vh;
-            border-radius: 0.3vh;
-        }
-
-        .logo { height: 60%; }
-
-        /* Etiqueta Central del Header */
-        .header-title-box {
-            display: flex;
-            background-color: #fff;
-            height: 60%;
-            align-items: center;
-            padding-left: 1vh;
-            font-weight: 700;
-            font-size: 1.6vh;
-            letter-spacing: 0.1vh;
-            border-radius: 0.2vh;
+        /* =========================================
+           CONTENEDOR DEL DOCUMENTO
+           ========================================= */
+        .document {
+            max-width: 900px;
+            margin: 0 auto;
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-line);
+            border-radius: 16px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.8);
             overflow: hidden;
         }
-        .header-title-box span:first-child { color: var(--text-black); padding-right: 1vh; }
-        .header-title-box span:last-child { 
-            background-color: var(--bg-dark); 
-            color: var(--yellow); 
-            height: 100%; 
-            display: flex; 
-            align-items: center; 
-            padding: 0 1.5vh; 
-            border-left: 0.2vh solid #fff;
+
+        /* ================= CABECERA ================= */
+        header {
+            padding: 30px 40px;
+            border-bottom: 1px solid var(--border-line);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: linear-gradient(180deg, rgba(15,23,42,1) 0%, rgba(5,8,17,1) 100%);
         }
+
+        .logo { height: 45px; }
 
         .contact-info {
             display: flex;
-            gap: 2vh;
-            font-size: 1.2vh;
-            font-weight: 500;
-            color: var(--text-white);
+            flex-direction: column;
+            gap: 5px;
+            font-size: 12px;
+            font-weight: 600;
+            text-align: right;
         }
-        .contact-info div { display: flex; align-items: center; gap: 0.5vh; }
-        .contact-info svg { stroke: var(--yellow); width: 1.5vh; height: 1.5vh; }
+        .contact-info div { display: flex; align-items: center; justify-content: flex-end; gap: 8px; }
+        .contact-info svg { stroke: var(--yellow); width: 16px; height: 16px; }
 
-        /* ================= TEXTO INTRODUCTORIO ================= */
-        .intro-text {
-            font-size: 1.9vh;
-            color: var(--text-black);
-            line-height: 1.5;
-            font-weight: 500;
-            padding: 0.5vh 0;
+        /* ================= SECCIÓN INTRO ================= */
+        .intro-section {
+            padding: 40px;
+            text-align: center;
+            border-bottom: 1px solid var(--border-line);
         }
+        .intro-section h1 { font-size: 28px; color: var(--yellow); font-weight: 800; line-height: 1.2; margin-bottom: 20px; }
+        .intro-section h2 { font-size: 20px; color: var(--text-white); margin-bottom: 15px; }
+        .intro-section p { font-size: 15px; color: var(--text-gray); max-width: 800px; margin: 0 auto; }
 
-        /* ================= CUADRÍCULA DE 4 PASOS ================= */
-        .steps-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            grid-template-rows: 1fr 1fr;
-            gap: 2vh;
-            flex-grow: 1;
-            min-height: 0;
+        /* ================= PASOS (CARJETAS VERTICALES) ================= */
+        .steps-container {
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
         }
 
         .step-card {
-            background-color: var(--bg-dark);
-            border: 0.2vh solid rgba(255, 255, 255, 0.08); 
-            border-radius: 0.5vh;
-            padding: 2vh;
+            background-color: var(--bg-accent);
+            border: 1px solid var(--border-line);
+            border-left: 4px solid var(--yellow);
+            border-radius: 10px;
+            padding: 30px;
             display: flex;
-            flex-direction: column;
-            position: relative;
-            overflow: hidden;
+            gap: 25px;
         }
 
-        .step-card h3 { font-size: 1.9vh; color: var(--yellow); margin-bottom: 0.3vh; font-weight: 700; }
-        .step-card p { font-size: 1.3vh; color: var(--text-gray); margin-bottom: 1.2vh; }
-        .step-card ul { font-size: 1.3vh; padding-left: 2vh; line-height: 1.6; color: var(--text-white); }
-        .step-card li { margin-bottom: 0.5vh; }
-
-        .btn-link {
-            background-color: var(--yellow);
-            color: var(--text-black);
-            font-size: 1.3vh;
-            font-weight: 800;
-            text-align: center;
-            text-decoration: none;
-            padding: 1vh 2vh;
-            border-radius: 0.4vh;
-            margin-top: auto;
-            width: fit-content;
-            text-transform: uppercase;
-            box-shadow: 0 0.5vh 1vh rgba(0,0,0,0.3);
-        }
-
-        /* Imágenes 3D dentro de las tarjetas */
-        .scene {
-            position: absolute;
-            bottom: 1vh;
-            right: 1.5vh;
-            width: 14vh;
-            height: 14vh;
-            display: flex;
-            justify-content: flex-end;
-            align-items: flex-end;
-        }
-        .scene img { position: absolute; max-width: 100%; max-height: 100%; filter: drop-shadow(0 0.5vh 1vh rgba(0,0,0,0.8)); }
-        
-        /* Posiciones específicas para recrear la imagen */
-        .img-back { width: 90%; right: 0; bottom: 0; z-index: 1; }
-        .img-front { width: 55%; left: 0; bottom: 0; z-index: 2; }
-        .img-center { width: 65%; right: 1vh; bottom: 1vh; z-index: 2; }
-        
-        .tag-3d {
-            position: absolute;
-            padding: 0.3vh 0.8vh;
-            border-radius: 0.3vh;
-            font-weight: 800;
-            font-size: 1.1vh;
-            color: #fff;
-            box-shadow: 0 0.5vh 1vh rgba(0,0,0,0.5);
-            z-index: 4;
-        }
-        .tag-itin { background: #3b82f6; bottom: 3vh; left: 1vh; transform: rotate(-10deg); }
-        .tag-ssn { background: #22c55e; bottom: 5vh; right: 1vh; transform: rotate(10deg); }
-
-        /* ================= BARRA DE INVERSIÓN ================= */
-        .investment-banner {
-            background-color: var(--bg-dark);
-            border: 0.2vh solid var(--yellow);
-            border-radius: 0.5vh;
-            height: 13vh;
-            display: flex;
-            align-items: center;
-            padding: 0 3vh;
-            gap: 4vh;
-        }
-
-        .inv-price-section {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: flex-start;
-            border-right: 0.2vh solid rgba(255,255,255,0.1);
-            padding-right: 4vh;
-            white-space: nowrap;
-        }
-        .inv-price-section h4 { font-size: 1.4vh; color: var(--text-white); text-transform: uppercase; letter-spacing: 0.1vh; margin-bottom: 0.5vh; }
-        .inv-price-section .price { font-size: 4.5vh; color: var(--yellow); font-weight: 800; line-height: 1; margin-bottom: 0.5vh; }
-        .inv-price-section p { font-size: 1.2vh; color: var(--text-gray); }
-
-        .inv-icon-section {
-            position: relative;
-            width: 8vh;
-            height: 8vh;
+        .step-icon {
+            width: 80px;
+            height: 80px;
             flex-shrink: 0;
+            display: flex;
+            align-items: flex-start;
         }
-        .inv-icon-section img { position: absolute; max-width: 100%; filter: drop-shadow(0 0.5vh 1vh rgba(0,0,0,0.5)); }
+        .step-icon img {
+            width: 100%;
+            object-fit: contain;
+            filter: drop-shadow(0 5px 10px rgba(0,0,0,0.5));
+        }
+
+        .step-content { flex-grow: 1; }
+        .step-content h3 { font-size: 20px; color: var(--yellow); margin-bottom: 10px; font-weight: 700; }
+        .step-content p { font-size: 14px; color: var(--text-white); margin-bottom: 15px; }
         
-        .inv-list-section {
+        .step-content ul { font-size: 14px; padding-left: 20px; color: var(--text-gray); margin-bottom: 15px; }
+        .step-content li { margin-bottom: 8px; }
+
+        /* Cajas de Importante / Aviso dentro de los pasos */
+        .alert-box {
+            background-color: var(--yellow-dim);
+            border: 1px solid rgba(245, 184, 42, 0.3);
+            border-radius: 8px;
+            padding: 15px 20px;
+            margin: 20px 0;
+        }
+        .alert-box h4 { color: var(--yellow); font-size: 14px; margin-bottom: 8px; text-transform: uppercase; }
+        .alert-box p { font-size: 13.5px; color: var(--text-white); margin-bottom: 10px; }
+        .alert-box p:last-child { margin-bottom: 0; }
+
+        .alert-danger {
+            background-color: rgba(239, 68, 68, 0.1);
+            border-color: rgba(239, 68, 68, 0.3);
+        }
+        .alert-danger h4 { color: var(--btn-red); }
+
+        /* ================= INVERSIÓN DEL SERVICIO ================= */
+        .investment-section {
+            background: linear-gradient(180deg, var(--bg-card) 0%, rgba(15,23,42,1) 100%);
+            padding: 40px;
+            border-top: 1px solid var(--border-line);
+        }
+
+        .inv-header { text-align: center; margin-bottom: 30px; }
+        .inv-header h2 { font-size: 24px; color: var(--yellow); margin-bottom: 10px; }
+        .inv-header .price { font-size: 40px; font-weight: 800; color: var(--text-white); }
+        .inv-header .subtitle { font-size: 14px; color: var(--text-gray); }
+
+        .inv-details {
+            display: flex;
+            background-color: var(--bg-accent);
+            border-radius: 12px;
+            padding: 30px;
+            gap: 30px;
+            align-items: center;
+        }
+
+        .inv-details img { width: 120px; filter: drop-shadow(0 10px 15px rgba(0,0,0,0.5)); }
+        
+        .inv-details ul {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 1.5vh 3vh;
-            width: 100%;
+            gap: 15px 20px;
+            list-style: none;
+            font-size: 14px;
         }
-        .inv-list-section div {
-            font-size: 1.4vh;
-            color: var(--text-white);
-            display: flex;
-            align-items: center;
-            gap: 1vh;
-        }
-        .inv-list-section svg {
-            width: 1.8vh; height: 1.8vh; stroke: var(--check-green); flex-shrink: 0;
-        }
+        .inv-details li { position: relative; padding-left: 25px; color: var(--text-white); }
+        .inv-details li::before { content: '✓'; position: absolute; left: 0; color: var(--btn-green); font-weight: 800; font-size: 16px; }
 
         /* ================= BOTONES DE ACCIÓN ================= */
         .action-buttons {
             display: flex;
-            justify-content: space-between;
-            gap: 2vh;
-            height: 7vh;
-        }
-
-        .btn {
-            flex: 1;
-            display: flex;
+            gap: 20px;
+            padding: 0 40px 40px;
             justify-content: center;
-            align-items: center;
-            gap: 1vh;
-            border-radius: 0.5vh;
-            font-size: 1.5vh;
-            font-weight: 700;
-            color: #fff;
-            text-decoration: none;
-            border: none;
-            cursor: pointer;
-            text-transform: uppercase;
-            box-shadow: 0 0.5vh 1.5vh rgba(0,0,0,0.3);
         }
-        .btn svg { width: 2vh; height: 2vh; }
-        .btn-green { background-color: var(--btn-green); border: 0.2vh solid #047857; }
-        .btn-red { background-color: var(--btn-red); border: 0.2vh solid #9F1239; }
+        .btn {
+            display: flex; justify-content: center; align-items: center; gap: 10px;
+            padding: 15px 30px; border-radius: 8px; font-size: 14px; font-weight: 700;
+            color: #fff; text-decoration: none; text-transform: uppercase;
+            border: none; cursor: pointer; box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            transition: 0.2s;
+        }
+        .btn:hover { filter: brightness(1.1); transform: translateY(-2px); }
+        .btn svg { width: 20px; height: 20px; }
+        .btn-red { background-color: var(--btn-red); }
+        .btn-green { background-color: var(--btn-green); }
 
-        /* ================= PIE DE PÁGINA (FOOTER) ================= */
-        footer {
-            background-color: var(--bg-dark);
-            height: 4vh;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0 2vh;
-            border-radius: 0.3vh;
-            font-size: 1vh;
-            color: var(--text-gray);
+        /* ================= ADAPTACIÓN MÓVIL ================= */
+        @media (max-width: 768px) {
+            body { padding: 10px; }
+            .step-card { flex-direction: column; padding: 20px; }
+            .step-icon { width: 60px; height: 60px; margin: 0 auto 15px; }
+            .inv-details { flex-direction: column; text-align: center; }
+            .inv-details ul { grid-template-columns: 1fr; text-align: left; }
+            .action-buttons { flex-direction: column; padding: 0 20px 30px; }
+            header { flex-direction: column; gap: 15px; text-align: center; }
+            .contact-info { align-items: center; }
         }
-        footer div { display: flex; align-items: center; gap: 0.8vh; }
-        footer svg { stroke: var(--yellow); width: 1.5vh; height: 1.5vh; flex-shrink: 0; }
-        footer strong { color: var(--yellow); font-weight: 600; }
 
         /* ================= EXPORTACIÓN A PDF ================= */
         @media print {
-            @page { size: landscape; margin: 0; }
-            body { background: #ffffff !important; -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
-            .document-container { max-width: none; max-height: none; width: 100vw; height: 100vh; padding: 2vh 3vh; box-shadow: none; }
+            body { background: #fff !important; padding: 0; color: #000 !important; }
+            .document { border: none; box-shadow: none; border-radius: 0; max-width: 100%; background: #fff !important; }
+            .intro-section h1, .step-content h3, .inv-header h2 { color: #000 !important; }
+            .intro-section p, .step-content p, .step-content ul { color: #333 !important; }
+            .step-card, .inv-details { background-color: #f8fafc !important; border: 1px solid #e2e8f0; }
             .action-buttons { display: none !important; }
+            /* Control de saltos de página */
+            .step-card { page-break-inside: avoid; margin-bottom: 20px; }
+            .investment-section { page-break-before: always; }
         }
     </style>
 </head>
 <body>
 
-    <div class="document-container">
+    <div class="document">
         
-        <!-- CABECERA EXACTA AL REFERENTE -->
+        <!-- CABECERA -->
         <header>
             <img src="https://khmurcia2.github.io/migracion/INVIERTE%20N%20TI%20NOW%20-%20LOGO%20FINAL%20NUEVA%20VERSION%20BLANCO%20COLOR.png" alt="Logo Invierte N Ti Now" class="logo">
-            
-            <div class="header-title-box">
-                <span>PROCESO DE</span>
-                <span>Migración ITIN a SSN</span>
-            </div>
-
             <div class="contact-info">
                 <div>
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
@@ -308,129 +235,157 @@
             </div>
         </header>
 
-        <!-- TEXTO INTRODUCTORIO -->
-        <p class="intro-text">
-            Si anteriormente utilizó un ITIN para obtener crédito y ahora cuenta con un Seguro Social (SSN), es vital realizar la migración correcta para proteger su historial. A continuación, siga los pasos para iniciar el proceso.
-        </p>
+        <!-- INTRODUCCIÓN -->
+        <div class="intro-section">
+            <h1>Programa de Migración de Historial de Crédito ITIN a SSN</h1>
+            <h2>Bienvenid@</h2>
+            <p>Si anteriormente utilizó un ITIN para obtener crédito y ahora ya cuenta con un Seguro Social (SSN), es importante realizar correctamente el proceso de migración para que su historial de crédito quede asociado a su nuevo número de Seguro Social, a continuación los procesos que involucran este ajuste.</p>
+        </div>
 
-        <!-- CUADRÍCULA DE 4 PASOS -->
-        <div class="steps-grid">
+        <!-- PASOS -->
+        <div class="steps-container">
             
             <!-- Paso 1 -->
             <div class="step-card">
-                <h3>Paso 1. Obtener Reporte</h3>
-                <p>Revisaremos el historial de crédito.</p>
-                <ul>
-                    <li>Registro con ITIN ($24.97).</li>
-                    <li>Creación de cuenta con SSN.</li>
-                </ul>
-                <div class="scene">
-                    <img src="https://img.icons8.com/3d-fluency/250/imac.png" class="img-back" alt="Monitor">
-                    <img src="https://img.icons8.com/3d-fluency/250/combo-chart.png" class="img-front" alt="Gráfico">
+                <div class="step-icon">
+                    <img src="https://img.icons8.com/3d-fluency/250/imac.png" alt="Monitor">
                 </div>
-                <a href="https://app.myfreescorenow.com/enroll/B01B7384" target="_blank" class="btn-link">Link de Registro</a>
+                <div class="step-content">
+                    <h3>PASO #1. Obtener el reporte de crédito con ITIN</h3>
+                    <p>Primero debemos revisar todo el historial de crédito asociado a su número de ITIN.</p>
+                    <ul>
+                        <li>Le enviaré un enlace para que se registre utilizando su número de ITIN.</li>
+                        <li>El costo del reporte es de $24.97 y tiene una vigencia de un mes.</li>
+                        <li>El registro queda completado una vez finaliza el proceso de pago.</li>
+                        <li>Antes de que finalice el primer mes, cancelaremos la membresía, ya que solo necesitamos el reporte y no será necesario continuar pagando.</li>
+                    </ul>
+
+                    <div class="alert-box">
+                        <h4>Importante</h4>
+                        <p>Este es el primer proceso, el cual nos permitirá identificar todas las cuentas reportadas bajo su ITIN. Una vez terminado este análisis, realizaremos un segundo proceso utilizando su Seguro Social (SSN). Para ello:</p>
+                        <ul style="margin-top: 10px; margin-bottom: 0;">
+                            <li>Se deberá crear una nueva cuenta con un correo electrónico diferente, registrándose ahora con el número de Seguro Social (SSN).</li>
+                            <li>Esto permitirá que el sistema pueda comenzar a sincronizar el historial del ITIN con el SSN y podamos monitorear correctamente la migración de las cuentas.</li>
+                        </ul>
+                    </div>
+
+                    <p>En este segundo registro sí recomiendo seleccionar el plan de 3 meses, ya que durante ese período estaremos monitoreando los cambios, dando seguimiento al proceso de migración y verificando que las cuentas se actualicen correctamente en los burós de crédito.</p>
+                </div>
             </div>
 
             <!-- Paso 2 -->
             <div class="step-card">
-                <h3>Paso 2. Acceso al Reporte</h3>
-                <p>Acceso para el análisis.</p>
-                <ul>
-                    <li>Usuario (email) y contraseña.</li>
-                    <li>Identificación oficial (ID).</li>
-                </ul>
-                <div class="scene">
-                    <img src="https://img.icons8.com/3d-fluency/250/shield.png" class="img-back" alt="Escudo">
-                    <img src="https://img.icons8.com/3d-fluency/250/lock.png" class="img-center" alt="Candado">
+                <div class="step-icon">
+                    <img src="https://img.icons8.com/3d-fluency/250/shield.png" alt="Seguridad">
+                </div>
+                <div class="step-content">
+                    <h3>PASO #2. Acceso al reporte</h3>
+                    <p>Una vez haya completado el registro, deberá enviarme:</p>
+                    <ul>
+                        <li><strong>Usuario:</strong> siempre será su email.</li>
+                        <li><strong>Contraseña:</strong> es crear un password nuevo para esta aplicación.</li>
+                        <li><strong>Una identificación oficial vigente (ID).</strong></li>
+                    </ul>
+                    <p>Esta información me permitirá acceder a su reporte para realizar un análisis completo de su historial de crédito y validar su información personal.</p>
                 </div>
             </div>
 
             <!-- Paso 3 -->
             <div class="step-card">
-                <h3>Paso 3. Estrategia</h3>
-                <p>Análisis detallado de viabilidad.</p>
-                <ul>
-                    <li>Identificar cuentas.</li>
-                    <li>Preparación de cartas.</li>
-                </ul>
-                <div class="scene">
-                    <img src="https://img.icons8.com/3d-fluency/250/bullseye.png" class="img-back" alt="Objetivo">
-                    <div class="tag-3d tag-itin">ITIN</div>
-                    <div class="tag-3d tag-ssn">SSN</div>
+                <div class="step-icon">
+                    <img src="https://img.icons8.com/3d-fluency/250/bullseye.png" alt="Estrategia">
+                </div>
+                <div class="step-content">
+                    <h3>PASO #3. Análisis y estrategia personalizada</h3>
+                    <p>Después de revisar su reporte, realizaré un análisis detallado para:</p>
+                    <ul>
+                        <li>Identificar todas las cuentas reportadas bajo su ITIN.</li>
+                        <li>Determinar cuáles cuentas pueden migrarse correctamente a su Seguro Social.</li>
+                        <li>Elaborar una estrategia personalizada para cada acreedor.</li>
+                        <li>Preparar y enviar las cartas necesarias a los acreedores y burós de crédito para solicitar la actualización de su información.</li>
+                        <li>Proporcionarle instrucciones y guiones cuando sea necesario realizar llamadas o gestiones de su parte.</li>
+                        <li>Brindarle el acompañamiento y las instrucciones necesarias para completar las gestiones que deban ser realizadas directamente por usted.</li>
+                    </ul>
                 </div>
             </div>
 
             <!-- Paso 4 -->
             <div class="step-card">
-                <h3>Paso 4. Documentación</h3>
-                <p>Los burós necesitan validar sus datos.</p>
-                <ul>
-                    <li>Copia de ID, ITIN y SSN.</li>
-                    <li>2 comprobantes de domicilio.</li>
-                </ul>
-                <div class="scene">
-                    <img src="https://img.icons8.com/3d-fluency/250/opened-folder.png" class="img-back" alt="Carpeta">
-                    <img src="https://img.icons8.com/3d-fluency/250/certificate.png" class="img-front" alt="Certificado">
+                <div class="step-icon">
+                    <img src="https://img.icons8.com/3d-fluency/250/opened-folder.png" alt="Documentación">
                 </div>
+                <div class="step-content">
+                    <h3>PASO 4. Documentación requerida</h3>
+                    <p>Para iniciar el proceso necesitaremos:</p>
+                    <ul>
+                        <li>Foto copia de una identificación (ID) oficial vigente.</li>
+                        <li>Foto copia de su carta o tarjeta de ITIN.</li>
+                        <li>Foto copia de su tarjeta de Seguro Social (SSN).</li>
+                        <li>Dos comprobantes recientes de domicilio (Utility Bill, estado de cuenta bancario, agua, luz, cable, internet, etc.) a su nombre y con su dirección actual.</li>
+                    </ul>
+                    <p>Los burós y acreedores necesitan esta documentación para poder validar sus datos contra lo que existe en su sistema con el ITIN y poder validar realizar la migración al Seguro Social (SSN).</p>
+                </div>
+            </div>
+
+            <!-- Tiempos y Expectativas -->
+            <div class="step-card" style="border-left-color: var(--text-gray);">
+                <div class="step-content">
+                    <h3 style="color: var(--text-white);">Tiempo del proceso y expectativas de resultados</h3>
+                    <p>La migración del historial de crédito de ITIN a SSN es un proceso que normalmente toma entre 30 y 90 días (3 meses), aunque desde el primer mes se podrían ver resultados, estos pueden variar según el tiempo de respuesta de los burós de crédito y de los acreedores.</p>
+                    <p>Durante este período trabajaremos para que su historial de crédito sea correctamente asociado a su nuevo Seguro Social, evitando la pérdida de información crediticia y asegurando que las cuentas se reflejen correctamente.</p>
+                    
+                    <div class="alert-box alert-danger">
+                        <h4>Aviso!</h4>
+                        <p>Este proceso no garantiza un aumento específico en el Credit Score, ya que la puntuación depende de múltiples factores (historial de pagos, utilización del crédito, antigüedad de las cuentas, entre otros) pero sí ayuda a que su historial de crédito quede correctamente asociado a su SSN y se refleje de forma adecuada.</p>
+                        <p>Si durante el proceso identificamos oportunidades para fortalecer su puntaje, también le recomendaremos estrategias personalizadas para ayudarle a mejorarlo.</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- SECCIÓN DE INVERSIÓN -->
+        <div class="investment-section">
+            <div class="inv-header">
+                <h2>Inversión del Servicio</h2>
+                <div class="price">Costo del programa: $600</div>
+                <div class="subtitle">(Pago único)</div>
+            </div>
+
+            <div class="inv-details">
+                <img src="https://img.icons8.com/3d-fluency/250/safe.png" alt="Caja Fuerte">
+                <div style="flex-grow: 1;">
+                    <p style="margin-bottom: 15px; font-weight: 600;">Este servicio incluye:</p>
+                    <ul>
+                        <li>Análisis completo del historial de crédito.</li>
+                        <li>Estrategia personalizada de migración.</li>
+                        <li>Preparación y envío de cartas a acreedores y burós.</li>
+                        <li>Seguimiento del proceso.</li>
+                        <li>Estrategias para mejorar el puntaje, si aplica.</li>
+                        <li>Acompañamiento y asesoría durante 3 meses.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="alert-box" style="margin-top: 30px;">
+                <h4>Importante</h4>
+                <p>La migración del historial de crédito depende de que cada acreedor y buró de crédito actualice correctamente la información.</p>
+                <p>Mi trabajo consiste en gestionar el proceso, dar seguimiento y utilizar los procedimientos legales correspondientes para maximizar las posibilidades de que su historial quede correctamente vinculado a su Seguro Social.</p>
+                <p>Este proceso le permitirá proteger y trasladar correctamente su historial de crédito del ITIN al SSN, evitando perder oportunidades financieras. Yo lo acompañaré durante todo el proceso para que la transición se realice de la mejor manera posible.</p>
             </div>
         </div>
 
-        <!-- BARRA DE INVERSIÓN -->
-        <div class="investment-banner">
-            <div class="inv-price-section">
-                <h4>Inversión del Servicio</h4>
-                <div class="price">$600</div>
-                <p>(Pago único)</p>
-            </div>
-            
-            <div class="inv-icon-section">
-                <img src="https://img.icons8.com/3d-fluency/250/safe.png" class="img-back" alt="Caja Fuerte">
-                <img src="https://img.icons8.com/3d-fluency/250/ok.png" class="img-front" style="width: 50%; right: -1vh; bottom: -1vh; left: auto;" alt="Check">
-            </div>
-
-            <div class="inv-list-section">
-                <div>
-                    <svg viewBox="0 0 24 24" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                    Análisis completo del historial.
-                </div>
-                <div>
-                    <svg viewBox="0 0 24 24" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                    Estrategia y envío de cartas.
-                </div>
-                <div>
-                    <svg viewBox="0 0 24 24" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                    Gestión y procesos legales.
-                </div>
-                <div>
-                    <svg viewBox="0 0 24 24" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                    Asesoría por 3 meses.
-                </div>
-            </div>
-        </div>
-
-        <!-- BOTONES DE ACCIÓN (Según peticiones del usuario) -->
+        <!-- BOTONES DE ACCIÓN -->
         <div class="action-buttons">
-            <a href="https://wa.me/16783564855" target="_blank" class="btn btn-green">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
-                Iniciar Proceso (WhatsApp)
-            </a>
             <button onclick="window.print()" class="btn btn-red">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line></svg>
                 Descargar PDF
             </button>
+            <a href="https://wa.me/16783564855?text=Hola,%20tengo%20algunas%20preguntas%20sobre%20el%20programa%20de%20migración" target="_blank" class="btn btn-green">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
+                ¿Preguntas? Contáctanos
+            </a>
         </div>
-
-        <!-- PIE DE PÁGINA -->
-        <footer>
-            <div>
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
-                <span><strong>Tiempos:</strong> Normalmente toma entre 30 y 90 días. Desde el primer mes se pueden ver resultados según el acreedor.</span>
-            </div>
-            <div>
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
-                <span><strong>Aviso:</strong> El proceso asegura que su historial se refleje bajo su SSN, pero no garantiza un aumento de Credit Score.</span>
-            </div>
-        </footer>
 
     </div>
 
