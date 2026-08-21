@@ -7,16 +7,18 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         /* =========================================
-           VARIABLES DE COLOR (Clon de la imagen)
+           VARIABLES DE COLOR (DISEÑO APROBADO)
            ========================================= */
         :root {
-            --bg-navy: #0B1120;     
-            --yellow: #F5B82A;      
-            --text-white: #FFFFFF;
-            --text-gray: #9ca3af;
-            --text-black: #111827;
-            --btn-red: #be123c;
-            --btn-green: #059669;
+            --bg-exterior: #e2e8f0; 
+            --bg-navy: #060b14;     
+            --bg-card: #0f172a;     
+            --yellow: #FBBF24;      
+            --text-white: #ffffff;
+            --text-gray: #cbd5e1;   
+            --text-black: #0f172a;
+            --btn-red: #e11d48;     
+            --btn-green: #059669;   
         }
 
         * {
@@ -30,19 +32,18 @@
            CAJA MÁGICA 16:9 (ESCALADO PERFECTO)
            ========================================= */
         body {
-            background-color: #222222; /* Fondo oscuro exterior */
+            background-color: #222222; 
             margin: 0;
             height: 100vh;
             width: 100vw;
             display: flex;
             align-items: center;
             justify-content: center;
-            overflow: hidden; /* CERO SCROLL */
+            overflow: hidden; 
         }
 
         .aspect-ratio-box {
             position: relative;
-            /* Fuerza una proporción exacta de 16:9 en cualquier pantalla */
             width: 100vw;
             height: 56.25vw;
             max-width: 177.78vh;
@@ -50,27 +51,26 @@
             box-shadow: 0 0 3cqw rgba(0,0,0,0.5);
         }
 
-        /* El póster principal se adapta al 100% de la caja mágica */
         .poster {
             position: absolute;
             top: 0; left: 0; right: 0; bottom: 0;
             container-type: inline-size;
-            background-color: #ffffff; /* Fondo blanco del documento */
+            background-color: #ffffff; 
             display: flex;
             flex-direction: column;
-            gap: 0.9cqw;
-            padding: 1.2cqw;
+            gap: 1.2vh; 
+            padding: 1.5vh;
         }
 
         /* ================= CABECERA ================= */
         header {
             background-color: var(--bg-navy);
-            height: 3.8cqw;
-            border-radius: 0.3cqw;
+            height: 6.5vh;
+            border-radius: 0.6vh;
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding: 0 1.2cqw;
+            padding: 0 2vh;
         }
 
         .logo { height: 60%; }
@@ -78,43 +78,43 @@
         .header-badge {
             display: flex;
             height: 60%;
-            border-radius: 0.2cqw;
+            border-radius: 0.4vh;
             overflow: hidden;
-            font-size: 0.95cqw;
+            font-size: 1.7vh; 
             font-weight: 800;
         }
         .header-badge .part1 {
             background-color: #ffffff;
-            color: #000000;
-            padding: 0 0.9cqw;
+            color: var(--text-black);
+            padding: 0 1.5vh;
             display: flex;
             align-items: center;
         }
         .header-badge .part2 {
             background-color: var(--yellow);
-            color: #000000;
-            padding: 0 0.9cqw;
+            color: var(--text-black);
+            padding: 0 1.5vh;
             display: flex;
             align-items: center;
         }
 
         .contact-info {
             display: flex;
-            gap: 1.2cqw;
-            font-size: 0.75cqw;
-            font-weight: 500;
+            gap: 2vh;
+            font-size: 1.35vh; 
+            font-weight: 600;
             color: var(--text-white);
         }
-        .contact-info div { display: flex; align-items: center; gap: 0.3cqw; }
-        .contact-info svg { stroke: var(--yellow); width: 1cqw; height: 1cqw; }
+        .contact-info div { display: flex; align-items: center; gap: 0.6vh; }
+        .contact-info svg { stroke: var(--yellow); width: 1.8vh; height: 1.8vh; }
 
         /* ================= TEXTO INTRODUCTORIO ================= */
         .intro {
-            font-size: 1.05cqw;
+            font-size: 1.95vh; 
             color: var(--text-black);
             font-weight: 500;
-            line-height: 1.4;
-            padding: 0 0.3cqw;
+            line-height: 1.5;
+            padding: 0 1vh;
         }
 
         /* ================= CUADRÍCULA 4 PASOS ================= */
@@ -122,137 +122,149 @@
             display: grid;
             grid-template-columns: 1fr 1fr;
             grid-template-rows: 1fr 1fr;
-            gap: 0.9cqw;
+            gap: 1.5vh;
             flex-grow: 1;
             min-height: 0;
         }
 
         .card {
-            background-color: var(--bg-navy);
-            border: 0.1cqw solid var(--yellow);
-            border-radius: 0.4cqw;
-            padding: 1.2cqw;
+            background-color: var(--bg-card);
+            border: 0.2vh solid rgba(251, 191, 36, 0.3);
+            border-top: 0.4vh solid var(--yellow);
+            border-radius: 0.8vh;
+            padding: 2vh;
             display: flex;
             flex-direction: column;
             position: relative;
             overflow: hidden;
+            box-shadow: 0 0.5vh 1vh rgba(0,0,0,0.15);
         }
 
-        .card h3 { color: var(--yellow); font-size: 1.1cqw; font-weight: 700; margin-bottom: 0.3cqw; z-index: 2; }
-        .card p { color: var(--text-gray); font-size: 0.75cqw; margin-bottom: 0.6cqw; z-index: 2; line-height: 1.4; }
-        .card ul { color: var(--text-white); font-size: 0.75cqw; padding-left: 1.2cqw; line-height: 1.4; z-index: 2; }
-        .card li { margin-bottom: 0.25cqw; }
+        .card h3 { color: var(--yellow); font-size: 2.1vh; font-weight: 800; margin-bottom: 0.8vh; z-index: 2; }
+        .card p { color: var(--text-gray); font-size: 1.45vh; margin-bottom: 1vh; z-index: 2; line-height: 1.5; font-weight: 500; }
+        .card ul { color: var(--text-white); font-size: 1.45vh; padding-left: 2vh; line-height: 1.5; z-index: 2; font-weight: 500; }
+        .card li { margin-bottom: 0.5vh; }
 
-        /* Contenedores de las imágenes 3D */
+        /* Contenedores de las imágenes Flat Premium */
         .card-img-container {
             position: absolute;
-            bottom: 0.9cqw;
-            right: 0.9cqw;
-            height: 7.2cqw;
-            width: 10.8cqw;
+            bottom: 1.5vh;
+            right: 1.5vh;
+            height: 12vh;
+            width: 16vh;
             display: flex;
             justify-content: flex-end;
             align-items: flex-end;
             z-index: 1;
         }
-        .card-img-container img { position: absolute; max-height: 100%; filter: drop-shadow(0 0.3cqw 0.6cqw rgba(0,0,0,0.8)); }
+        /* Sombra elegante tipo Glassmorphism */
+        .card-img-container img { 
+            position: absolute; 
+            max-height: 100%; 
+            filter: drop-shadow(0 0.5vh 1vh rgba(0,0,0,0.5)); 
+        }
 
         .btn-link {
             background-color: var(--yellow);
-            color: #000;
-            font-size: 0.7cqw;
+            color: var(--text-black);
+            font-size: 1.35vh;
             font-weight: 800;
             text-decoration: none;
-            padding: 0.5cqw 0.9cqw;
-            border-radius: 0.25cqw;
+            padding: 0.8vh 1.8vh;
+            border-radius: 0.5vh;
             width: fit-content;
             margin-top: auto;
             text-transform: uppercase;
             z-index: 10;
+            box-shadow: 0 0.4vh 0.8vh rgba(0,0,0,0.3);
         }
 
-        /* Textos de Importante dentro de las tarjetas */
-        .highlight-text { color: var(--yellow); font-weight: 700; margin-top: 0.3cqw; font-size: 0.75cqw; }
-        .sub-text { font-size: 0.65cqw; color: var(--text-gray); line-height: 1.3; }
+        .highlight-text { color: var(--yellow); font-weight: 700; margin-top: 0.8vh; font-size: 1.4vh; }
+        .sub-text { font-size: 1.25vh; color: var(--text-gray); line-height: 1.4; font-weight: 500; }
 
         /* ================= BARRA DE INVERSIÓN ================= */
         .investment {
-            background-color: var(--bg-navy);
-            border: 0.1cqw solid var(--yellow);
-            border-radius: 0.4cqw;
-            height: 8.5cqw;
+            background: linear-gradient(90deg, rgba(15,23,42,1) 0%, rgba(6,11,20,1) 100%);
+            border: 0.2vh solid var(--yellow);
+            border-radius: 0.8vh;
+            height: 14vh;
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding: 0 2.4cqw;
+            padding: 0 4vh;
+            box-shadow: 0 0.5vh 1.5vh rgba(0,0,0,0.2);
         }
 
-        .inv-price { text-align: center; border-right: 0.1cqw solid rgba(255,255,255,0.1); padding-right: 2.4cqw; }
-        .inv-price h4 { font-size: 0.85cqw; color: var(--text-gray); text-transform: uppercase; letter-spacing: 0.05cqw; margin-bottom: 0.3cqw; }
-        .inv-price .price { font-size: 2.7cqw; color: var(--yellow); font-weight: 800; line-height: 1; margin-bottom: 0.3cqw; }
-        .inv-price p { font-size: 0.7cqw; color: var(--text-white); }
+        .inv-price { text-align: center; border-right: 0.2vh solid rgba(255,255,255,0.1); padding-right: 4vh; }
+        .inv-price h4 { font-size: 1.5vh; color: var(--text-gray); text-transform: uppercase; letter-spacing: 0.1vh; margin-bottom: 0.5vh; font-weight: 600;}
+        .inv-price .price { font-size: 4.8vh; color: var(--yellow); font-weight: 800; line-height: 1; margin-bottom: 0.5vh; }
+        .inv-price p { font-size: 1.3vh; color: var(--text-white); font-weight: 500;}
 
         .inv-icon {
             position: relative;
-            height: 6cqw;
-            width: 6cqw;
+            height: 9vh;
+            width: 9vh;
             display: flex;
             justify-content: center;
             align-items: center;
         }
-        .inv-icon img { position: absolute; max-height: 100%; filter: drop-shadow(0 0.3cqw 0.6cqw rgba(0,0,0,0.5)); }
+        .inv-icon img { position: absolute; max-height: 100%; filter: drop-shadow(0 0.5vh 1vh rgba(0,0,0,0.4)); }
 
         .inv-list {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 0.9cqw 1.8cqw;
-            font-size: 0.8cqw;
+            gap: 1.5vh 3vh;
+            font-size: 1.45vh;
             color: var(--text-white);
+            font-weight: 500;
         }
-        .inv-list div { display: flex; align-items: center; gap: 0.6cqw; }
-        .inv-list svg { width: 1.2cqw; height: 1.2cqw; stroke: #22c55e; flex-shrink: 0; }
+        .inv-list div { display: flex; align-items: center; gap: 1vh; }
+        .inv-list svg { width: 2.2vh; height: 2.2vh; stroke: #10B981; flex-shrink: 0; }
 
         /* ================= BOTONES DE ACCIÓN ================= */
         .buttons {
             display: flex;
-            gap: 1.2cqw;
-            height: 3.9cqw;
+            gap: 2vh;
+            height: 7vh;
         }
         .btn {
             flex: 1;
             display: flex;
             justify-content: center;
             align-items: center;
-            gap: 0.6cqw;
-            border-radius: 0.3cqw;
-            font-size: 0.9cqw;
+            gap: 1vh;
+            border-radius: 0.6vh;
+            font-size: 1.6vh;
             font-weight: 700;
             color: #fff;
             text-decoration: none;
             text-transform: uppercase;
-            border: 0.1cqw solid;
+            border: none;
             cursor: pointer;
-            box-shadow: 0 0.3cqw 0.6cqw rgba(0,0,0,0.2);
+            box-shadow: 0 0.5vh 1vh rgba(0,0,0,0.2);
+            transition: filter 0.2s;
         }
-        .btn svg { width: 1.2cqw; height: 1.2cqw; }
-        .btn-green { background-color: var(--btn-green); border-color: #047857; }
-        .btn-red { background-color: var(--btn-red); border-color: #9F1239; }
+        .btn:hover { filter: brightness(1.1); }
+        .btn svg { width: 2.2vh; height: 2.2vh; }
+        .btn-green { background: linear-gradient(135deg, var(--btn-green), #047857); }
+        .btn-red { background: linear-gradient(135deg, var(--btn-red), #9F1239); }
 
         /* ================= PIE DE PÁGINA ================= */
         .footer {
             background-color: var(--bg-navy);
-            height: 2.1cqw;
-            border-radius: 0.3cqw;
+            height: 4vh;
+            border-radius: 0.6vh;
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding: 0 1.2cqw;
-            font-size: 0.65cqw;
+            padding: 0 2vh;
+            font-size: 1.25vh;
             color: var(--text-gray);
+            font-weight: 500;
         }
-        .footer div { display: flex; align-items: center; gap: 0.5cqw; }
-        .footer svg { stroke: var(--yellow); width: 0.9cqw; height: 0.9cqw; flex-shrink: 0; }
-        .footer strong { color: var(--yellow); font-weight: 600; }
+        .footer div { display: flex; align-items: center; gap: 0.8vh; }
+        .footer svg { stroke: var(--yellow); width: 1.8vh; height: 1.8vh; flex-shrink: 0; }
+        .footer strong { color: var(--yellow); font-weight: 700; }
 
         /* ================= EXPORTACIÓN PDF ================= */
         @media print {
@@ -304,14 +316,14 @@
                         <li>Cancelaremos membresía antes del mes.</li>
                     </ul>
                     <div class="highlight-text">¡Importante!</div>
-                    <div class="sub-text" style="margin-bottom: 0.3cqw;">Este es el primer proceso. Luego realizaremos un segundo proceso:</div>
+                    <div class="sub-text" style="margin-bottom: 0.5vh;">Este es el primer proceso. Luego realizaremos un segundo proceso:</div>
                     <ul class="sub-text">
                         <li>Crear nueva cuenta con diferente email y con su SSN.</li>
                         <li>Esto sincronizará el historial. Recomendamos plan de 3 meses.</li>
                     </ul>
                     <div class="card-img-container">
-                        <img src="https://img.icons8.com/3d-fluency/250/imac.png" alt="Monitor" style="width: 80%; right: 0; bottom: 0;">
-                        <img src="https://img.icons8.com/3d-fluency/250/combo-chart.png" alt="Gráfico" style="width: 50%; left: 0; bottom: 0; z-index: 2;">
+                        <img src="https://img.icons8.com/fluency/144/mac-client.png" alt="Monitor" style="width: 80%; right: 0; bottom: 0;">
+                        <img src="https://img.icons8.com/fluency/144/bar-chart.png" alt="Gráfico" style="width: 45%; left: 0; bottom: 0; z-index: 2;">
                     </div>
                     <a href="https://app.myfreescorenow.com/enroll/B01B7384" target="_blank" class="btn-link">Link de Registro</a>
                 </div>
@@ -325,10 +337,10 @@
                         <li><strong>Contraseña:</strong> crear un password nuevo para esta app.</li>
                         <li><strong>Identificación:</strong> oficial vigente (ID).</li>
                     </ul>
-                    <div class="sub-text" style="margin-top: 0.6cqw; width: 70%;">Esta información me permitirá acceder a su reporte para realizar un análisis completo de su historial de crédito y validar su información personal.</div>
+                    <div class="sub-text" style="margin-top: 1vh; width: 70%;">Esta información me permitirá acceder a su reporte para realizar un análisis completo de su historial de crédito y validar su información personal.</div>
                     <div class="card-img-container">
-                        <img src="https://img.icons8.com/3d-fluency/250/shield.png" alt="Escudo" style="width: 75%; right: 0; bottom: 0;">
-                        <img src="https://img.icons8.com/3d-fluency/250/lock.png" alt="Candado" style="width: 55%; right: 0.6cqw; bottom: 0.6cqw; z-index: 2;">
+                        <img src="https://img.icons8.com/fluency/144/security-checked.png" alt="Escudo" style="width: 75%; right: 0; bottom: 0;">
+                        <img src="https://img.icons8.com/fluency/144/lock.png" alt="Candado" style="width: 50%; right: 1vh; bottom: 1vh; z-index: 2;">
                     </div>
                 </div>
 
@@ -343,10 +355,10 @@
                         <li>Proporcionarle instrucciones, guiones y acompañamiento en sus gestiones.</li>
                     </ul>
                     <div class="card-img-container">
-                        <img src="https://img.icons8.com/3d-fluency/250/bullseye.png" alt="Diana" style="width: 75%; right: 0; bottom: 0;">
-                        <!-- Etiquetas SSN y ITIN 3D -->
-                        <div style="position: absolute; background: #3b82f6; padding: 0.2cqw 0.5cqw; border-radius: 0.2cqw; font-weight: 800; font-size: 0.65cqw; color: #fff; box-shadow: 0 0.3cqw 0.6cqw rgba(0,0,0,0.5); bottom: 1.8cqw; left: 0.6cqw; transform: rotate(-10deg); z-index: 4;">ITIN</div>
-                        <div style="position: absolute; background: #22c55e; padding: 0.2cqw 0.5cqw; border-radius: 0.2cqw; font-weight: 800; font-size: 0.65cqw; color: #fff; box-shadow: 0 0.3cqw 0.6cqw rgba(0,0,0,0.5); bottom: 3cqw; right: 0.6cqw; transform: rotate(10deg); z-index: 4;">SSN</div>
+                        <img src="https://img.icons8.com/fluency/144/bullseye.png" alt="Diana" style="width: 75%; right: 0; bottom: 0;">
+                        <!-- Etiquetas SSN y ITIN Planas y Modernas -->
+                        <div style="position: absolute; background: #2563EB; padding: 0.4vh 1vh; border-radius: 0.4vh; font-weight: 800; font-size: 1.2vh; color: #fff; box-shadow: 0 0.4vh 0.8vh rgba(0,0,0,0.3); bottom: 2.5vh; left: 1.5vh; transform: rotate(-8deg); z-index: 4;">ITIN</div>
+                        <div style="position: absolute; background: #059669; padding: 0.4vh 1vh; border-radius: 0.4vh; font-weight: 800; font-size: 1.2vh; color: #fff; box-shadow: 0 0.4vh 0.8vh rgba(0,0,0,0.3); bottom: 4vh; right: 1vh; transform: rotate(8deg); z-index: 4;">SSN</div>
                     </div>
                 </div>
 
@@ -360,10 +372,10 @@
                         <li>Su tarjeta de Seguro Social (SSN).</li>
                         <li>Dos comprobantes recientes de domicilio (Utility Bill, estado bancario, agua, luz).</li>
                     </ul>
-                    <div class="sub-text" style="margin-top: 0.6cqw; width: 70%;">Los burós necesitan esto para validar sus datos y realizar la migración.</div>
+                    <div class="sub-text" style="margin-top: 1vh; width: 70%;">Los burós necesitan esto para validar sus datos y realizar la migración.</div>
                     <div class="card-img-container">
-                        <img src="https://img.icons8.com/3d-fluency/250/opened-folder.png" alt="Carpeta" style="width: 80%; right: 0; bottom: 0;">
-                        <img src="https://img.icons8.com/3d-fluency/250/certificate.png" alt="Certificado" style="width: 50%; left: 0; bottom: 0; z-index: 2;">
+                        <img src="https://img.icons8.com/fluency/144/opened-folder.png" alt="Carpeta" style="width: 80%; right: 0; bottom: 0;">
+                        <img src="https://img.icons8.com/fluency/144/certificate.png" alt="Certificado" style="width: 45%; left: 0; bottom: 0; z-index: 2;">
                     </div>
                 </div>
 
@@ -378,8 +390,8 @@
                 </div>
                 
                 <div class="inv-icon">
-                    <img src="https://img.icons8.com/3d-fluency/250/safe.png" alt="Caja Fuerte" style="width: 90%; right: 0;">
-                    <img src="https://img.icons8.com/3d-fluency/250/ok.png" alt="Check" style="width: 50%; right: -0.6cqw; bottom: -0.6cqw; z-index: 2;">
+                    <img src="https://img.icons8.com/fluency/144/safe.png" alt="Caja Fuerte" style="width: 90%; right: 0;">
+                    <img src="https://img.icons8.com/fluency/144/ok.png" alt="Check" style="width: 45%; right: -1vh; bottom: -1vh; z-index: 2;">
                 </div>
 
                 <div class="inv-list">
@@ -418,7 +430,7 @@
             <div class="footer">
                 <div>
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
-                    <span><strong>Tiempos:</strong> Normalmente toma entre 30 y 90 días. Trabajaremos para asociar su historial evitando pérdidas de información.</span>
+                    <span><strong>Tiempos:</strong> Toma entre 30 y 90 días. Trabajaremos para asociar su historial evitando pérdidas de información.</span>
                 </div>
                 <div>
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
