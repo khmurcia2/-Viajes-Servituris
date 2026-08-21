@@ -7,18 +7,16 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         /* =========================================
-           VARIABLES DE COLOR (CONTRASTE MEJORADO)
+           VARIABLES DE COLOR (Clon de la imagen)
            ========================================= */
         :root {
-            --bg-exterior: #e2e8f0; /* Gris exterior más limpio */
-            --bg-navy: #060b14;     /* Azul noche para el fondo principal */
-            --bg-card: #0f172a;     /* Azul pizarra para tarjetas (mejor contraste) */
-            --yellow: #FBBF24;      /* Amarillo más brillante y legible */
-            --text-white: #ffffff;
-            --text-gray: #cbd5e1;   /* Gris claro muy legible */
-            --text-black: #0f172a;
-            --btn-red: #e11d48;     /* Rojo más vivo */
-            --btn-green: #059669;   /* Verde esmeralda */
+            --bg-navy: #0B1120;     
+            --yellow: #F5B82A;      
+            --text-white: #FFFFFF;
+            --text-gray: #9ca3af;
+            --text-black: #111827;
+            --btn-red: #be123c;
+            --btn-green: #059669;
         }
 
         * {
@@ -29,39 +27,50 @@
         }
 
         /* =========================================
-           ENTORNO PÓSTER (FIJO 16:9)
+           CAJA MÁGICA 16:9 (ESCALADO PERFECTO)
            ========================================= */
         body {
-            background-color: var(--bg-exterior);
-            width: 100vw;
+            background-color: #222222; /* Fondo oscuro exterior */
+            margin: 0;
             height: 100vh;
+            width: 100vw;
             display: flex;
             align-items: center;
             justify-content: center;
-            overflow: hidden; 
+            overflow: hidden; /* CERO SCROLL */
         }
 
-        .poster {
+        .aspect-ratio-box {
+            position: relative;
+            /* Fuerza una proporción exacta de 16:9 en cualquier pantalla */
             width: 100vw;
-            max-width: 145vh; 
-            height: 100vh;
-            background-color: #ffffff; 
+            height: 56.25vw;
+            max-width: 177.78vh;
+            max-height: 100vh;
+            box-shadow: 0 0 3cqw rgba(0,0,0,0.5);
+        }
+
+        /* El póster principal se adapta al 100% de la caja mágica */
+        .poster {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            container-type: inline-size;
+            background-color: #ffffff; /* Fondo blanco del documento */
             display: flex;
             flex-direction: column;
-            gap: 1.2vh; /* Reducido para dar más espacio al texto */
-            padding: 1.5vh;
-            box-shadow: 0 0 2.5vh rgba(0,0,0,0.2);
+            gap: 0.9cqw;
+            padding: 1.2cqw;
         }
 
         /* ================= CABECERA ================= */
         header {
             background-color: var(--bg-navy);
-            height: 6.5vh;
-            border-radius: 0.6vh;
+            height: 3.8cqw;
+            border-radius: 0.3cqw;
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding: 0 2vh;
+            padding: 0 1.2cqw;
         }
 
         .logo { height: 60%; }
@@ -69,43 +78,43 @@
         .header-badge {
             display: flex;
             height: 60%;
-            border-radius: 0.4vh;
+            border-radius: 0.2cqw;
             overflow: hidden;
-            font-size: 1.7vh; /* Letra más grande */
+            font-size: 0.95cqw;
             font-weight: 800;
         }
         .header-badge .part1 {
             background-color: #ffffff;
-            color: var(--text-black);
-            padding: 0 1.5vh;
+            color: #000000;
+            padding: 0 0.9cqw;
             display: flex;
             align-items: center;
         }
         .header-badge .part2 {
             background-color: var(--yellow);
-            color: var(--text-black);
-            padding: 0 1.5vh;
+            color: #000000;
+            padding: 0 0.9cqw;
             display: flex;
             align-items: center;
         }
 
         .contact-info {
             display: flex;
-            gap: 2vh;
-            font-size: 1.35vh; /* Letra más grande */
-            font-weight: 600;
+            gap: 1.2cqw;
+            font-size: 0.75cqw;
+            font-weight: 500;
             color: var(--text-white);
         }
-        .contact-info div { display: flex; align-items: center; gap: 0.6vh; }
-        .contact-info svg { stroke: var(--yellow); width: 1.8vh; height: 1.8vh; }
+        .contact-info div { display: flex; align-items: center; gap: 0.3cqw; }
+        .contact-info svg { stroke: var(--yellow); width: 1cqw; height: 1cqw; }
 
         /* ================= TEXTO INTRODUCTORIO ================= */
         .intro {
-            font-size: 1.95vh; /* Letra más grande */
+            font-size: 1.05cqw;
             color: var(--text-black);
             font-weight: 500;
-            line-height: 1.5;
-            padding: 0 1vh;
+            line-height: 1.4;
+            padding: 0 0.3cqw;
         }
 
         /* ================= CUADRÍCULA 4 PASOS ================= */
@@ -113,323 +122,311 @@
             display: grid;
             grid-template-columns: 1fr 1fr;
             grid-template-rows: 1fr 1fr;
-            gap: 1.5vh;
+            gap: 0.9cqw;
             flex-grow: 1;
             min-height: 0;
         }
 
         .card {
-            background-color: var(--bg-card);
-            border: 0.2vh solid rgba(251, 191, 36, 0.3);
-            border-top: 0.4vh solid var(--yellow);
-            border-radius: 0.8vh;
-            padding: 2vh;
+            background-color: var(--bg-navy);
+            border: 0.1cqw solid var(--yellow);
+            border-radius: 0.4cqw;
+            padding: 1.2cqw;
             display: flex;
             flex-direction: column;
             position: relative;
             overflow: hidden;
-            box-shadow: 0 0.5vh 1vh rgba(0,0,0,0.15);
         }
 
-        /* Textos de las tarjetas más grandes y contrastados */
-        .card h3 { color: var(--yellow); font-size: 2.1vh; font-weight: 800; margin-bottom: 0.8vh; z-index: 2; }
-        .card p { color: var(--text-gray); font-size: 1.45vh; margin-bottom: 1vh; z-index: 2; line-height: 1.5; font-weight: 500; }
-        .card ul { color: var(--text-white); font-size: 1.45vh; padding-left: 2vh; line-height: 1.5; z-index: 2; font-weight: 500; }
-        .card li { margin-bottom: 0.5vh; }
+        .card h3 { color: var(--yellow); font-size: 1.1cqw; font-weight: 700; margin-bottom: 0.3cqw; z-index: 2; }
+        .card p { color: var(--text-gray); font-size: 0.75cqw; margin-bottom: 0.6cqw; z-index: 2; line-height: 1.4; }
+        .card ul { color: var(--text-white); font-size: 0.75cqw; padding-left: 1.2cqw; line-height: 1.4; z-index: 2; }
+        .card li { margin-bottom: 0.25cqw; }
 
         /* Contenedores de las imágenes 3D */
         .card-img-container {
             position: absolute;
-            bottom: 1.5vh;
-            right: 1.5vh;
-            height: 13vh;
-            width: 18vh;
+            bottom: 0.9cqw;
+            right: 0.9cqw;
+            height: 7.2cqw;
+            width: 10.8cqw;
             display: flex;
             justify-content: flex-end;
             align-items: flex-end;
             z-index: 1;
         }
-        /* Efecto de sombra mejorado para armonía */
-        .card-img-container img { 
-            position: absolute; 
-            max-height: 100%; 
-            filter: drop-shadow(0 0.8vh 1vh rgba(0,0,0,0.6)) contrast(1.1); 
-        }
+        .card-img-container img { position: absolute; max-height: 100%; filter: drop-shadow(0 0.3cqw 0.6cqw rgba(0,0,0,0.8)); }
 
         .btn-link {
             background-color: var(--yellow);
-            color: var(--text-black);
-            font-size: 1.35vh;
+            color: #000;
+            font-size: 0.7cqw;
             font-weight: 800;
             text-decoration: none;
-            padding: 0.8vh 1.8vh;
-            border-radius: 0.5vh;
+            padding: 0.5cqw 0.9cqw;
+            border-radius: 0.25cqw;
             width: fit-content;
             margin-top: auto;
             text-transform: uppercase;
             z-index: 10;
-            box-shadow: 0 0.4vh 0.8vh rgba(0,0,0,0.3);
         }
 
         /* Textos de Importante dentro de las tarjetas */
-        .highlight-text { color: var(--yellow); font-weight: 700; margin-top: 0.8vh; font-size: 1.4vh; }
-        .sub-text { font-size: 1.25vh; color: var(--text-gray); line-height: 1.4; font-weight: 500; }
+        .highlight-text { color: var(--yellow); font-weight: 700; margin-top: 0.3cqw; font-size: 0.75cqw; }
+        .sub-text { font-size: 0.65cqw; color: var(--text-gray); line-height: 1.3; }
 
         /* ================= BARRA DE INVERSIÓN ================= */
         .investment {
-            background: linear-gradient(90deg, rgba(15,23,42,1) 0%, rgba(6,11,20,1) 100%);
-            border: 0.2vh solid var(--yellow);
-            border-radius: 0.8vh;
-            height: 14vh;
+            background-color: var(--bg-navy);
+            border: 0.1cqw solid var(--yellow);
+            border-radius: 0.4cqw;
+            height: 8.5cqw;
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding: 0 4vh;
-            box-shadow: 0 0.5vh 1.5vh rgba(0,0,0,0.2);
+            padding: 0 2.4cqw;
         }
 
-        .inv-price { text-align: center; border-right: 0.2vh solid rgba(255,255,255,0.1); padding-right: 4vh; }
-        .inv-price h4 { font-size: 1.5vh; color: var(--text-gray); text-transform: uppercase; letter-spacing: 0.1vh; margin-bottom: 0.5vh; font-weight: 600;}
-        .inv-price .price { font-size: 4.8vh; color: var(--yellow); font-weight: 800; line-height: 1; margin-bottom: 0.5vh; }
-        .inv-price p { font-size: 1.3vh; color: var(--text-white); font-weight: 500;}
+        .inv-price { text-align: center; border-right: 0.1cqw solid rgba(255,255,255,0.1); padding-right: 2.4cqw; }
+        .inv-price h4 { font-size: 0.85cqw; color: var(--text-gray); text-transform: uppercase; letter-spacing: 0.05cqw; margin-bottom: 0.3cqw; }
+        .inv-price .price { font-size: 2.7cqw; color: var(--yellow); font-weight: 800; line-height: 1; margin-bottom: 0.3cqw; }
+        .inv-price p { font-size: 0.7cqw; color: var(--text-white); }
 
         .inv-icon {
             position: relative;
-            height: 10vh;
-            width: 10vh;
+            height: 6cqw;
+            width: 6cqw;
             display: flex;
             justify-content: center;
             align-items: center;
         }
-        .inv-icon img { position: absolute; max-height: 100%; filter: drop-shadow(0 0.5vh 1vh rgba(0,0,0,0.5)); }
+        .inv-icon img { position: absolute; max-height: 100%; filter: drop-shadow(0 0.3cqw 0.6cqw rgba(0,0,0,0.5)); }
 
         .inv-list {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 1.5vh 3vh;
-            font-size: 1.45vh;
+            gap: 0.9cqw 1.8cqw;
+            font-size: 0.8cqw;
             color: var(--text-white);
-            font-weight: 500;
         }
-        .inv-list div { display: flex; align-items: center; gap: 1vh; }
-        .inv-list svg { width: 2.2vh; height: 2.2vh; stroke: #10B981; flex-shrink: 0; }
+        .inv-list div { display: flex; align-items: center; gap: 0.6cqw; }
+        .inv-list svg { width: 1.2cqw; height: 1.2cqw; stroke: #22c55e; flex-shrink: 0; }
 
         /* ================= BOTONES DE ACCIÓN ================= */
         .buttons {
             display: flex;
-            gap: 2vh;
-            height: 7vh;
+            gap: 1.2cqw;
+            height: 3.9cqw;
         }
         .btn {
             flex: 1;
             display: flex;
             justify-content: center;
             align-items: center;
-            gap: 1vh;
-            border-radius: 0.6vh;
-            font-size: 1.6vh;
+            gap: 0.6cqw;
+            border-radius: 0.3cqw;
+            font-size: 0.9cqw;
             font-weight: 700;
             color: #fff;
             text-decoration: none;
             text-transform: uppercase;
-            border: none;
+            border: 0.1cqw solid;
             cursor: pointer;
-            box-shadow: 0 0.5vh 1vh rgba(0,0,0,0.2);
-            transition: filter 0.2s;
+            box-shadow: 0 0.3cqw 0.6cqw rgba(0,0,0,0.2);
         }
-        .btn:hover { filter: brightness(1.1); }
-        .btn svg { width: 2.2vh; height: 2.2vh; }
-        .btn-green { background: linear-gradient(135deg, var(--btn-green), #047857); }
-        .btn-red { background: linear-gradient(135deg, var(--btn-red), #9F1239); }
+        .btn svg { width: 1.2cqw; height: 1.2cqw; }
+        .btn-green { background-color: var(--btn-green); border-color: #047857; }
+        .btn-red { background-color: var(--btn-red); border-color: #9F1239; }
 
         /* ================= PIE DE PÁGINA ================= */
         .footer {
             background-color: var(--bg-navy);
-            height: 4vh;
-            border-radius: 0.6vh;
+            height: 2.1cqw;
+            border-radius: 0.3cqw;
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding: 0 2vh;
-            font-size: 1.25vh;
+            padding: 0 1.2cqw;
+            font-size: 0.65cqw;
             color: var(--text-gray);
-            font-weight: 500;
         }
-        .footer div { display: flex; align-items: center; gap: 0.8vh; }
-        .footer svg { stroke: var(--yellow); width: 1.8vh; height: 1.8vh; flex-shrink: 0; }
-        .footer strong { color: var(--yellow); font-weight: 700; }
+        .footer div { display: flex; align-items: center; gap: 0.5cqw; }
+        .footer svg { stroke: var(--yellow); width: 0.9cqw; height: 0.9cqw; flex-shrink: 0; }
+        .footer strong { color: var(--yellow); font-weight: 600; }
 
         /* ================= EXPORTACIÓN PDF ================= */
         @media print {
             @page { size: landscape; margin: 0; }
-            body { background: #fff !important; -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
-            .poster { max-width: none; max-height: none; width: 100vw; height: 100vh; box-shadow: none; border: none; padding: 2vh; }
+            body { background: #fff !important; -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; display: block;}
+            .aspect-ratio-box { box-shadow: none; max-width: none; max-height: none; width: 100vw; height: 100vh; }
             .buttons { display: none !important; }
         }
     </style>
 </head>
 <body>
 
-    <div class="poster">
-        
-        <!-- CABECERA -->
-        <header>
-            <img src="https://khmurcia2.github.io/migracion/INVIERTE%20N%20TI%20NOW%20-%20LOGO%20FINAL%20NUEVA%20VERSION%20BLANCO%20COLOR.png" alt="Logo" class="logo">
-            <div class="header-badge">
-                <div class="part1">PROCESO DE</div>
-                <div class="part2">Migración ITIN a SSN</div>
-            </div>
-            <div class="contact-info">
-                <div>
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
-                    678-356-4855
-                </div>
-                <div>
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
-                    @inviertentinow_eydie
-                </div>
-            </div>
-        </header>
-
-        <!-- INTRODUCCIÓN -->
-        <div class="intro">
-            Si anteriormente utilizó un ITIN para obtener crédito y ahora ya cuenta con un Seguro Social (SSN), es importante realizar correctamente el proceso de migración para que su historial de crédito quede asociado a su nuevo número de Seguro Social, a continuación los procesos que involucran este ajuste.
-        </div>
-
-        <!-- CUADRÍCULA 4 PASOS -->
-        <div class="grid">
+    <div class="aspect-ratio-box">
+        <div class="poster">
             
-            <!-- Paso 1 -->
-            <div class="card">
-                <h3>Paso 1. Obtener el reporte de crédito</h3>
-                <p>Revisaremos el historial asociado a su ITIN.</p>
-                <ul>
-                    <li>Registro con enlace enviado ($24.97, vigencia 1 mes).</li>
-                    <li>Cancelaremos membresía antes del mes.</li>
-                </ul>
-                <div class="highlight-text">¡Importante!</div>
-                <div class="sub-text" style="margin-bottom: 0.5vh;">Este es el primer proceso. Luego realizaremos un segundo proceso:</div>
-                <ul class="sub-text">
-                    <li>Crear nueva cuenta con diferente email y con su SSN.</li>
-                    <li>Sincronizará el historial. Recomendamos plan de 3 meses.</li>
-                </ul>
-                <div class="card-img-container">
-                    <img src="https://img.icons8.com/3d-fluency/150/imac.png" loading="lazy" alt="Monitor" style="width: 80%; right: 0; bottom: 0;">
-                    <img src="https://img.icons8.com/3d-fluency/150/combo-chart.png" loading="lazy" alt="Gráfico" style="width: 50%; left: 0; bottom: 0; z-index: 2;">
+            <!-- CABECERA -->
+            <header>
+                <img src="https://khmurcia2.github.io/migracion/INVIERTE%20N%20TI%20NOW%20-%20LOGO%20FINAL%20NUEVA%20VERSION%20BLANCO%20COLOR.png" alt="Logo" class="logo">
+                <div class="header-badge">
+                    <div class="part1">PROCESO DE</div>
+                    <div class="part2">Migración ITIN a SSN</div>
                 </div>
-                <a href="https://app.myfreescorenow.com/enroll/B01B7384" target="_blank" class="btn-link">Link de Registro</a>
+                <div class="contact-info">
+                    <div>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                        678-356-4855
+                    </div>
+                    <div>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                        @inviertentinow_eydie
+                    </div>
+                </div>
+            </header>
+
+            <!-- INTRODUCCIÓN -->
+            <div class="intro">
+                Si anteriormente utilizó un ITIN para obtener crédito y ahora ya cuenta con un Seguro Social (SSN), es importante realizar correctamente el proceso de migración para que su historial de crédito quede asociado a su nuevo número de Seguro Social, a continuación los procesos que involucran este ajuste.
             </div>
 
-            <!-- Paso 2 -->
-            <div class="card">
-                <h3>Paso 2. Acceso al reporte</h3>
-                <p>Una vez completado el registro, deberá enviarme:</p>
-                <ul>
-                    <li><strong>Usuario:</strong> siempre será su email.</li>
-                    <li><strong>Contraseña:</strong> crear un password nuevo para la app.</li>
-                    <li><strong>Identificación:</strong> oficial vigente (ID).</li>
-                </ul>
-                <div class="sub-text" style="margin-top: 1vh; width: 70%;">Esta información me permitirá acceder a su reporte para realizar un análisis completo de su historial de crédito y validar su información personal.</div>
-                <div class="card-img-container">
-                    <img src="https://img.icons8.com/3d-fluency/150/shield.png" loading="lazy" alt="Escudo" style="width: 75%; right: 0; bottom: 0;">
-                    <img src="https://img.icons8.com/3d-fluency/150/lock.png" loading="lazy" alt="Candado" style="width: 55%; right: 1vh; bottom: 1vh; z-index: 2;">
+            <!-- CUADRÍCULA 4 PASOS -->
+            <div class="grid">
+                
+                <!-- Paso 1 -->
+                <div class="card">
+                    <h3>Paso 1. Obtener el reporte de crédito</h3>
+                    <p>Revisaremos el historial asociado a su ITIN.</p>
+                    <ul>
+                        <li>Registro con enlace enviado ($24.97, vigencia 1 mes).</li>
+                        <li>Cancelaremos membresía antes del mes.</li>
+                    </ul>
+                    <div class="highlight-text">¡Importante!</div>
+                    <div class="sub-text" style="margin-bottom: 0.3cqw;">Este es el primer proceso. Luego realizaremos un segundo proceso:</div>
+                    <ul class="sub-text">
+                        <li>Crear nueva cuenta con diferente email y con su SSN.</li>
+                        <li>Esto sincronizará el historial. Recomendamos plan de 3 meses.</li>
+                    </ul>
+                    <div class="card-img-container">
+                        <img src="https://img.icons8.com/3d-fluency/250/imac.png" alt="Monitor" style="width: 80%; right: 0; bottom: 0;">
+                        <img src="https://img.icons8.com/3d-fluency/250/combo-chart.png" alt="Gráfico" style="width: 50%; left: 0; bottom: 0; z-index: 2;">
+                    </div>
+                    <a href="https://app.myfreescorenow.com/enroll/B01B7384" target="_blank" class="btn-link">Link de Registro</a>
+                </div>
+
+                <!-- Paso 2 -->
+                <div class="card">
+                    <h3>Paso 2. Acceso al reporte</h3>
+                    <p>Una vez completado el registro, deberá enviarme:</p>
+                    <ul>
+                        <li><strong>Usuario:</strong> siempre será su email.</li>
+                        <li><strong>Contraseña:</strong> crear un password nuevo para esta app.</li>
+                        <li><strong>Identificación:</strong> oficial vigente (ID).</li>
+                    </ul>
+                    <div class="sub-text" style="margin-top: 0.6cqw; width: 70%;">Esta información me permitirá acceder a su reporte para realizar un análisis completo de su historial de crédito y validar su información personal.</div>
+                    <div class="card-img-container">
+                        <img src="https://img.icons8.com/3d-fluency/250/shield.png" alt="Escudo" style="width: 75%; right: 0; bottom: 0;">
+                        <img src="https://img.icons8.com/3d-fluency/250/lock.png" alt="Candado" style="width: 55%; right: 0.6cqw; bottom: 0.6cqw; z-index: 2;">
+                    </div>
+                </div>
+
+                <!-- Paso 3 -->
+                <div class="card">
+                    <h3>Paso 3. Análisis y estrategia</h3>
+                    <p>Después de revisar su reporte, realizaré un análisis para:</p>
+                    <ul style="width: 75%;">
+                        <li>Identificar cuentas reportadas bajo ITIN.</li>
+                        <li>Determinar cuáles migrar a su Seguro Social.</li>
+                        <li>Elaborar estrategia por acreedor y enviar cartas a burós.</li>
+                        <li>Proporcionarle instrucciones, guiones y acompañamiento en sus gestiones.</li>
+                    </ul>
+                    <div class="card-img-container">
+                        <img src="https://img.icons8.com/3d-fluency/250/bullseye.png" alt="Diana" style="width: 75%; right: 0; bottom: 0;">
+                        <!-- Etiquetas SSN y ITIN 3D -->
+                        <div style="position: absolute; background: #3b82f6; padding: 0.2cqw 0.5cqw; border-radius: 0.2cqw; font-weight: 800; font-size: 0.65cqw; color: #fff; box-shadow: 0 0.3cqw 0.6cqw rgba(0,0,0,0.5); bottom: 1.8cqw; left: 0.6cqw; transform: rotate(-10deg); z-index: 4;">ITIN</div>
+                        <div style="position: absolute; background: #22c55e; padding: 0.2cqw 0.5cqw; border-radius: 0.2cqw; font-weight: 800; font-size: 0.65cqw; color: #fff; box-shadow: 0 0.3cqw 0.6cqw rgba(0,0,0,0.5); bottom: 3cqw; right: 0.6cqw; transform: rotate(10deg); z-index: 4;">SSN</div>
+                    </div>
+                </div>
+
+                <!-- Paso 4 -->
+                <div class="card">
+                    <h3>Paso 4. Documentación requerida</h3>
+                    <p>Para iniciar el proceso necesitaremos foto copia de:</p>
+                    <ul style="width: 70%;">
+                        <li>Identificación (ID) oficial vigente.</li>
+                        <li>Su carta o tarjeta de ITIN.</li>
+                        <li>Su tarjeta de Seguro Social (SSN).</li>
+                        <li>Dos comprobantes recientes de domicilio (Utility Bill, estado bancario, agua, luz).</li>
+                    </ul>
+                    <div class="sub-text" style="margin-top: 0.6cqw; width: 70%;">Los burós necesitan esto para validar sus datos y realizar la migración.</div>
+                    <div class="card-img-container">
+                        <img src="https://img.icons8.com/3d-fluency/250/opened-folder.png" alt="Carpeta" style="width: 80%; right: 0; bottom: 0;">
+                        <img src="https://img.icons8.com/3d-fluency/250/certificate.png" alt="Certificado" style="width: 50%; left: 0; bottom: 0; z-index: 2;">
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- BARRA DE INVERSIÓN -->
+            <div class="investment">
+                <div class="inv-price">
+                    <h4>Inversión del Servicio</h4>
+                    <div class="price">$600</div>
+                    <p>(Pago único)</p>
+                </div>
+                
+                <div class="inv-icon">
+                    <img src="https://img.icons8.com/3d-fluency/250/safe.png" alt="Caja Fuerte" style="width: 90%; right: 0;">
+                    <img src="https://img.icons8.com/3d-fluency/250/ok.png" alt="Check" style="width: 50%; right: -0.6cqw; bottom: -0.6cqw; z-index: 2;">
+                </div>
+
+                <div class="inv-list">
+                    <div>
+                        <svg viewBox="0 0 24 24" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                        Análisis completo del historial.
+                    </div>
+                    <div>
+                        <svg viewBox="0 0 24 24" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                        Estrategia y envío de cartas.
+                    </div>
+                    <div>
+                        <svg viewBox="0 0 24 24" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                        Gestión y procesos legales.
+                    </div>
+                    <div>
+                        <svg viewBox="0 0 24 24" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                        Asesoría y acompañamiento por 3 meses.
+                    </div>
                 </div>
             </div>
 
-            <!-- Paso 3 -->
-            <div class="card">
-                <h3>Paso 3. Análisis y estrategia</h3>
-                <p>Después de revisar su reporte, realizaré un análisis para:</p>
-                <ul style="width: 75%;">
-                    <li>Identificar cuentas reportadas bajo ITIN.</li>
-                    <li>Determinar cuáles migrar a su Seguro Social.</li>
-                    <li>Elaborar estrategia por acreedor y enviar cartas a burós.</li>
-                    <li>Proporcionarle instrucciones, guiones y acompañamiento.</li>
-                </ul>
-                <div class="card-img-container">
-                    <img src="https://img.icons8.com/3d-fluency/150/bullseye.png" loading="lazy" alt="Diana" style="width: 75%; right: 0; bottom: 0;">
-                    <!-- Etiquetas SSN y ITIN 3D -->
-                    <div style="position: absolute; background: #3b82f6; padding: 0.4vh 1vh; border-radius: 0.4vh; font-weight: 800; font-size: 1.2vh; color: #fff; box-shadow: 0 0.5vh 1vh rgba(0,0,0,0.5); bottom: 3vh; left: 1vh; transform: rotate(-10deg); z-index: 4;">ITIN</div>
-                    <div style="position: absolute; background: #10B981; padding: 0.4vh 1vh; border-radius: 0.4vh; font-weight: 800; font-size: 1.2vh; color: #fff; box-shadow: 0 0.5vh 1vh rgba(0,0,0,0.5); bottom: 5vh; right: 1vh; transform: rotate(10deg); z-index: 4;">SSN</div>
-                </div>
+            <!-- BOTONES -->
+            <div class="buttons">
+                <a href="https://wa.me/16783564855?text=Hola,%20tengo%20algunas%20preguntas%20sobre%20el%20programa%20de%20migración" target="_blank" class="btn btn-green">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
+                    ¿Preguntas? Contáctanos
+                </a>
+                <button onclick="window.print()" class="btn btn-red">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line></svg>
+                    Descargar estos pasos
+                </button>
             </div>
 
-            <!-- Paso 4 -->
-            <div class="card">
-                <h3>Paso 4. Documentación requerida</h3>
-                <p>Para iniciar el proceso necesitaremos foto copia de:</p>
-                <ul style="width: 70%;">
-                    <li>Identificación (ID) oficial vigente.</li>
-                    <li>Su carta o tarjeta de ITIN.</li>
-                    <li>Su tarjeta de Seguro Social (SSN).</li>
-                    <li>Dos comprobantes recientes de domicilio.</li>
-                </ul>
-                <div class="sub-text" style="margin-top: 1vh; width: 70%;">Los burós necesitan esto para validar sus datos contra el sistema y realizar la migración al Seguro Social (SSN).</div>
-                <div class="card-img-container">
-                    <img src="https://img.icons8.com/3d-fluency/150/opened-folder.png" loading="lazy" alt="Carpeta" style="width: 80%; right: 0; bottom: 0;">
-                    <img src="https://img.icons8.com/3d-fluency/150/certificate.png" loading="lazy" alt="Certificado" style="width: 50%; left: 0; bottom: 0; z-index: 2;">
+            <!-- PIE DE PÁGINA -->
+            <div class="footer">
+                <div>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                    <span><strong>Tiempos:</strong> Normalmente toma entre 30 y 90 días. Trabajaremos para asociar su historial evitando pérdidas de información.</span>
+                </div>
+                <div>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                    <span><strong>Aviso:</strong> El proceso asegura que su historial se asocie a su SSN, pero no garantiza un aumento específico del Credit Score.</span>
                 </div>
             </div>
 
         </div>
-
-        <!-- BARRA DE INVERSIÓN -->
-        <div class="investment">
-            <div class="inv-price">
-                <h4>Inversión del Servicio</h4>
-                <div class="price">$600</div>
-                <p>(Pago único)</p>
-            </div>
-            
-            <div class="inv-icon">
-                <img src="https://img.icons8.com/3d-fluency/150/safe.png" loading="lazy" alt="Caja Fuerte" style="width: 90%; right: 0;">
-                <img src="https://img.icons8.com/3d-fluency/150/ok.png" loading="lazy" alt="Check" style="width: 50%; right: -1vh; bottom: -1vh; z-index: 2;">
-            </div>
-
-            <div class="inv-list">
-                <div>
-                    <svg viewBox="0 0 24 24" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                    Análisis completo del historial.
-                </div>
-                <div>
-                    <svg viewBox="0 0 24 24" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                    Estrategia y envío de cartas.
-                </div>
-                <div>
-                    <svg viewBox="0 0 24 24" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                    Gestión y procesos legales.
-                </div>
-                <div>
-                    <svg viewBox="0 0 24 24" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                    Asesoría y acompañamiento por 3 meses.
-                </div>
-            </div>
-        </div>
-
-        <!-- BOTONES -->
-        <div class="buttons">
-            <a href="https://wa.me/16783564855?text=Hola,%20tengo%20algunas%20preguntas%20sobre%20el%20programa%20de%20migración" target="_blank" class="btn btn-green">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
-                ¿Preguntas? Contáctanos
-            </a>
-            <button onclick="window.print()" class="btn btn-red">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line></svg>
-                Descargar estos pasos
-            </button>
-        </div>
-
-        <!-- PIE DE PÁGINA -->
-        <div class="footer">
-            <div>
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
-                <span><strong>Tiempos:</strong> Toma entre 30 y 90 días. Trabajaremos para asociar su historial evitando pérdidas de información.</span>
-            </div>
-            <div>
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
-                <span><strong>Aviso:</strong> El proceso asegura que su historial se asocie a su SSN, pero no garantiza un aumento específico del Credit Score.</span>
-            </div>
-        </div>
-
     </div>
 
 </body>
